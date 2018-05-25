@@ -22,10 +22,10 @@ class SocketThread : public QThread
         quint16 port;
         QTcpSocket *tcpSocket;
         QJsonDocument *rqt;
-        QVariantMap* result;
+        QJsonObject* result;
     signals:
         void connectFailed();
-        void onSuccess(QVariantMap*);
+        void onSuccess(QJsonObject*);
         void badRespond();
 };
 

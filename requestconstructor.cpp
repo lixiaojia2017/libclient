@@ -18,5 +18,4 @@ void RequestConstructor::construct(QObject *root){
                 result[t->objectName()]=t->text();
             }
         }
-
 }

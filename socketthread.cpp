@@ -42,8 +42,8 @@ void SocketThread::run()
                 emit(badRespond());
             }
             QJsonDocument &&json=QJsonDocument::fromBinaryData(rsbData);
-            result=new QVariantMap;
-            *result=json.toVariant().toMap();
+            result=new QJsonObject;
+            *result=json.object();
             emit(onSuccess(result));
         }
         else{
