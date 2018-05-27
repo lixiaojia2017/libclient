@@ -1,0 +1,4 @@
+#ifndef ABSTRACTRQT_H
+#define ABSTRACTRQT_H
+
+#endif // ABSTRACTRQT_H

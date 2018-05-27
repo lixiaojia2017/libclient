@@ -1,0 +1,4 @@
+#ifndef RESPONSEHDL_H
+#define RESPONSEHDL_H
+
+#endif // RESPONSEHDL_H
