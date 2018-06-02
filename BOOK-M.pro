@@ -25,16 +25,27 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        login.cpp \
+    administrator.cpp \
+    find_password.cpp \
+    login.cpp \
+    new_user.cpp \
     reader.cpp
 
 HEADERS += \
-        login.h \
+    administrator.h \
+    find_password.h \
+    login.h \
+    new_user.h \
     reader.h
 
 FORMS += \
-        login.ui \
+    administrator.ui \
+    find_password.ui \
+    login.ui \
+    new_user.ui \
     reader.ui
 
 RESOURCES += \
     image/image.qrc
+CONFIG += c++11
+
