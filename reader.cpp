@@ -8,8 +8,8 @@ Reader::Reader(QWidget *parent) :
     ui(new Ui::Reader)
 {
     ui->setupUi(this);
-    connect(ui->switchtwo,&QPushButton::clicked,this,&Reader)
-
+    connect(ui->switchtwo,&QPushButton::clicked,this,&Reader::switchPage);
+    connect(ui->goodfind,&QPushButton::clicked,this,&Reader::switchPage);
 }
 
 Reader::~Reader()
@@ -19,4 +19,16 @@ Reader::~Reader()
 void Reader::showwin()
 {
     this->show();
+}
+void Reader::switchPage()
+{
+    if(ui->stackedWidget->currentIndex() == 0)
+    {
+        ui->stackedWidget->setCurrentIndex(1);
+    }
+    else
+    {
+        ui->stackedWidget->setCurrentIndex(0);
+    }
+
 }
