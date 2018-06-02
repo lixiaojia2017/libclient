@@ -16,13 +16,16 @@ public:
     ~Reader();
 
 private slots:
-    void showwin();
+    void showReaderwin();
+    void closeReaderwin();
 
 protected:
     void switchPage();
 
 private:
     Ui::Reader *ui;
+
+    void handleEvents();
 };
 
 #endif // READER_H

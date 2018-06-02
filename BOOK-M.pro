@@ -47,5 +47,6 @@ FORMS += \
 
 RESOURCES += \
     image/image.qrc
+
 CONFIG += c++11
 

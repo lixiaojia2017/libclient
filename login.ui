@@ -114,7 +114,7 @@
            </item>
            <item>
             <property name="text">
-             <string>reader</string>
+             <string>Reader</string>
             </property>
            </item>
           </widget>
@@ -267,5 +267,22 @@
  <resources>
   <include location="image/image.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>close</sender>
+   <signal>clicked()</signal>
+   <receiver>Login</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>243</x>
+     <y>370</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>179</x>
+     <y>216</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

@@ -11,6 +11,11 @@ class Administrator : public QMainWindow
 {
     Q_OBJECT
 
+
+private slots:
+    void showAdministratorwin();
+    void closeAdministratorwin();
+
 public:
     explicit Administrator(QWidget *parent = 0);
     ~Administrator();

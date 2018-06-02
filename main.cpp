@@ -13,18 +13,13 @@ int main(int argc, char *argv[])
     Login w; //登录界面
     w.show();
 
-    Reader r;
+    Reader r;  //读者界面
+    Administrator ad; //管理员界面
 
-    QObject::connect(&w,SIGNAL(showreaderwin()),&r,SLOT(showwin()));
-
-
-    //    New_user newacc;  //新用户注册界面
-    //    newacc.show();
-    //    Find_password  fpassword;
-    //    fpassword.show();
-   Administrator ad;
-   ad.show();
-
+    QObject::connect(&w,SIGNAL(showReaderwin()),&r,SLOT(showReaderwin()));
+    QObject::connect(&w,SIGNAL(closeReaderwin()),&r,SLOT(closeReaderwin()));
+    QObject::connect(&w,SIGNAL(showAdministratorwin()),&ad,SLOT(showAdministratorwin()));
+    QObject::connect(&w,SIGNAL(closeAdministratorwin()),&ad,SLOT(closeAdministratorwin()));
 
 
     return a.exec();

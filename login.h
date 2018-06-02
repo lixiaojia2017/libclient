@@ -1,6 +1,7 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 #include"new_user.h"
+#include"find_password.h"
 #include <QMainWindow>
 
 namespace Ui {
@@ -14,21 +15,25 @@ class Login : public QMainWindow
 public:
     explicit Login(QWidget *parent = 0);
     ~Login();
-protected:
 
-    void keyPressEvent(QKeyEvent *event);
-private slots:
-    void on_LI_clicked();
-
-    void on_new_2_clicked();
+    bool getIdentity();
 
 signals:
-    void showreaderwin();
+    void showReaderwin();
+    void closeReaderwin();
+
+    void showAdministratorwin();
+    void closeAdministratorwin();
 
 private:
+    void handleEvents(); // 信号槽事件处理
+    bool login();
+
     Ui::Login *ui;
     New_user newuser;
+    Find_password findPassword;
 
+    bool success = false;
 
 
 };

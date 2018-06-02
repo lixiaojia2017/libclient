@@ -12,3 +12,12 @@ Administrator::~Administrator()
 {
     delete ui;
 }
+void Administrator::showAdministratorwin()
+{
+    this->show();
+}
+
+void Administrator::closeAdministratorwin()
+{
+    this->close();
+}
