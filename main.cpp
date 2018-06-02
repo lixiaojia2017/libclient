@@ -12,7 +12,6 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     Login w; //登录界面
     w.show();
-
     Reader r;  //读者界面
     Administrator ad; //管理员界面
 

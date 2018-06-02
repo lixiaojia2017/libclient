@@ -18,6 +18,8 @@ public:
 
     bool getIdentity();
 
+    void initStyle();
+
 signals:
     void showReaderwin();
     void closeReaderwin();

@@ -46,7 +46,8 @@ FORMS += \
     reader.ui
 
 RESOURCES += \
-    image/image.qrc
+    image/image.qrc \
+    image/qss.qrc
 
 CONFIG += c++11
 
