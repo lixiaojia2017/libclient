@@ -8,6 +8,7 @@
 #include<QFrame>
 #include<QHBoxLayout>
 #include<QFile>
+#include <QMessageBox>
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Login)
@@ -46,25 +47,7 @@ void Login::handleEvents() // 信号槽事件处理
             }
             else
             {
-               QDialog error_dlg;
-               error_dlg.resize(400,300);
-               QLabel error_to_log(&error_dlg,Qt::Widget);
-               error_to_log.resize(300,300);
-
-               QHBoxLayout form;  //布局
-               form.addWidget(&error_to_log);
-               error_dlg.setLayout(&form);
-
-               error_to_log.show();
-               error_to_log.setText("<center><h1>密码错误</h1></center>");
-
-//               error_to_log.setStyleSheet("QLabel{color:rgb(200,45,100);"  //前景色
-//                                          "background-color:rgb(150,35,150);" //背景颜色
-//                                          "border-image:url(:/image/logo.png);"//背景图
-//                                          "}");
-
-               error_dlg.exec();
-
+                QMessageBox::about(this,"Login failed","Wrong password");
             }
     });
 
