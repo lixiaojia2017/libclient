@@ -14,8 +14,9 @@ class SocketThread : public QThread
     public:
         SocketThread(QString ip,quint16 port,QJsonDocument *obj,QObject *parent = 0);
         ~SocketThread();
-    protected:
         virtual void run();
+    protected:
+
 
     private:
         QString ip;
@@ -26,7 +27,7 @@ class SocketThread : public QThread
     signals:
         void connectFailed();
         void onSuccess(QJsonObject*);
-        void badRespond();
+        void badResponse();
 };
 
 

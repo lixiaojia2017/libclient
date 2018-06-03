@@ -26,13 +26,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         widget.cpp \
-requestconstructor.cpp\
-socketthread.cpp
+socketthread.cpp \
+    responsehdl.cpp \
+    abstractrqt.cpp \
+    userrqt.cpp \
+    token.cpp \
+    operateuserrqt.cpp
 
 HEADERS += \
         widget.h \
-    requestconstructor.h\
-socketthread.h
+socketthread.h \
+    responsehdl.h \
+    abstractrqt.h \
+    userrqt.h \
+    token.h \
+    appointmentrqt.h \
+    operateuserrqt.h
 
 FORMS += \
         widget.ui

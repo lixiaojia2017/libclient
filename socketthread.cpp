@@ -35,19 +35,19 @@ void SocketThread::run()
         in >> sign;
         if(sign=='A'){
             qint32 bytes;
-            QByteArray rsbData;
+            QByteArray rspData;
             in >> bytes;
-            in >> rsbData;
-            if(rsbData.size() != bytes){
-                emit(badRespond());
+            in >> rspData;
+            if(rspData.size() != bytes){
+                emit(badResponse());
             }
-            QJsonDocument &&json=QJsonDocument::fromBinaryData(rsbData);
+            QJsonDocument &&json=QJsonDocument::fromBinaryData(rspData);
             result=new QJsonObject;
             *result=json.object();
             emit(onSuccess(result));
         }
         else{
-            emit(badRespond());
+            emit(badResponse());
         }
     }
     else{
