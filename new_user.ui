@@ -78,7 +78,7 @@
            <string>确认申请</string>
           </property>
          </widget>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>23</x>
@@ -127,7 +127,7 @@
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QLineEdit" name="nrealname_3">
+            <widget class="QLineEdit" name="realname">
              <property name="font">
               <font>
                <pointsize>13</pointsize>
@@ -169,7 +169,7 @@
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QLineEdit" name="nusername_3">
+            <widget class="QLineEdit" name="username">
              <property name="font">
               <font>
                <pointsize>13</pointsize>
@@ -190,7 +190,7 @@
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QLineEdit" name="ntel_3">
+            <widget class="QLineEdit" name="tel">
              <property name="font">
               <font>
                <pointsize>13</pointsize>
@@ -211,7 +211,7 @@
             </widget>
            </item>
            <item row="5" column="1">
-            <widget class="QLineEdit" name="nemail_3">
+            <widget class="QLineEdit" name="email">
              <property name="font">
               <font>
                <pointsize>13</pointsize>
@@ -232,7 +232,7 @@
             </widget>
            </item>
            <item row="6" column="1">
-            <widget class="QLineEdit" name="npassword_3">
+            <widget class="QLineEdit" name="pwd">
              <property name="font">
               <font>
                <pointsize>13</pointsize>
@@ -256,7 +256,7 @@
             </widget>
            </item>
            <item row="7" column="1">
-            <widget class="QLineEdit" name="npasswordagain_3">
+            <widget class="QLineEdit" name="pwd2">
              <property name="font">
               <font>
                <pointsize>13</pointsize>

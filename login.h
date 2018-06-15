@@ -3,7 +3,7 @@
 #include"new_user.h"
 #include"find_password.h"
 #include <QMainWindow>
-
+#include <QString>
 namespace Ui {
 class Login;
 }
@@ -21,19 +21,16 @@ public:
     void initStyle();
 
 signals:
-    void showReaderwin();
-    void closeReaderwin();
+    void showReaderwin(QString&);
 
-    void showAdministratorwin();
-    void closeAdministratorwin();
+    void showAdministratorwin(QString&);
 
 private:
     void handleEvents(); // 信号槽事件处理
-    bool login();
 
     Ui::Login *ui;
-    New_user newuser;
-    Find_password findPassword;
+    New_user new_user;
+    Find_password find_password;
 
     bool success = false;
 

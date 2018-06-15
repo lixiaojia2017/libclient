@@ -99,10 +99,24 @@
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout">
          <item row="0" column="0">
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="label_identity">
            <property name="text">
             <string>身份</string>
            </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="group">
+           <item>
+            <property name="text">
+             <string>readers</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>staffs</string>
+            </property>
+           </item>
           </widget>
          </item>
          <item row="1" column="0">
@@ -116,7 +130,7 @@
           <widget class="QLineEdit" name="username"/>
          </item>
          <item row="1" column="2">
-          <widget class="QPushButton" name="new_2">
+          <widget class="QPushButton" name="newReader">
            <property name="text">
             <string>注册</string>
            </property>
@@ -137,31 +151,17 @@
           </widget>
          </item>
          <item row="2" column="2">
-          <widget class="QPushButton" name="find_password">
+          <widget class="QPushButton" name="findPassword">
            <property name="text">
             <string>找回密码</string>
            </property>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QCheckBox" name="rem_password">
+          <widget class="QCheckBox" name="remPassword">
            <property name="text">
             <string>记住密码</string>
            </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="group">
-           <item>
-            <property name="text">
-             <string>reader</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>staff</string>
-            </property>
-           </item>
           </widget>
          </item>
         </layout>
@@ -181,14 +181,14 @@
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_3">
          <item row="0" column="0">
-          <widget class="QPushButton" name="LI">
+          <widget class="QPushButton" name="logIn">
            <property name="text">
             <string>登录</string>
            </property>
           </widget>
          </item>
          <item row="0" column="2">
-          <widget class="QPushButton" name="close">
+          <widget class="QPushButton" name="winClose">
            <property name="text">
             <string>关闭</string>
            </property>
@@ -224,7 +224,7 @@
  </resources>
  <connections>
   <connection>
-   <sender>close</sender>
+   <sender>winClose</sender>
    <signal>clicked()</signal>
    <receiver>Login</receiver>
    <slot>close()</slot>

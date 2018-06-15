@@ -15,6 +15,9 @@ public:
     explicit Find_password(QWidget *parent = 0);
     ~Find_password();
 
+private slots:
+    void on_sentcode_clicked();
+
 private:
     Ui::Find_password *ui;
 };

@@ -25,31 +25,29 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    administrator.cpp \
-    find_password.cpp \
     login.cpp \
     new_user.cpp \
     reader.cpp \
     backend/abstractrqt.cpp \
+    backend/loginhdl.cpp \
     backend/responsehdl.cpp \
     backend/socketthread.cpp \
     backend/token.cpp \
-    backend/userrqt.cpp
+    backend/userrqt.cpp \
+    find_password.cpp
 
 HEADERS += \
-    administrator.h \
-    find_password.h \
     login.h \
     new_user.h \
     reader.h \
     backend/abstractrqt.h \
+    backend/loginhdl.h \
     backend/responsehdl.h \
     backend/socketthread.h \
     backend/token.h \
-    backend/userrqt.h
-
+    backend/userrqt.h \
+    find_password.h
 FORMS += \
-    administrator.ui \
     find_password.ui \
     login.ui \
     new_user.ui \

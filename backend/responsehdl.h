@@ -6,7 +6,7 @@
 class ResponseHdl:public QObject
 {
     Q_OBJECT
-private:
+protected:
     QJsonObject* rsp;
 public:
     ResponseHdl(QJsonObject* rsp);

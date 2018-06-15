@@ -26,10 +26,14 @@ void SocketThread::run()
     }
     else{
         emit(connectFailed());
+        tcpSocket->close();
+        tcpSocket->deleteLater();
+        this->quit();
+        return;
     }
 
     if(tcpSocket->waitForReadyRead(10000)){
-        QByteArray &&ReadData =tcpSocket->readAll();
+        QByteArray ReadData =tcpSocket->readAll();
         QDataStream in(&ReadData,QIODevice::ReadOnly);
         qint8 sign;
         in >> sign;
@@ -41,10 +45,12 @@ void SocketThread::run()
             if(rspData.size() != bytes){
                 emit(badResponse());
             }
+            else{
             QJsonDocument &&json=QJsonDocument::fromBinaryData(rspData);
             result=new QJsonObject;
             *result=json.object();
             emit(onSuccess(result));
+            }
         }
         else{
             emit(badResponse());

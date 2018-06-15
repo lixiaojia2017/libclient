@@ -11,6 +11,7 @@
 #include "backend/userrqt.h"
 #include "backend/socketthread.h"
 #include "backend/responsehdl.h"
+#include "backend/loginhdl.h"
 #include <QMessageBox>
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
@@ -18,7 +19,6 @@ Login::Login(QWidget *parent) :
 {
     ui->setupUi(this);
     handleEvents();
-    //ui->centralWidget->setStyleSheet("background-color:white");
     initStyle();
 }
 Login::~Login()
@@ -29,13 +29,14 @@ Login::~Login()
 
 void Login::handleEvents() // 信号槽事件处理
 {
-    connect(ui->LI,&QPushButton::clicked,
+    connect(ui->logIn,&QPushButton::clicked,
             [=]()
     {
-        ui->LI->setEnabled(false);
+        ui->logIn->setEnabled(false);
+        ui->logIn->setText("登录中...");
         UserRqt rqt("unknown");
-        rqt.construct("login",ui->gridLayout);
-        SocketThread thr("1.2.3.4",5678,rqt.getRequest());
+        rqt.construct("login",ui->frame);
+        SocketThread thr("inftyloop.tech",5678,rqt.getRequest());
         connect(&thr,&SocketThread::connectFailed,[&](){
             QMessageBox::about(this,"Login failed","connection timeout");
         });
@@ -44,58 +45,44 @@ void Login::handleEvents() // 信号槽事件处理
         });
         connect(&thr,&SocketThread::onSuccess,[&](QJsonObject* rsp)
         {
-            ResponseHdl hdl(rsp);
-            connect(&hdl,&ResponseHdl::onSuccess,[&](){
+            LoginHdl hdl(rsp);
+            connect(&hdl,&LoginHdl::onSuccess,[&](QString& token){
                 if(getIdentity())
                 {
-                    emit showAdministratorwin();
-                    emit closeReaderwin();
+                    emit showAdministratorwin(token);
                 }
                 else
                 {
-                    emit showReaderwin();
-                    emit closeAdministratorwin();
+                    emit showReaderwin(token);
                 }
                 this->close();
             });
-            connect(&hdl,&ResponseHdl::onFailed,[&](QString& info){
+            connect(&hdl,&LoginHdl::onFailed,[&](QString& info){
                 QMessageBox::about(this,"Login failed",info);
             });
             hdl.deal();
         });
         thr.run();
-        ui->LI->setEnabled(true);
+        ui->logIn->setEnabled(true);
+        ui->logIn->setText("登录");
     });
 
 
-    connect(ui->new_2,&QPushButton::clicked,
+    connect(ui->newReader,&QPushButton::clicked,
             [=]()
     {
-        this->newuser.show();
+        this->new_user.show();
     });
 
-    connect(ui->find_password,&QPushButton::clicked,
+    connect(ui->findPassword,&QPushButton::clicked,
             [=]()
     {
-        this->findPassword.show();
+        this->find_password.show();
     });
 
     connect(ui->password, &QLineEdit::returnPressed, [this] {
-        ui->LI->click();
+        ui->logIn->click();
     });
-}
-bool Login::login()
-{
-    /*QString str1 = ui->LE_username->text();
-    QString str2 = ui->LE_password->text();
-    if(str2 == "123")
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }*/
 }
 
 bool Login::getIdentity()
