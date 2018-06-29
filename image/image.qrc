@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/image">
         <file>logo.png</file>
-        <file>search.jpg</file>
+        <file>background.png</file>
+        <file>search.png</file>
     </qresource>
 </RCC>

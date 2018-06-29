@@ -11,7 +11,8 @@
 #include <QMessageBox>
 Find_password::Find_password(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::Find_password)
+    ui(new Ui::Find_password),
+    serverport(-1)
 {
     ui->setupUi(this);
 }
@@ -21,13 +22,22 @@ Find_password::~Find_password()
     delete ui;
 }
 
-
+void Find_password::setServer(QString addr, int p)
+{
+  serverAddr = addr;
+  serverport = p;
+}
 
 void Find_password::on_sentcode_clicked()
 {
     UserRqt rqt("unknown");
     rqt.construct("forget",ui->frame->children()[1]);
-    SocketThread thr("inftyloop.tech",5678,rqt.getRequest());//inftyloop.tech101.5.131.23724af0492ac247055ce9bd959fa26185f
+    if(serverport==-1 || serverAddr.isEmpty())
+      {
+        QMessageBox::about(this,"Error","Server address or port not set");
+        return;
+      }
+    SocketThread thr(serverAddr,serverport,rqt.getRequest());
     connect(&thr,&SocketThread::connectFailed,[&](){
         QMessageBox::about(this,"Failed","connection timeout");
     });

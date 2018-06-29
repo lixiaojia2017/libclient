@@ -13,6 +13,7 @@ class Find_password : public QMainWindow
 
 public:
     explicit Find_password(QWidget *parent = 0);
+    void setServer(QString addr, int p);
     ~Find_password();
 
 private slots:
@@ -20,6 +21,8 @@ private slots:
 
 private:
     Ui::Find_password *ui;
+    QString serverAddr;
+    int serverport;
 };
 
 #endif // FIND_PASSWORD_H

@@ -3,6 +3,10 @@
 #include<QIcon>
 #include<QFont>
 #include<QTableWidget>
+#include<QPixmap>
+#include<QLabel>
+#include<QFrame>
+#include<QDialog>
 Reader::Reader(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Reader)
@@ -10,19 +14,18 @@ Reader::Reader(QWidget *parent) :
     ui->setupUi(this);
     handleEvents();
 
-    QIcon searchImage(":/image/search.jpg");
+    this->setWindowTitle("图书管理");
+
+    QIcon searchImage(":/image/search.png");
     ui->search->setIcon(searchImage);
     ui->search->setIconSize(QSize(85,46));
     ui->search->setFlat(true);
-
-
 }
 
 Reader::~Reader()
 {
     delete ui;
 }
-
 
 void Reader::showReaderwin(QString& t)
 {
@@ -42,6 +45,7 @@ void Reader::showAdministratorwin(QString& t)
     ui->appointreturn->hide();
     this->show();
 }
+//切换界面，仅仅ui使用
 void Reader::switchPage(int i)
 {
     switch(i)
@@ -85,39 +89,49 @@ void Reader::switchPage(int i)
     case MODIFY_GROUP:
         ui->groupStackedWidget->setCurrentIndex(2);
         break;
+    case BORROW_BOOK:
+        ui->brbookStackedWidget->setCurrentIndex(0);
+        break;
+    case RETURN_BOOK:
+        ui->brbookStackedWidget->setCurrentIndex(1);
+        break;
     }
 }
-void Reader::Result()
+//生成表格
+void Reader::Result(QTableWidget* tab)
 {
-    ui->searchResult->setColumnCount(14);//设置列数
-    ui->searchResult->setRowCount(10);
+    tab->setColumnCount(14);//设置列数
+    tab->setRowCount(10);
 
-    ui->searchResult->horizontalHeader()->setStyleSheet("QHeaderView::section{background:skyblue;}");//表头颜色
-    ui->searchResult->horizontalHeader()->setFixedHeight(40);
-    //ui->searchResult->horizontalHeader()->setDefaultSectionSize(150);//宽度//应该可以不用设置
-    //ui->searchResult->horizontalHeader()->setEnabled(false);//不可点击
+    tab->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    tab->horizontalHeader()->setStyleSheet("QHeaderView::section{background:skyblue;}");//表头颜色
+    tab->horizontalHeader()->setFixedHeight(40);
+    //tab->horizontalHeader()->setDefaultSectionSize(150);//宽度//应该可以不用设置
+    //tab->horizontalHeader()->setEnabled(false);//不可点击
 
     QStringList header;
     header<<tr("选择图书")<<tr("封面")<<tr("ID")<<tr("书名")<<tr("groupID")
-    <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("IBSN")<<tr("价格")<<tr("页数")
-    <<tr("书架号")<<tr("入馆时间")<<tr("Available");
-    ui->searchResult->setHorizontalHeaderLabels(header);  //标签
+         <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("IBSN")<<tr("价格")<<tr("页数")
+        <<tr("书架号")<<tr("入馆时间")<<tr("Available");
+    tab->setHorizontalHeaderLabels(header);  //标签
 
-
+   //添加复选框
     for(int i=0;i<10;i++)
     {
         QTableWidgetItem *checkBox = new QTableWidgetItem();
         checkBox->setCheckState(Qt::Unchecked);
         checkBox->setText("勾选启用");
-        ui->searchResult->setItem(i, 0, checkBox);
+        tab->setItem(i, 0, checkBox);
     }
 
+    tab->setItem(0,3,new QTableWidgetItem("《藏地密码》"));//添加内容
 
 }
 
 void Reader::handleEvents()
 {
-    //search
+    //search切换
     connect(ui->GOODFIND,&QPushButton::clicked,
             [=]()
     {
@@ -128,7 +142,8 @@ void Reader::handleEvents()
     {
         Reader::switchPage(_FIND);
     });
-    //book
+
+    //book添加删除修改信息页面切换
     connect(ui->ADDBOOK,&QPushButton::clicked,
             [=]()
     {
@@ -149,7 +164,8 @@ void Reader::handleEvents()
     {
         Reader::switchPage(MODIFY_BOOK_GROUP);
     });
-    //reader
+
+    //reader添加删除修改信息页面切换
     connect(ui->ADDREADER,&QPushButton::clicked,
             [=]()
     {
@@ -170,7 +186,8 @@ void Reader::handleEvents()
     {
         Reader::switchPage(MODIFY_READER_GROUP);
     });
-    //group
+
+    //group添加删除修改信息页面切换
     connect(ui->ADDGROUP,&QPushButton::clicked,
             [=]()
     {
@@ -187,12 +204,52 @@ void Reader::handleEvents()
         Reader::switchPage(MODIFY_GROUP);
     });
 
-
+    //借还管理界面切换
+    connect(ui->BORROWBOOK,&QPushButton::clicked,
+    [=]()
+    {
+        Reader::switchPage(BORROW_BOOK);
+        Result(ui->searchResult_3);
+    });
+    connect(ui->RETURNBOOK,&QPushButton::clicked,
+    [=]()
+    {
+        Reader::switchPage(RETURN_BOOK);
+        Result(ui->searchResult_4);
+    });
+    //查询按钮
     connect(ui->search,&QPushButton::clicked,
             [=]()
     {
-        Result();
+        Result(ui->searchResult);
     });
+    connect(ui->search_2,&QPushButton::clicked,
+            [=]()
+    {
+        Result(ui->searchResult_5);
+    });
+    //tabwidget点击
+    connect(ui->tabWidget,&QTabWidget::tabBarClicked,this,&Reader::on_tabWidget_tabBarClicked);
+    //表格点击
+    connect(ui->searchResult,&QTableWidget::cellClicked,this,&Reader::on_searchResult_cellClicked);
+
+    connect(ui->BACK,&QPushButton::clicked,
+            [=]()
+    {
+        ui->BOOKVIEW->setCurrentIndex(0);
+    });
+
 }
 
+void Reader::on_searchResult_cellClicked(int row, int column)
+{
+    ui->BOOKVIEW->setCurrentIndex(1);
+}
 
+void Reader::on_tabWidget_tabBarClicked(int index)
+{
+    if(index == 1)
+    {
+        Result(ui->searchResult_2);
+    }
+}
