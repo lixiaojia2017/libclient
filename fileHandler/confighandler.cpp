@@ -1,7 +1,7 @@
 #include "3rd-party/json.hpp"
 #include "confighandler.h"
 #include "backend/token.h"
-#include "3rd-party/Qt-AES/qaesencryption.h"
+#include "3rd-party/aes256.h"
 #include <map>
 #include <QDir>
 
@@ -61,21 +61,23 @@ void configHandler::readFromFile()
   if(conf.isFile())
   {
       QFile file(path);
-      if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+      if (file.open(QIODevice::ReadOnly))
       {
           // read json
-          QByteArray buffer = file.readAll();
-          QString key = keyGenerator();
-          QAESEncryption e(QAESEncryption::AES_256, QAESEncryption::ECB);
-          QByteArray decoded = e.decode(buffer,key.toLocal8Bit());
-          decoded.resize(decoded.indexOf(128));  // drop \200 meaningless char
-          std::vector<uint8_t> content(decoded.begin(), decoded.end());
+          QByteArray buffer = file.read(file.bytesAvailable());
+          QString &&key = keyGenerator();
+          std::string &&stdkey = key.toStdString();
+          // decode
+          std::string buf(buffer.begin(),buffer.end());
+          std::string &&decoded = sAes256Decrypt(buf,stdkey);
+          std::vector<uint8_t> content(decoded.begin(),decoded.end());
           try
           {
-            configs = json::from_ubjson(content);
+            configs = json::from_cbor(content);
           }
           catch(...)
           {
+            qDebug() << "Warning. Interpret config failed.";
           }
           // process json
           // type check
@@ -103,18 +105,19 @@ void configHandler::readFromFile()
 
 void configHandler::saveConfig()
 {
-  auto buf = json::to_ubjson(configs);
-  QByteArray buffer(reinterpret_cast<const char*>(buf.data()), buf.size());
+  auto buf = json::to_cbor(configs);
+  std::string strbuf(buf.begin(),buf.end());
+  // encode
+  QString key = keyGenerator();
+  std::string &&stdkey = key.toStdString();
+  std::string &&ebuf = sAes256Encrypt(strbuf,stdkey);
   QDir dir;
   dir.mkdir("config");
   QString path = "./config/conf.dat";
   QFile file(path);
-  QString &&key = keyGenerator();
-  QAESEncryption e(QAESEncryption::AES_256, QAESEncryption::ECB);
-  QByteArray &&encoded = e.encode(buffer,key.toLocal8Bit());
   if(file.open(QIODevice::WriteOnly))
     {
-      file.write(encoded);
+      file.write(ebuf.data(),ebuf.size());
       file.close();
     }
 }
