@@ -135,6 +135,14 @@ void Login::handleEvents() // 信号槽事件处理
     connect(ui->findPassword,&QPushButton::clicked,
             [=]()
     {
+        QString && str = this->ui->serveraddr->text();
+        QStringList && list = str.split(':');
+        if(str.isEmpty() || list.size()==1)
+          {
+            QMessageBox::about(this,"Error","Server address or port not set");
+            return;
+          }
+        find_password.setServer(list[0],list[1].toInt());
         this->find_password.show();
     });
 
