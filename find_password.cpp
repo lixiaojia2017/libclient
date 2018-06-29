@@ -27,7 +27,7 @@ void Find_password::on_sentcode_clicked()
 {
     UserRqt rqt("unknown");
     rqt.construct("forget",ui->frame->children()[1]);
-    SocketThread thr("inftyloop.tech",5678,rqt.getRequest());//inftyloop.tech101.5.131.23724af0492ac247055ce9bd959fa26185f
+    SocketThread thr("127.0.0.1",5678,rqt.getRequest());//inftyloop.tech101.5.131.23724af0492ac247055ce9bd959fa26185f
     connect(&thr,&SocketThread::connectFailed,[&](){
         QMessageBox::about(this,"Failed","connection timeout");
     });

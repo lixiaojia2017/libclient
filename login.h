@@ -2,6 +2,7 @@
 #define LOGIN_H
 #include"new_user.h"
 #include"find_password.h"
+#include "fileHandler/confighandler.h"
 #include <QMainWindow>
 #include <QString>
 namespace Ui {
@@ -31,10 +32,9 @@ private:
     Ui::Login *ui;
     New_user new_user;
     Find_password find_password;
-
+    configHandler config;
     bool success = false;
-
-
+    bool pwdAutoLoad = false;
 };
 
 #endif // LOGIN_H

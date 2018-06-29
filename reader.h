@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QString>
+#include<QTableWidget>
 namespace Ui {
 class Reader;
 }
@@ -24,6 +25,8 @@ class Reader;
 #define ADD_GROUP 10
 #define DELETE_GROUP 11
 #define MODIFY_GROUP 12
+#define BORROW_BOOK 13
+#define RETURN_BOOK 14
 
 
 
@@ -34,14 +37,17 @@ class Reader : public QMainWindow
 public:
     explicit Reader(QWidget *parent = 0);
     ~Reader();
-
-private slots:
+public slots:
     void showReaderwin(QString&);
     void showAdministratorwin(QString&);
+private slots:
+    void on_searchResult_cellClicked(int row, int column);
+
+    void on_tabWidget_tabBarClicked(int index);
 
 protected:
     void switchPage(int);
-    void Result();
+    void Result(QTableWidget* tab);
 
 private:
     Ui::Reader *ui;

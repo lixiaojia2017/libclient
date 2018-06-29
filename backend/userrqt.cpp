@@ -42,7 +42,8 @@ void UserRqt::construct(const QString &command, const QObject *root){
         case login:
         {
             QString tmp=rqt.take("password").toString();
-            rqt.insert("password",token::getMD5(tmp));
+            // here we don't automatically use MD5 since password should be encrypted outside
+            rqt.insert("password",tmp);
             break;}
         case changepwd:
         {

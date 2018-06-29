@@ -11,10 +11,12 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     Login w; //登录界面
     w.show();
+    //w.close();
     Reader r;  //读者界面
+    //r.show();
 
-    QObject::connect(&w,SIGNAL(showReaderwin()),&r,SLOT(showReaderwin()));
-    QObject::connect(&w,SIGNAL(showAdministratorwin()),&r,SLOT(showAdministratorwin()));
+    QObject::connect(&w,&Login::showReaderwin,&r,&Reader::showReaderwin);
+    QObject::connect(&w,&Login::showAdministratorwin,&r,&Reader::showAdministratorwin);
 
 
     return a.exec();

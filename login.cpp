@@ -29,14 +29,60 @@ Login::~Login()
 
 void Login::handleEvents() // 信号槽事件处理
 {
+  // load server addr from config
+  QString &&server = config.getServerAddr();
+  if(server.isEmpty())
+    {
+      ui->serveraddr->setFocus();
+    }
+  else ui->serveraddr->setText(config.getServerAddr());
+  // read pwd from storage when username input finished
+  connect(ui->username,&QLineEdit::editingFinished,[&]()
+  {
+      QString user = ui->username->text();
+      QString pwd = config.getPassword(user);
+      if(!pwd.isEmpty())
+        {
+          ui->password->setText(pwd);
+          ui->remPassword->setCheckState(Qt::Checked);
+          pwdAutoLoad = true;
+        }
+    });
+  // turn off pwdAutoLoad if manually edited the pwd
+  connect(ui->password,&QLineEdit::textChanged,[&]()
+  {
+      pwdAutoLoad = false;
+    });
+  // start login procedure
     connect(ui->logIn,&QPushButton::clicked,
             [=]()
     {
+        if(!pwdAutoLoad)
+        {
+            ui->password->setText(token::getMD5(ui->password->text()));
+        }
         ui->logIn->setEnabled(false);
         ui->logIn->setText("登录中...");
         UserRqt rqt("unknown");
         rqt.construct("login",ui->frame);
-        SocketThread thr("inftyloop.tech",5678,rqt.getRequest());
+        // server addr detection
+        QString server = ui->serveraddr->text();
+        if(server.isEmpty())
+          {
+            QMessageBox::about(this,"Error","Server address cannot be empty");
+            ui->logIn->setEnabled(true);
+            ui->logIn->setText("登录");
+            return;
+          }
+        QStringList serverlist = server.split(':');
+        if(serverlist.size()==1)
+          {
+            QMessageBox::about(this,"Error","Please specify a port for the server");
+            ui->logIn->setEnabled(true);
+            ui->logIn->setText("登录");
+            return;
+          }
+        SocketThread thr(serverlist[0],serverlist[1].toUInt(),rqt.getRequest());
         connect(&thr,&SocketThread::connectFailed,[&](){
             QMessageBox::about(this,"Login failed","connection timeout");
         });
@@ -45,8 +91,20 @@ void Login::handleEvents() // 信号槽事件处理
         });
         connect(&thr,&SocketThread::onSuccess,[&](QJsonObject* rsp)
         {
+          // remember password & server addr
+          config.setServerAddr(ui->serveraddr->text());
+          if(!ui->remPassword->isChecked())
+          // remember to remove the pwd if the checkbox is unchecked
+            {
+              config.removePassword(ui->username->text());
+            }
+          // connect success, handle the login request
             LoginHdl hdl(rsp);
             connect(&hdl,&LoginHdl::onSuccess,[&](QString& token){
+              if(ui->remPassword->isChecked())
+              {
+                config.setPassword(ui->username->text(),ui->password->text());
+              }
                 if(getIdentity())
                 {
                     emit showAdministratorwin(token);

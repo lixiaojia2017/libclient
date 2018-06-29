@@ -34,7 +34,9 @@ SOURCES += \
     backend/socketthread.cpp \
     backend/token.cpp \
     backend/userrqt.cpp \
-    find_password.cpp
+    find_password.cpp \
+    fileHandler/confighandler.cpp \
+    3rd-party/Qt-AES/qaesencryption.cpp
 
 HEADERS += \
     login.h \
@@ -46,7 +48,11 @@ HEADERS += \
     backend/socketthread.h \
     backend/token.h \
     backend/userrqt.h \
-    find_password.h
+    find_password.h \
+    fileHandler/confighandler.h \
+    3rd-party/json.hpp \
+    3rd-party/Qt-AES/qaesencryption.h
+
 FORMS += \
     find_password.ui \
     login.ui \
@@ -58,4 +64,3 @@ RESOURCES += \
     image/qss.qrc
 
 CONFIG += c++11
-
