@@ -27,6 +27,7 @@ signals:
     void showAdministratorwin(QString&);
 
 private:
+    bool finish = false;
     void handleEvents(); // 信号槽事件处理
 
     Ui::Login *ui;

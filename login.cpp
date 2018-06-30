@@ -55,7 +55,7 @@ void Login::handleEvents() // 信号槽事件处理
     });
   // start login procedure
     connect(ui->logIn,&QPushButton::clicked,
-            [=]()
+            [&]()
     {
         if(!pwdAutoLoad)
         {
@@ -82,14 +82,18 @@ void Login::handleEvents() // 信号槽事件处理
             ui->logIn->setText("登录");
             return;
           }
-        SocketThread thr(serverlist[0],serverlist[1].toUInt(),rqt.getRequest());
-        connect(&thr,&SocketThread::connectFailed,[&](){
+        SocketThread *thr= new SocketThread(serverlist[0],serverlist[1].toUInt(),rqt.getRequest());
+        connect(thr,&SocketThread::connectFailed,this,[&](){
             QMessageBox::about(this,"Login failed","connection timeout");
+            ui->logIn->setEnabled(true);
+            ui->logIn->setText("登录");
         });
-        connect(&thr,&SocketThread::badResponse,[&](){
+        connect(thr,&SocketThread::badResponse,this,[&](){
             QMessageBox::about(this,"Login failed","server error");
+            ui->logIn->setEnabled(true);
+            ui->logIn->setText("登录");
         });
-        connect(&thr,&SocketThread::onSuccess,[&](QJsonObject* rsp)
+        connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
         {
           // remember password & server addr
           config.setServerAddr(ui->serveraddr->text());
@@ -117,12 +121,12 @@ void Login::handleEvents() // 信号槽事件处理
             });
             connect(&hdl,&LoginHdl::onFailed,[&](QString& info){
                 QMessageBox::about(this,"Login failed",info);
+                ui->logIn->setEnabled(true);
+                ui->logIn->setText("登录");
             });
             hdl.deal();
         });
-        thr.run();
-        ui->logIn->setEnabled(true);
-        ui->logIn->setText("登录");
+        thr->start();
     });
 
 
