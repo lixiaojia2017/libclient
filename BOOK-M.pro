@@ -24,7 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
+    main.cpp \
     login.cpp \
     new_user.cpp \
     reader.cpp \
@@ -50,7 +50,8 @@ HEADERS += \
     backend/userrqt.h \
     find_password.h \
     fileHandler/confighandler.h \
-    3rd-party/aes256.h
+    3rd-party/aes256.h \
+    3rd-party/json.hpp
 FORMS += \
     find_password.ui \
     login.ui \
