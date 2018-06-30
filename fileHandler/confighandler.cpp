@@ -1,7 +1,7 @@
 #include "3rd-party/json.hpp"
 #include "confighandler.h"
 #include "backend/token.h"
-#include "3rd-party/aes256.h"
+#include "qbyteaes.h"
 #include <map>
 #include <QDir>
 
@@ -65,11 +65,10 @@ void configHandler::readFromFile()
       {
           // read json
           QByteArray buffer = file.read(file.bytesAvailable());
-          QString &&key = keyGenerator();
-          std::string &&stdkey = key.toStdString();
+          std::string &&key = QByteAes::KeyGen();
           // decode
           std::string buf(buffer.begin(),buffer.end());
-          std::string &&decoded = sAes256Decrypt(buf,stdkey);
+          std::string &&decoded = QByteAes::Decrypt(buf,key);
           std::vector<uint8_t> content(decoded.begin(),decoded.end());
           try
           {
@@ -108,9 +107,8 @@ void configHandler::saveConfig()
   auto buf = json::to_cbor(configs);
   std::string strbuf(buf.begin(),buf.end());
   // encode
-  QString key = keyGenerator();
-  std::string &&stdkey = key.toStdString();
-  std::string &&ebuf = sAes256Encrypt(strbuf,stdkey);
+  std::string &&stdkey = QByteAes::KeyGen();
+  std::string &&ebuf = QByteAes::Encrypt(strbuf,stdkey);
   QDir dir;
   dir.mkdir("config");
   QString path = "./config/conf.dat";
@@ -120,11 +118,4 @@ void configHandler::saveConfig()
       file.write(ebuf.data(),ebuf.size());
       file.close();
     }
-}
-
-QString configHandler::keyGenerator()
-{
-  QStorageInfo storage = QStorageInfo::root();
-  QString raw = QString::number(storage.blockSize()) + storage.name();
-  return token::getMD5(raw);
 }

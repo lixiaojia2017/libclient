@@ -27,7 +27,6 @@ private:
   nlohmann::json configs;
   void readFromFile();
   void saveConfig();
-  QString keyGenerator();
 };
 
 #endif // CONFIGHANDLER_H
