@@ -19,7 +19,6 @@ class Reader;
 
 #define ADD_READER 6
 #define DELETE_READER 7
-#define MODIFY_READER 8
 #define MODIFY_READER_GROUP 9
 
 #define ADD_GROUP 10
@@ -27,6 +26,9 @@ class Reader;
 #define MODIFY_GROUP 12
 #define BORROW_BOOK 13
 #define RETURN_BOOK 14
+
+#define Initialization 101
+#define Non_initialization 102
 
 
 
@@ -37,17 +39,18 @@ class Reader : public QMainWindow
 public:
     explicit Reader(QWidget *parent = 0);
     ~Reader();
-public slots:
+
+private slots:
     void showReaderwin(QString&);
     void showAdministratorwin(QString&);
-private slots:
+
     void on_searchResult_cellClicked(int row, int column);
 
     void on_tabWidget_tabBarClicked(int index);
 
 protected:
     void switchPage(int);
-    void Result(QTableWidget* tab);
+    void Result(QTableWidget* tab,int i);
 
 private:
     Ui::Reader *ui;
