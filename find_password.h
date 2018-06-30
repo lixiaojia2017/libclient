@@ -2,6 +2,7 @@
 #define FIND_PASSWORD_H
 
 #include <QMainWindow>
+#include "waitingwindow.h"
 
 namespace Ui {
 class Find_password;
@@ -20,6 +21,7 @@ private slots:
     void on_sentcode_clicked();
 
 private:
+    waitingWindow wait;
     Ui::Find_password *ui;
     QString serverAddr;
     int serverport;

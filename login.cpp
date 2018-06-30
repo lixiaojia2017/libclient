@@ -18,7 +18,6 @@ Login::Login(QWidget *parent) :
     ui(new Ui::Login)
 {
     ui->setupUi(this);
-    wait.setWindowFlags(Qt::Dialog|Qt::FramelessWindowHint);
     handleEvents();
     initStyle();
 }

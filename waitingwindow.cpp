@@ -6,6 +6,7 @@ waitingWindow::waitingWindow(QWidget *parent) :
   ui(new Ui::waitingWindow)
 {
   ui->setupUi(this);
+  this->setWindowFlags(Qt::Dialog|Qt::FramelessWindowHint);
 }
 
 waitingWindow::~waitingWindow()

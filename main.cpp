@@ -9,7 +9,9 @@
 
 int main(int argc, char *argv[])
 {
+    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication a(argc, argv);
+    QApplication::setWindowIcon(QIcon(":/image/icon.ico"));
     Login w; //登录界面
     w.show();
     //w.close();
