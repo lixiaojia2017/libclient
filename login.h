@@ -2,6 +2,7 @@
 #define LOGIN_H
 #include"new_user.h"
 #include"find_password.h"
+#include "waitingwindow.h"
 #include "fileHandler/confighandler.h"
 #include <QMainWindow>
 #include <QString>
@@ -27,7 +28,7 @@ signals:
     void showAdministratorwin(QString&);
 
 private:
-    bool finish = false;
+    waitingWindow wait;
     void handleEvents(); // 信号槽事件处理
 
     Ui::Login *ui;

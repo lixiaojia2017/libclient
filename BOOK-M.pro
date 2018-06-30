@@ -37,7 +37,8 @@ SOURCES += \
     find_password.cpp \
     fileHandler/confighandler.cpp \
     3rd-party/aes256.cpp \
-    fileHandler/qbyteaes.cpp
+    fileHandler/qbyteaes.cpp \
+    waitingwindow.cpp
 
 HEADERS += \
     login.h \
@@ -53,12 +54,14 @@ HEADERS += \
     fileHandler/confighandler.h \
     3rd-party/aes256.h \
     3rd-party/json.hpp \
-    fileHandler/qbyteaes.h
+    fileHandler/qbyteaes.h \
+    waitingwindow.h
 FORMS += \
     find_password.ui \
     login.ui \
     new_user.ui \
-    reader.ui
+    reader.ui \
+    waitingwindow.ui
 
 RESOURCES += \
     image/image.qrc \
