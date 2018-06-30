@@ -36,6 +36,7 @@ public:
 public slots:
 
     void loadFile(const QString &path);
+    void loadData(const QByteArray &data);
 
 private slots:
 

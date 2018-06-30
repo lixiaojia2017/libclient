@@ -42,7 +42,8 @@ SOURCES += \
     3rd-party/aes256.cpp \
     fileHandler/qbyteaes.cpp \
     waitingwindow.cpp \
-    pdfviewer/pdfreader.cpp
+    pdfviewer/pdfreader.cpp \
+    fileHandler/fileloader.cpp
 
 HEADERS += \
     login.h \
@@ -60,7 +61,8 @@ HEADERS += \
     3rd-party/json.hpp \
     fileHandler/qbyteaes.h \
     waitingwindow.h \
-    pdfviewer/pdfreader.h
+    pdfviewer/pdfreader.h \
+    fileHandler/fileloader.h
 
 FORMS += \
     find_password.ui \

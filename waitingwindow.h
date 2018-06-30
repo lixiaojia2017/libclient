@@ -14,7 +14,9 @@ class waitingWindow : public QWidget
 public:
   explicit waitingWindow(QWidget *parent = 0);
   ~waitingWindow();
-
+  void setMax(int num);
+  void setText(const QString text);
+  void setCurr(int num);
 private:
   Ui::waitingWindow *ui;
 };

@@ -13,3 +13,18 @@ waitingWindow::~waitingWindow()
 {
   delete ui;
 }
+
+void waitingWindow::setMax(int num)
+{
+  ui->progressBar->setMaximum(num);
+}
+
+void waitingWindow::setText(const QString text)
+{
+  ui->label->setText(text);
+}
+
+void waitingWindow::setCurr(int num)
+{
+  ui->progressBar->setValue(num);
+}

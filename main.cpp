@@ -4,6 +4,7 @@
 #include "new_user.h"
 #include "find_password.h"
 #include "waitingwindow.h"
+#include "fileHandler/fileloader.h"
 #include <QApplication>
 //#include<QDialog>
 //#include<QLabel>
@@ -26,8 +27,26 @@ int main(int argc, char *argv[])
     w.show();
     //w.close();
     //r.show();
-    PDFReader pdf;
-    pdf.show();
+    /// loading from enrypted data, example
+    PDFReader pdf(&w);
+    fileLoader loader;
+    waitingWindow wait2;
+    wait2.setMax(100);
+    wait2.setText("Loading, please wait...");
+    loader.setPath("./encrypted.dat");
+    QObject::connect(&loader,&fileLoader::process,&wait2,[&](int num)
+    {
+        wait2.setCurr(num);
+      });
+    QObject::connect(&loader,&fileLoader::onFinish,&pdf,[&](const QByteArray data)
+    {
+        pdf.loadData(data);
+        wait2.close();
+        pdf.show();
+      });
+    wait2.show();
+    loader.load();
+    ////
     int ret = a.exec();
     delete[] args;
     return ret;

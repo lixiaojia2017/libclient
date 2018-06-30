@@ -44,6 +44,11 @@ void PDFReader::loadFile(const QString &path)
     }
 }
 
+void PDFReader::loadData(const QByteArray &data)
+{
+  m_pPdfWidget->loadData(data);
+}
+
 std::set<uint> PDFReader::getBookmark()const
 {
     return m_pPdfWidget->bookmark;
