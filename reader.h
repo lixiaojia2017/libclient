@@ -39,11 +39,10 @@ class Reader : public QMainWindow
 public:
     explicit Reader(QWidget *parent = 0);
     ~Reader();
-
-private slots:
+public slots:
     void showReaderwin(QString&);
     void showAdministratorwin(QString&);
-
+private slots:
     void on_searchResult_cellClicked(int row, int column);
 
     void on_tabWidget_tabBarClicked(int index);

@@ -1,12 +1,12 @@
 #include "reader.h"
 #include "ui_reader.h"
-#include<QIcon>
-#include<QFont>
-#include<QTableWidget>
-#include<QPixmap>
-#include<QLabel>
-#include<QFrame>
-#include<QDialog>
+#include <QIcon>
+#include <QFont>
+#include <QTableWidget>
+#include <QPixmap>
+#include <QLabel>
+#include <QFrame>
+#include <QDialog>
 Reader::Reader(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Reader)
@@ -97,7 +97,7 @@ void Reader::switchPage(int i)
 //生成表格
 void Reader::Result(QTableWidget* tab,int i)
 {
-    if(i = Initialization)
+    if(i == Initialization)
     {
         //创建表中各项及初始化结果
         tab->setRowCount(10);
