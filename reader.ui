@@ -459,6 +459,116 @@
                      <property name="text">
                       <string>修改图书组</string>
                      </property>
+=======
+                   <item row="1" column="0">
+                    <widget class="QScrollArea" name="searchResultScrollArea">
+                     <property name="widgetResizable">
+                      <bool>true</bool>
+                     </property>
+                     <widget class="QWidget" name="scrollAreaWidgetContents">
+                      <property name="geometry">
+                       <rect>
+                        <x>0</x>
+                        <y>0</y>
+                        <width>1117</width>
+                        <height>471</height>
+                       </rect>
+                      </property>
+                      <layout class="QGridLayout" name="gridLayout_19">
+                       <item row="3" column="1">
+                        <spacer name="verticalSpacer_6">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>84</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QPushButton" name="next">
+                         <property name="text">
+                          <string>下一页</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="5" column="1">
+                        <widget class="QPushButton" name="appointreturn">
+                         <property name="text">
+                          <string>预约还书</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0" rowspan="10">
+                        <widget class="QTableWidget" name="searchResult"/>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QPushButton" name="last">
+                         <property name="text">
+                          <string>上一页</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <spacer name="verticalSpacer_5">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>37</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="4" column="1">
+                        <widget class="QPushButton" name="appointborrow">
+                         <property name="text">
+                          <string>预约借书</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="9" column="1">
+                        <spacer name="verticalSpacer_7">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>75</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="6" column="1">
+                        <widget class="QPushButton" name="deletebook_2">
+                         <property name="text">
+                          <string>删除图书</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="7" column="1">
+                        <widget class="QPushButton" name="changebook_2">
+                         <property name="text">
+                          <string>修改图书信息</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="8" column="1">
+                        <widget class="QPushButton" name="changebookgroup">
+                         <property name="text">
+                          <string>修改图书组</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+>>>>>>> 87adae490fa4edcac8230b83755f7400f2058bb4
                     </widget>
                    </item>
                   </layout>
