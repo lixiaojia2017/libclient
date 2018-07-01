@@ -39,17 +39,20 @@ class Reader : public QMainWindow
 public:
     explicit Reader(QWidget *parent = 0);
     ~Reader();
+
 public slots:
-    void showReaderwin(QString&);
+	void showReaderwin(QString&);
     void showAdministratorwin(QString&);
 private slots:
-    void on_searchResult_cellClicked(int row, int column);
 
     void on_tabWidget_tabBarClicked(int index);
 
+    void on_searchResult_cellDoubleClicked(int row, int column);
+
 protected:
     void switchPage(int);
-    void Result(QTableWidget* tab,int i);
+    void Result(QTableWidget* tab);
+    void ADDITEM(QTableWidget* tab,int);
 
 private:
     Ui::Reader *ui;
