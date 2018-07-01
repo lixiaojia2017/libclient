@@ -41,7 +41,7 @@
          <x>0</x>
          <y>0</y>
          <width>1159</width>
-         <height>830</height>
+         <height>826</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_8">
@@ -93,7 +93,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="logout">
+            <widget class="QPushButton" name="layout">
              <property name="maximumSize">
               <size>
                <width>88</width>
@@ -109,357 +109,270 @@
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QTabWidget" name="tabWidget">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
+         <widget class="QStackedWidget" name="BOOKVIEW">
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
-          <widget class="QWidget" name="tab_searchBook">
-           <attribute name="title">
-            <string>图书查询</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_26">
+          <widget class="QWidget" name="page">
+           <layout class="QGridLayout" name="gridLayout_42">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
             <item row="0" column="0">
-             <widget class="QWidget" name="reviewwidget" native="true">
-              <layout class="QGridLayout" name="gridLayout_35">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item row="0" column="0">
-                <widget class="QStackedWidget" name="searchStackedWidget">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>201</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>201</height>
-                  </size>
-                 </property>
-                 <property name="currentIndex">
-                  <number>1</number>
-                 </property>
-                 <widget class="QWidget" name="page_3">
-                  <layout class="QGridLayout" name="gridLayout_37">
+             <widget class="QTabWidget" name="tabWidget">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="currentIndex">
+               <number>5</number>
+              </property>
+              <widget class="QWidget" name="tab_searchBook">
+               <attribute name="title">
+                <string>图书查询</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_26">
+                <item row="0" column="0">
+                 <widget class="QWidget" name="reviewwidget" native="true">
+                  <layout class="QGridLayout" name="gridLayout_35">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
                    <item row="0" column="0">
-                    <widget class="QFrame" name="frame">
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
-                     </property>
-                     <property name="frameShadow">
-                      <enum>QFrame::Raised</enum>
-                     </property>
-                     <layout class="QGridLayout" name="gridLayout">
-                      <item row="0" column="0">
-                       <widget class="QLineEdit" name="searchLineedit"/>
-                      </item>
-                      <item row="0" column="1">
-                       <widget class="QPushButton" name="search">
-                        <property name="minimumSize">
-                         <size>
-                          <width>49</width>
-                          <height>49</height>
-                         </size>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>49</width>
-                          <height>49</height>
-                         </size>
-                        </property>
-                        <property name="text">
-                         <string/>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="2">
-                       <widget class="QPushButton" name="GOODFIND">
-                        <property name="text">
-                         <string>高级搜索</string>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                 <widget class="QWidget" name="page_4">
-                  <layout class="QGridLayout" name="gridLayout_4">
-                   <item row="0" column="0">
-                    <widget class="QFrame" name="frame_2">
+                    <widget class="QStackedWidget" name="searchStackedWidget">
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
-                       <height>179</height>
+                       <height>201</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>179</height>
+                       <height>201</height>
                       </size>
                      </property>
-                     <property name="frameShape">
-                      <enum>QFrame::StyledPanel</enum>
+                     <property name="currentIndex">
+                      <number>1</number>
                      </property>
-                     <property name="frameShadow">
-                      <enum>QFrame::Raised</enum>
-                     </property>
-                     <layout class="QGridLayout" name="gridLayout_36">
-                      <item row="0" column="0">
-                       <layout class="QGridLayout" name="gridLayout_25">
-                        <item row="0" column="0" rowspan="2">
-                         <layout class="QGridLayout" name="gridLayout_24">
+                     <widget class="QWidget" name="page_3">
+                      <layout class="QGridLayout" name="gridLayout_37">
+                       <item row="0" column="0">
+                        <widget class="QFrame" name="frame">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QGridLayout" name="gridLayout">
                           <item row="0" column="0">
-                           <widget class="QLabel" name="label">
-                            <property name="text">
-                             <string>书名</string>
-                            </property>
-                           </widget>
+                           <widget class="QLineEdit" name="lineEdit"/>
                           </item>
                           <item row="0" column="1">
-                           <widget class="QLineEdit" name="name"/>
+                           <widget class="QPushButton" name="search">
+                            <property name="minimumSize">
+                             <size>
+                              <width>49</width>
+                              <height>49</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>49</width>
+                              <height>49</height>
+                             </size>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                           </widget>
                           </item>
                           <item row="0" column="2">
-                           <widget class="QLabel" name="label_2">
+                           <widget class="QPushButton" name="GOODFIND">
                             <property name="text">
-                             <string>作者</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="0" column="3">
-                           <widget class="QLineEdit" name="author"/>
-                          </item>
-                          <item row="0" column="4">
-                           <widget class="QLabel" name="label_3">
-                            <property name="text">
-                             <string>出版社</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="0" column="5" colspan="2">
-                           <widget class="QLineEdit" name="press"/>
-                          </item>
-                          <item row="1" column="0">
-                           <widget class="QLabel" name="label_5">
-                            <property name="text">
-                             <string>ISBN</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="1" column="1">
-                           <widget class="QLineEdit" name="ISBN"/>
-                          </item>
-                          <item row="1" column="2">
-                           <widget class="QLabel" name="label_4">
-                            <property name="text">
-                             <string>ID</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="1" column="3">
-                           <widget class="QLineEdit" name="ID"/>
-                          </item>
-                          <item row="1" column="4">
-                           <widget class="QLabel" name="label_65">
-                            <property name="text">
-                             <string>Tags</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="1" column="5" colspan="2">
-                           <widget class="QLineEdit" name="tags"/>
-                          </item>
-                          <item row="2" column="0">
-                           <widget class="QLabel" name="label_19">
-                            <property name="text">
-                             <string>书架</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="2" column="1">
-                           <widget class="QLineEdit" name="bookcase"/>
-                          </item>
-                          <item row="2" column="2">
-                           <widget class="QLabel" name="label_25">
-                            <property name="text">
-                             <string>价格</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="2" column="3">
-                           <widget class="QLineEdit" name="price"/>
-                          </item>
-                          <item row="2" column="4" colspan="2">
-                           <widget class="QCheckBox" name="available">
-                            <property name="text">
-                             <string>Available</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="2" column="6">
-                           <widget class="QCheckBox" name="checkif">
-                            <property name="font">
-                             <font>
-                              <pointsize>12</pointsize>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>是否精确检索</string>
+                             <string>高级搜索</string>
                             </property>
                            </widget>
                           </item>
                          </layout>
-                        </item>
-                        <item row="0" column="1">
-                         <widget class="QPushButton" name="FIND">
-                          <property name="text">
-                           <string>基本检索</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="1" column="1">
-                         <widget class="QPushButton" name="pushButton_13">
-                          <property name="text">
-                           <string>查询</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </item>
-                     </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="page_4">
+                      <layout class="QGridLayout" name="gridLayout_4">
+                       <item row="0" column="0">
+                        <widget class="QFrame" name="frame_2">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>179</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>179</height>
+                          </size>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QGridLayout" name="gridLayout_36">
+                          <item row="0" column="0">
+                           <layout class="QGridLayout" name="gridLayout_25">
+                            <item row="0" column="0" rowspan="2">
+                             <layout class="QGridLayout" name="gridLayout_24">
+                              <item row="0" column="0">
+                               <widget class="QLabel" name="label">
+                                <property name="text">
+                                 <string>书名</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item row="0" column="1">
+                               <widget class="QLineEdit" name="name"/>
+                              </item>
+                              <item row="0" column="2">
+                               <widget class="QLabel" name="label_2">
+                                <property name="text">
+                                 <string>作者</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item row="0" column="3">
+                               <widget class="QLineEdit" name="author"/>
+                              </item>
+                              <item row="0" column="4">
+                               <widget class="QLabel" name="label_3">
+                                <property name="text">
+                                 <string>出版社</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item row="0" column="5" colspan="2">
+                               <widget class="QLineEdit" name="press"/>
+                              </item>
+                              <item row="1" column="0">
+                               <widget class="QLabel" name="label_5">
+                                <property name="text">
+                                 <string>ISBN</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item row="1" column="1">
+                               <widget class="QLineEdit" name="ISBN"/>
+                              </item>
+                              <item row="1" column="2">
+                               <widget class="QLabel" name="label_4">
+                                <property name="text">
+                                 <string>ID</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item row="1" column="3">
+                               <widget class="QLineEdit" name="ID"/>
+                              </item>
+                              <item row="1" column="4">
+                               <widget class="QLabel" name="label_65">
+                                <property name="text">
+                                 <string>Tags</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item row="1" column="5" colspan="2">
+                               <widget class="QLineEdit" name="tags"/>
+                              </item>
+                              <item row="2" column="0">
+                               <widget class="QLabel" name="label_19">
+                                <property name="text">
+                                 <string>书架</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item row="2" column="1">
+                               <widget class="QLineEdit" name="bookcase"/>
+                              </item>
+                              <item row="2" column="2">
+                               <widget class="QLabel" name="label_25">
+                                <property name="text">
+                                 <string>价格</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item row="2" column="3">
+                               <widget class="QLineEdit" name="price"/>
+                              </item>
+                              <item row="2" column="4" colspan="2">
+                               <widget class="QCheckBox" name="available">
+                                <property name="text">
+                                 <string>Available</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item row="2" column="6">
+                               <widget class="QCheckBox" name="checkif">
+                                <property name="font">
+                                 <font>
+                                  <pointsize>12</pointsize>
+                                 </font>
+                                </property>
+                                <property name="text">
+                                 <string>是否精确检索</string>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </item>
+                            <item row="0" column="1">
+                             <widget class="QPushButton" name="FIND">
+                              <property name="text">
+                               <string>基本检索</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item row="1" column="1">
+                             <widget class="QPushButton" name="pushButton_13">
+                              <property name="text">
+                               <string>查询</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
                     </widget>
                    </item>
-<<<<<<< HEAD
-                  </layout>
-                 </widget>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QScrollArea" name="searchResultScrollArea">
-                 <property name="widgetResizable">
-                  <bool>true</bool>
-                 </property>
-                 <widget class="QWidget" name="scrollAreaWidgetContents">
-                  <property name="geometry">
-                   <rect>
-                    <x>0</x>
-                    <y>0</y>
-                    <width>1107</width>
-                    <height>457</height>
-                   </rect>
-                  </property>
-                  <layout class="QGridLayout" name="gridLayout_19">
-                   <item row="3" column="1">
-                    <spacer name="verticalSpacer_6">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>20</width>
-                       <height>84</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="2" column="1">
-                    <widget class="QPushButton" name="next">
-                     <property name="text">
-                      <string>下一页</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="5" column="1">
-                    <widget class="QPushButton" name="appointreturn">
-                     <property name="text">
-                      <string>预约还书</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="0" rowspan="10">
-                    <widget class="QTableWidget" name="searchResult"/>
-                   </item>
-                   <item row="1" column="1">
-                    <widget class="QPushButton" name="last">
-                     <property name="text">
-                      <string>上一页</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <spacer name="verticalSpacer_5">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>20</width>
-                       <height>37</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="4" column="1">
-                    <widget class="QPushButton" name="appointborrow">
-                     <property name="text">
-                      <string>预约借书</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="9" column="1">
-                    <spacer name="verticalSpacer_7">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>20</width>
-                       <height>75</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="6" column="1">
-                    <widget class="QPushButton" name="deletebook_2">
-                     <property name="text">
-                      <string>删除图书</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="7" column="1">
-                    <widget class="QPushButton" name="changebook_2">
-                     <property name="text">
-                      <string>修改图书信息</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="8" column="1">
-                    <widget class="QPushButton" name="changebookgroup">
-                     <property name="text">
-                      <string>修改图书组</string>
-                     </property>
-=======
                    <item row="1" column="0">
                     <widget class="QScrollArea" name="searchResultScrollArea">
                      <property name="widgetResizable">
@@ -470,8 +383,8 @@
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>1117</width>
-                        <height>471</height>
+                        <width>1107</width>
+                        <height>457</height>
                        </rect>
                       </property>
                       <layout class="QGridLayout" name="gridLayout_19">
@@ -568,164 +481,18 @@
                        </item>
                       </layout>
                      </widget>
->>>>>>> 87adae490fa4edcac8230b83755f7400f2058bb4
                     </widget>
                    </item>
                   </layout>
                  </widget>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tab_4">
-           <attribute name="title">
-            <string>图书归还</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_14">
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item row="0" column="0">
-             <widget class="QScrollArea" name="scrollArea_2">
-              <property name="widgetResizable">
-               <bool>true</bool>
-              </property>
-              <widget class="QWidget" name="scrollAreaWidgetContents_5">
-               <property name="geometry">
-                <rect>
-                 <x>0</x>
-                 <y>0</y>
-                 <width>1129</width>
-                 <height>687</height>
-                </rect>
-               </property>
-               <layout class="QGridLayout" name="gridLayout_39">
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_6">
-                  <property name="text">
-                   <string>已借阅图书：</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0" rowspan="6">
-                 <widget class="QTableWidget" name="searchResult_2"/>
-                </item>
-                <item row="1" column="1">
-                 <spacer name="verticalSpacer_14">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>308</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="2" column="1">
-                 <widget class="QPushButton" name="pushButton_8">
-                  <property name="text">
-                   <string>上一页</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="1">
-                 <widget class="QPushButton" name="pushButton_7">
-                  <property name="text">
-                   <string>下一页</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="1">
-                 <spacer name="verticalSpacer_8">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="5" column="1">
-                 <widget class="QPushButton" name="pushButton_10">
-                  <property name="text">
-                   <string>申请归还</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="6" column="1">
-                 <spacer name="verticalSpacer_15">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>308</height>
-                   </size>
-                  </property>
-                 </spacer>
                 </item>
                </layout>
               </widget>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tab_5">
-           <attribute name="title">
-            <string>借还管理</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_27">
-            <item row="2" column="0">
-             <spacer name="verticalSpacer_16">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="5" column="0">
-             <spacer name="verticalSpacer_4">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>592</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="1" column="1" rowspan="5">
-             <widget class="QStackedWidget" name="brbookStackedWidget">
-              <property name="currentIndex">
-               <number>0</number>
-              </property>
-              <widget class="QWidget" name="page_10">
-               <layout class="QGridLayout" name="gridLayout_28">
+              <widget class="QWidget" name="tab_4">
+               <attribute name="title">
+                <string>图书归还</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_14">
                 <property name="leftMargin">
                  <number>0</number>
                 </property>
@@ -739,93 +506,86 @@
                  <number>0</number>
                 </property>
                 <item row="0" column="0">
-                 <widget class="QScrollArea" name="scrollArea_4">
+                 <widget class="QScrollArea" name="scrollArea_2">
                   <property name="widgetResizable">
                    <bool>true</bool>
                   </property>
-                  <widget class="QWidget" name="scrollAreaWidgetContents_3">
+                  <widget class="QWidget" name="scrollAreaWidgetContents_5">
                    <property name="geometry">
                     <rect>
                      <x>0</x>
                      <y>0</y>
-<<<<<<< HEAD
-                     <width>1007</width>
-                     <height>665</height>
-=======
-                     <width>1135</width>
-                     <height>696</height>
->>>>>>> 87adae490fa4edcac8230b83755f7400f2058bb4
+                     <width>1129</width>
+                     <height>687</height>
                     </rect>
                    </property>
-                   <layout class="QGridLayout" name="gridLayout_29">
-                    <item row="0" column="0" rowspan="6">
-                     <widget class="QTableWidget" name="searchResult_3"/>
+                   <layout class="QGridLayout" name="gridLayout_39">
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_6">
+                      <property name="text">
+                       <string>已借阅图书：</string>
+                      </property>
+                     </widget>
                     </item>
-                    <item row="0" column="1">
-                     <spacer name="verticalSpacer_12">
+                    <item row="1" column="0" rowspan="6">
+                     <widget class="QTableWidget" name="searchResult_2"/>
+                    </item>
+                    <item row="1" column="1">
+                     <spacer name="verticalSpacer_14">
                       <property name="orientation">
                        <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Fixed</enum>
                       </property>
                       <property name="sizeHint" stdset="0">
                        <size>
                         <width>20</width>
-                        <height>108</height>
+                        <height>308</height>
                        </size>
                       </property>
                      </spacer>
                     </item>
-                    <item row="1" column="1">
-                     <widget class="QPushButton" name="pushButton_15">
+                    <item row="2" column="1">
+                     <widget class="QPushButton" name="pushButton_8">
                       <property name="text">
                        <string>上一页</string>
                       </property>
                      </widget>
                     </item>
-                    <item row="2" column="1">
-                     <widget class="QPushButton" name="pushButton_16">
+                    <item row="3" column="1">
+                     <widget class="QPushButton" name="pushButton_7">
                       <property name="text">
                        <string>下一页</string>
                       </property>
                      </widget>
                     </item>
-                    <item row="3" column="1">
-                     <spacer name="verticalSpacer_13">
+                    <item row="4" column="1">
+                     <spacer name="verticalSpacer_8">
                       <property name="orientation">
                        <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Fixed</enum>
                       </property>
                       <property name="sizeHint" stdset="0">
                        <size>
                         <width>20</width>
-                        <height>128</height>
+                        <height>45</height>
                        </size>
                       </property>
                      </spacer>
                     </item>
-                    <item row="4" column="1">
-                     <widget class="QPushButton" name="pushButton_6">
+                    <item row="5" column="1">
+                     <widget class="QPushButton" name="pushButton_10">
                       <property name="text">
-                       <string>同意申请</string>
+                       <string>申请归还</string>
                       </property>
                      </widget>
                     </item>
-                    <item row="5" column="1">
-                     <spacer name="verticalSpacer_17">
+                    <item row="6" column="1">
+                     <spacer name="verticalSpacer_15">
                       <property name="orientation">
                        <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Fixed</enum>
                       </property>
                       <property name="sizeHint" stdset="0">
                        <size>
                         <width>20</width>
-                        <height>276</height>
+                        <height>308</height>
                        </size>
                       </property>
                      </spacer>
@@ -836,39 +596,42 @@
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="page_11">
-               <layout class="QGridLayout" name="gridLayout_31">
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QScrollArea" name="scrollArea_5">
-                  <property name="widgetResizable">
-                   <bool>true</bool>
+              <widget class="QWidget" name="tab_5">
+               <attribute name="title">
+                <string>借还管理</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_27">
+                <item row="2" column="0">
+                 <spacer name="verticalSpacer_16">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
                   </property>
-<<<<<<< HEAD
-                  <widget class="QWidget" name="scrollAreaWidgetContents_4">
-                   <property name="geometry">
-                    <rect>
-                     <x>0</x>
-                     <y>0</y>
-                     <width>209</width>
-                     <height>656</height>
-                    </rect>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_30">
-                    <item row="0" column="0" rowspan="6">
-                     <widget class="QTableWidget" name="searchResult_4"/>
-=======
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="5" column="0">
+                 <spacer name="verticalSpacer_4">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>592</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="1" column="1" rowspan="5">
+                 <widget class="QStackedWidget" name="brbookStackedWidget">
+                  <property name="currentIndex">
+                   <number>0</number>
+                  </property>
                   <widget class="QWidget" name="page_10">
                    <layout class="QGridLayout" name="gridLayout_28">
                     <property name="leftMargin">
@@ -893,8 +656,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>1031</width>
-                         <height>678</height>
+                         <width>1007</width>
+                         <height>665</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_29">
@@ -973,24 +736,35 @@
                        </layout>
                       </widget>
                      </widget>
->>>>>>> 87adae490fa4edcac8230b83755f7400f2058bb4
                     </item>
-                    <item row="0" column="1">
-                     <spacer name="verticalSpacer_9">
-                      <property name="orientation">
-                       <enum>Qt::Vertical</enum>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="page_11">
+                   <layout class="QGridLayout" name="gridLayout_31">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QScrollArea" name="scrollArea_5">
+                      <property name="widgetResizable">
+                       <bool>true</bool>
                       </property>
-<<<<<<< HEAD
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Fixed</enum>
-=======
                       <widget class="QWidget" name="scrollAreaWidgetContents_4">
                        <property name="geometry">
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>174</width>
-                         <height>659</height>
+                         <width>1007</width>
+                         <height>665</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_30">
@@ -1147,37 +921,228 @@
                      <widget class="QFrame" name="frame_6">
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
->>>>>>> 87adae490fa4edcac8230b83755f7400f2058bb4
                       </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>20</width>
-                        <height>108</height>
-                       </size>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
                       </property>
-                     </spacer>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="QPushButton" name="pushButton_12">
-                      <property name="text">
-                       <string>上一页</string>
-                      </property>
+                      <layout class="QGridLayout" name="gridLayout_45">
+                       <item row="0" column="0">
+                        <spacer name="horizontalSpacer_23">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>177</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="0" column="1" rowspan="2" colspan="3">
+                        <layout class="QGridLayout" name="gridLayout_20">
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="label_38">
+                           <property name="text">
+                            <string>图书名称</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QLineEdit" name="name_1"/>
+                         </item>
+                         <item row="1" column="0">
+                          <widget class="QLabel" name="label_40">
+                           <property name="text">
+                            <string>图书作者</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="1" column="1">
+                          <widget class="QLineEdit" name="author_2"/>
+                         </item>
+                         <item row="2" column="0">
+                          <widget class="QLabel" name="label_43">
+                           <property name="text">
+                            <string>图书出版社</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="1">
+                          <widget class="QLineEdit" name="press_2"/>
+                         </item>
+                         <item row="3" column="0">
+                          <widget class="QLabel" name="label_45">
+                           <property name="text">
+                            <string>IBSN</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="3" column="1">
+                          <widget class="QLineEdit" name="IBSN"/>
+                         </item>
+                         <item row="4" column="0">
+                          <widget class="QLabel" name="label_47">
+                           <property name="text">
+                            <string>页数</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="5" column="0">
+                          <widget class="QLabel" name="label_48">
+                           <property name="text">
+                            <string>价格</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="6" column="0">
+                          <widget class="QLabel" name="label_49">
+                           <property name="text">
+                            <string>Tags</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="6" column="1">
+                          <widget class="QLineEdit" name="tags_2"/>
+                         </item>
+                         <item row="7" column="0">
+                          <widget class="QLabel" name="label_26">
+                           <property name="text">
+                            <string>groupID</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="7" column="1">
+                          <widget class="QLineEdit" name="groupID"/>
+                         </item>
+                         <item row="8" column="0">
+                          <widget class="QLabel" name="label_50">
+                           <property name="text">
+                            <string>馆藏位置</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="8" column="1">
+                          <widget class="QLineEdit" name="bookcase_2"/>
+                         </item>
+                         <item row="9" column="1">
+                          <widget class="QCheckBox" name="checkBox">
+                           <property name="text">
+                            <string>Available</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="4" column="1">
+                          <widget class="QLineEdit" name="pages"/>
+                         </item>
+                         <item row="5" column="1">
+                          <widget class="QLineEdit" name="piece"/>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="1" column="0">
+                        <spacer name="horizontalSpacer_19">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>177</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="1" column="4">
+                        <spacer name="horizontalSpacer_20">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>176</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="2" column="1">
+                        <spacer name="horizontalSpacer_21">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>176</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="2" column="2">
+                        <widget class="QPushButton" name="createbook">
+                         <property name="minimumSize">
+                          <size>
+                           <width>181</width>
+                           <height>51</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>181</width>
+                           <height>51</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string>添加图书</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="3">
+                        <spacer name="horizontalSpacer_22">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>177</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="0" column="4">
+                        <spacer name="horizontalSpacer_24">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
                      </widget>
                     </item>
-                    <item row="2" column="1">
-                     <widget class="QPushButton" name="pushButton_14">
-                      <property name="text">
-                       <string>下一页</string>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="page_6">
+                   <layout class="QGridLayout" name="gridLayout_32">
+                    <item row="1" column="0" colspan="3">
+                     <widget class="QScrollArea" name="scrollArea_6">
+                      <property name="widgetResizable">
+                       <bool>true</bool>
                       </property>
-<<<<<<< HEAD
-=======
                       <widget class="QWidget" name="scrollAreaWidgetContents_6">
                        <property name="geometry">
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>165</width>
-                         <height>79</height>
+                         <width>949</width>
+                         <height>581</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_33">
@@ -1199,47 +1164,323 @@
                         </item>
                        </layout>
                       </widget>
->>>>>>> 87adae490fa4edcac8230b83755f7400f2058bb4
                      </widget>
                     </item>
-                    <item row="3" column="1">
-                     <spacer name="verticalSpacer_10">
+                    <item row="0" column="2">
+                     <spacer name="horizontalSpacer_6">
                       <property name="orientation">
-                       <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Fixed</enum>
+                       <enum>Qt::Horizontal</enum>
                       </property>
                       <property name="sizeHint" stdset="0">
                        <size>
-                        <width>20</width>
-                        <height>128</height>
+                        <width>465</width>
+                        <height>20</height>
                        </size>
                       </property>
                      </spacer>
                     </item>
-                    <item row="4" column="1">
-                     <widget class="QPushButton" name="pushButton_9">
-                      <property name="text">
-                       <string>同意申请</string>
+                    <item row="0" column="1">
+                     <widget class="QFrame" name="frame_8">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
                       </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QGridLayout" name="gridLayout_21">
+                       <item row="0" column="0">
+                        <layout class="QGridLayout" name="gridLayout_22">
+                         <item row="0" column="1">
+                          <widget class="QLineEdit" name="bookid"/>
+                         </item>
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="label_52">
+                           <property name="text">
+                            <string>bookID</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="2">
+                          <widget class="QPushButton" name="search_2">
+                           <property name="text">
+                            <string>查询</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
                      </widget>
                     </item>
-                    <item row="5" column="1">
-                     <spacer name="verticalSpacer_11">
-                      <property name="orientation">
-                       <enum>Qt::Vertical</enum>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="page_9">
+                   <layout class="QGridLayout" name="gridLayout_16">
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frame_10">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
                       </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Fixed</enum>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
                       </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>20</width>
-                        <height>276</height>
-                       </size>
+                      <layout class="QGridLayout" name="gridLayout_44">
+                       <item row="0" column="0">
+                        <spacer name="horizontalSpacer_15">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>177</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="0" column="1" rowspan="2" colspan="3">
+                        <layout class="QGridLayout" name="gridLayout_34">
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="label_42">
+                           <property name="enabled">
+                            <bool>true</bool>
+                           </property>
+                           <property name="text">
+                            <string>图书名称</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QLineEdit" name="name_3"/>
+                         </item>
+                         <item row="1" column="0">
+                          <widget class="QLabel" name="label_44">
+                           <property name="text">
+                            <string>图书作者</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="1" column="1">
+                          <widget class="QLineEdit" name="author_3"/>
+                         </item>
+                         <item row="2" column="0">
+                          <widget class="QLabel" name="label_46">
+                           <property name="text">
+                            <string>图书出版社</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="1">
+                          <widget class="QLineEdit" name="press_3"/>
+                         </item>
+                         <item row="3" column="0">
+                          <widget class="QLabel" name="label_51">
+                           <property name="text">
+                            <string>ISBN</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="3" column="1">
+                          <widget class="QLineEdit" name="ISBN_3"/>
+                         </item>
+                         <item row="4" column="0">
+                          <widget class="QLabel" name="label_54">
+                           <property name="text">
+                            <string>页数</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="5" column="0">
+                          <widget class="QLabel" name="label_63">
+                           <property name="text">
+                            <string>价格</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="6" column="0">
+                          <widget class="QLabel" name="label_64">
+                           <property name="text">
+                            <string>Tags</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="6" column="1">
+                          <widget class="QLineEdit" name="tags_3"/>
+                         </item>
+                         <item row="7" column="0">
+                          <widget class="QLabel" name="label_27">
+                           <property name="text">
+                            <string>groupID</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="7" column="1">
+                          <widget class="QLineEdit" name="groupid_3"/>
+                         </item>
+                         <item row="8" column="0">
+                          <widget class="QLabel" name="label_66">
+                           <property name="text">
+                            <string>馆藏位置</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="8" column="1">
+                          <widget class="QLineEdit" name="bookcase_3"/>
+                         </item>
+                         <item row="9" column="1">
+                          <widget class="QCheckBox" name="available_3">
+                           <property name="text">
+                            <string>Available</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="4" column="1">
+                          <widget class="QLineEdit" name="pages_3"/>
+                         </item>
+                         <item row="5" column="1">
+                          <widget class="QLineEdit" name="piece_3"/>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="0" column="4">
+                        <spacer name="horizontalSpacer_16">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>176</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="1" column="0">
+                        <spacer name="horizontalSpacer_25">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="1" column="4">
+                        <spacer name="horizontalSpacer_26">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>176</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="2" column="1">
+                        <spacer name="horizontalSpacer_17">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>176</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="2" column="2">
+                        <widget class="QPushButton" name="changebook">
+                         <property name="minimumSize">
+                          <size>
+                           <width>181</width>
+                           <height>51</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>181</width>
+                           <height>51</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string>确认修改</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="3">
+                        <spacer name="horizontalSpacer_18">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>177</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="page_12">
+                   <layout class="QGridLayout" name="gridLayout_23">
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frame_14">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
                       </property>
-                     </spacer>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QGridLayout" name="gridLayout_52">
+                       <item row="0" column="0" colspan="2">
+                        <widget class="QTableWidget" name="searchResult_7"/>
+                       </item>
+                       <item row="1" column="0">
+                        <layout class="QGridLayout" name="gridLayout_51">
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="label_39">
+                           <property name="text">
+                            <string>groupID</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QLineEdit" name="lineEdit_2"/>
+                         </item>
+                         <item row="0" column="2">
+                          <widget class="QPushButton" name="changegroup">
+                           <property name="text">
+                            <string>更改图书组</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="1" column="1">
+                        <spacer name="horizontalSpacer_29">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>457</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -1247,769 +1488,430 @@
                 </item>
                </layout>
               </widget>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QPushButton" name="RETURNBOOK">
-              <property name="text">
-               <string>归还申请</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QPushButton" name="BORROWBOOK">
-              <property name="text">
-               <string>借阅申请</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tab_3">
-           <attribute name="title">
-            <string>图书管理</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_6">
-            <item row="1" column="0">
-             <widget class="QPushButton" name="DELETEBOOK">
-              <property name="text">
-               <string>图书下架</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QPushButton" name="ADDBOOK">
-              <property name="text">
-               <string>新书入馆</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>556</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="2" column="0">
-             <widget class="QPushButton" name="MODIFYBOOK">
-              <property name="text">
-               <string>修改图书信息</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QPushButton" name="MODIFYBOOKGROUP">
-              <property name="text">
-               <string>更改图书组</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1" rowspan="5">
-             <widget class="QStackedWidget" name="OPERATEBOOK">
-              <property name="currentIndex">
-               <number>2</number>
-              </property>
-              <widget class="QWidget" name="page_5">
-               <layout class="QGridLayout" name="gridLayout_7">
-                <item row="0" column="0">
-                 <widget class="QFrame" name="frame_6">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
+              <widget class="QWidget" name="tab_deleteBook">
+               <attribute name="title">
+                <string>读者管理</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_5">
+                <item row="3" column="0">
+                 <spacer name="verticalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
                   </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>592</height>
+                   </size>
                   </property>
-                  <layout class="QGridLayout" name="gridLayout_45">
-                   <item row="0" column="0">
-                    <spacer name="horizontalSpacer_23">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>177</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="0" column="1" rowspan="2" colspan="3">
-                    <layout class="QGridLayout" name="gridLayout_20">
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="label_38">
-                       <property name="text">
-                        <string>图书名称</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="1">
-                      <widget class="QLineEdit" name="name_1"/>
-                     </item>
-                     <item row="1" column="0">
-                      <widget class="QLabel" name="label_40">
-                       <property name="text">
-                        <string>图书作者</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="1">
-                      <widget class="QLineEdit" name="author_2"/>
-                     </item>
-                     <item row="2" column="0">
-                      <widget class="QLabel" name="label_43">
-                       <property name="text">
-                        <string>图书出版社</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="1">
-                      <widget class="QLineEdit" name="press_2"/>
-                     </item>
-                     <item row="3" column="0">
-                      <widget class="QLabel" name="label_45">
-                       <property name="text">
-                        <string>IBSN</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="3" column="1">
-                      <widget class="QLineEdit" name="IBSN"/>
-                     </item>
-                     <item row="4" column="0">
-                      <widget class="QLabel" name="label_47">
-                       <property name="text">
-                        <string>页数</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="5" column="0">
-                      <widget class="QLabel" name="label_48">
-                       <property name="text">
-                        <string>价格</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="6" column="0">
-                      <widget class="QLabel" name="label_49">
-                       <property name="text">
-                        <string>Tags</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="6" column="1">
-                      <widget class="QLineEdit" name="tags_2"/>
-                     </item>
-                     <item row="7" column="0">
-                      <widget class="QLabel" name="label_26">
-                       <property name="text">
-                        <string>groupID</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="7" column="1">
-                      <widget class="QLineEdit" name="groupID"/>
-                     </item>
-                     <item row="8" column="0">
-                      <widget class="QLabel" name="label_50">
-                       <property name="text">
-                        <string>馆藏位置</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="8" column="1">
-                      <widget class="QLineEdit" name="bookcase_2"/>
-                     </item>
-                     <item row="9" column="1">
-                      <widget class="QCheckBox" name="checkBox">
-                       <property name="text">
-                        <string>Available</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="4" column="1">
-                      <widget class="QLineEdit" name="pages"/>
-                     </item>
-                     <item row="5" column="1">
-                      <widget class="QLineEdit" name="piece"/>
-                     </item>
-                    </layout>
-                   </item>
-                   <item row="1" column="0">
-                    <spacer name="horizontalSpacer_19">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>177</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="1" column="4">
-                    <spacer name="horizontalSpacer_20">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>176</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="2" column="1">
-                    <spacer name="horizontalSpacer_21">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>176</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="2" column="2">
-                    <widget class="QPushButton" name="createbook">
-                     <property name="minimumSize">
-                      <size>
-                       <width>181</width>
-                       <height>51</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>181</width>
-                       <height>51</height>
-                      </size>
-                     </property>
-                     <property name="text">
-                      <string>添加图书</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="3">
-                    <spacer name="horizontalSpacer_22">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>177</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="0" column="4">
-                    <spacer name="horizontalSpacer_24">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                  </layout>
+                 </spacer>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="DELETEREADER">
+                  <property name="text">
+                   <string>删除读者</string>
+                  </property>
                  </widget>
                 </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="page_6">
-               <layout class="QGridLayout" name="gridLayout_32">
-                <item row="1" column="0" colspan="3">
-                 <widget class="QScrollArea" name="scrollArea_6">
-                  <property name="widgetResizable">
-                   <bool>true</bool>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="MODIFYREADERGROUP">
+                  <property name="text">
+                   <string>更改读者组</string>
                   </property>
-                  <widget class="QWidget" name="scrollAreaWidgetContents_6">
-                   <property name="geometry">
-                    <rect>
-                     <x>0</x>
-                     <y>0</y>
-                     <width>198</width>
-                     <height>98</height>
-                    </rect>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_33">
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QPushButton" name="ADDREADER">
+                  <property name="text">
+                   <string>添加读者</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1" rowspan="4">
+                 <widget class="QStackedWidget" name="readerStackedWidget">
+                  <property name="currentIndex">
+                   <number>0</number>
+                  </property>
+                  <widget class="QWidget" name="page_13">
+                   <layout class="QGridLayout" name="gridLayout_40">
                     <property name="leftMargin">
                      <number>0</number>
                     </property>
                     <property name="topMargin">
                      <number>0</number>
                     </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
                     <item row="0" column="0">
-                     <widget class="QTableWidget" name="searchResult_5"/>
-                    </item>
-                    <item row="0" column="1">
-                     <widget class="QPushButton" name="deletebook">
-                      <property name="text">
-                       <string>下架图书</string>
+                     <widget class="QFrame" name="frame_7">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
                       </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QGridLayout" name="gridLayout_46">
+                       <item row="0" column="1" rowspan="3" colspan="3">
+                        <layout class="QGridLayout" name="gridLayout_41">
+                         <property name="spacing">
+                          <number>7</number>
+                         </property>
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="label_29">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>groupID</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="4" column="0">
+                          <widget class="QLabel" name="label_32">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Tel</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="1" column="0">
+                          <widget class="QLabel" name="label_30">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>用户名</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="7" column="0">
+                          <widget class="QLabel" name="label_35">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>确认密码</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="3" column="0">
+                          <widget class="QLabel" name="label_31">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>性别</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="4" column="1">
+                          <widget class="QLineEdit" name="tel_2">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="5" column="1">
+                          <widget class="QLineEdit" name="email_2">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="5" column="0">
+                          <widget class="QLabel" name="label_33">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>E-mail</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="6" column="1">
+                          <widget class="QLineEdit" name="pwd">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="echoMode">
+                            <enum>QLineEdit::Password</enum>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="7" column="1">
+                          <widget class="QLineEdit" name="pwd2">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="echoMode">
+                            <enum>QLineEdit::Password</enum>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="6" column="0">
+                          <widget class="QLabel" name="label_34">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>密码</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="0">
+                          <widget class="QLabel" name="label_37">
+                           <property name="text">
+                            <string>昵称</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="3" column="1">
+                          <widget class="QLineEdit" name="sex_2">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QComboBox" name="groupid"/>
+                         </item>
+                         <item row="1" column="1">
+                          <widget class="QLineEdit" name="username">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="1">
+                          <widget class="QLineEdit" name="name_2"/>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="0" column="4">
+                        <spacer name="horizontalSpacer_9">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>218</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="1" column="0">
+                        <spacer name="horizontalSpacer_5">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>198</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="2" column="0">
+                        <spacer name="horizontalSpacer_27">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>195</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="2" column="4">
+                        <spacer name="horizontalSpacer_28">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>198</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="3" column="1">
+                        <spacer name="horizontalSpacer_7">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>198</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="3" column="2">
+                        <widget class="QPushButton" name="ngetnewr">
+                         <property name="minimumSize">
+                          <size>
+                           <width>181</width>
+                           <height>51</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>181</width>
+                           <height>51</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>13</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>确认添加</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="3" column="3">
+                        <spacer name="horizontalSpacer_8">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>198</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
                      </widget>
                     </item>
                    </layout>
                   </widget>
-                 </widget>
-                </item>
-                <item row="0" column="2">
-                 <spacer name="horizontalSpacer_6">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>465</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QFrame" name="frame_8">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <layout class="QGridLayout" name="gridLayout_21">
-                   <item row="0" column="0">
-                    <layout class="QGridLayout" name="gridLayout_22">
-                     <item row="0" column="1">
-                      <widget class="QLineEdit" name="bookid"/>
-                     </item>
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="label_52">
-                       <property name="text">
-                        <string>bookID</string>
+                  <widget class="QWidget" name="page_7">
+                   <layout class="QGridLayout" name="gridLayout_47">
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frame_9">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QGridLayout" name="gridLayout_11">
+                       <item row="0" column="0">
+                        <layout class="QGridLayout" name="gridLayout_2">
+                         <item row="0" column="1">
+                          <widget class="QLineEdit" name="lineEdit_8"/>
+                         </item>
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="label_20">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>用户名</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QPushButton" name="search_3">
+                      <property name="text">
+                       <string>查询</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="2">
+                     <spacer name="horizontalSpacer_10">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>419</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item row="1" column="0" colspan="3">
+                     <widget class="QScrollArea" name="scrollArea_7">
+                      <property name="widgetResizable">
+                       <bool>true</bool>
+                      </property>
+                      <widget class="QWidget" name="scrollAreaWidgetContents_7">
+                       <property name="geometry">
+                        <rect>
+                         <x>0</x>
+                         <y>0</y>
+                         <width>969</width>
+                         <height>583</height>
+                        </rect>
                        </property>
+                       <layout class="QGridLayout" name="gridLayout_48">
+                        <property name="leftMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <item row="0" column="0">
+                         <widget class="QTableWidget" name="searchResult_6"/>
+                        </item>
+                        <item row="0" column="1">
+                         <widget class="QPushButton" name="pushButton_2">
+                          <property name="text">
+                           <string>确认删除</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
                       </widget>
-                     </item>
-                     <item row="0" column="2">
-                      <widget class="QPushButton" name="search_2">
-                       <property name="text">
-                        <string>查询</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="page_9">
-               <layout class="QGridLayout" name="gridLayout_16">
-                <item row="0" column="0">
-                 <widget class="QFrame" name="frame_10">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <layout class="QGridLayout" name="gridLayout_44">
-                   <item row="0" column="0">
-                    <spacer name="horizontalSpacer_15">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>177</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="0" column="1" rowspan="2" colspan="3">
-                    <layout class="QGridLayout" name="gridLayout_34">
-                     <item row="1" column="0">
-                      <widget class="QLabel" name="label_42">
-                       <property name="enabled">
-                        <bool>true</bool>
-                       </property>
-                       <property name="text">
-                        <string>图书名称</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="1">
-                      <widget class="QLineEdit" name="author_3"/>
-                     </item>
-                     <item row="2" column="0">
-                      <widget class="QLabel" name="label_44">
-                       <property name="text">
-                        <string>图书作者</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="1">
-                      <widget class="QLineEdit" name="name_3"/>
-                     </item>
-                     <item row="3" column="1">
-                      <widget class="QLineEdit" name="press_3"/>
-                     </item>
-                     <item row="4" column="0">
-                      <widget class="QLabel" name="label_51">
-                       <property name="text">
-                        <string>ISBN</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="4" column="1">
-                      <widget class="QLineEdit" name="ISBN_3"/>
-                     </item>
-                     <item row="3" column="0">
-                      <widget class="QLabel" name="label_46">
-                       <property name="text">
-                        <string>图书出版社</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="6" column="0">
-                      <widget class="QLabel" name="label_63">
-                       <property name="text">
-                        <string>价格</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="7" column="1">
-                      <widget class="QLineEdit" name="tags_3"/>
-                     </item>
-                     <item row="8" column="0">
-                      <widget class="QLabel" name="label_27">
-                       <property name="text">
-                        <string>groupID</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="5" column="0">
-                      <widget class="QLabel" name="label_54">
-                       <property name="text">
-                        <string>页数</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="7" column="0">
-                      <widget class="QLabel" name="label_64">
-                       <property name="text">
-                        <string>Tags</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="10" column="1">
-                      <widget class="QCheckBox" name="available_3">
-                       <property name="text">
-                        <string>Available</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="8" column="1">
-                      <widget class="QLineEdit" name="groupid_3"/>
-                     </item>
-                     <item row="5" column="1">
-                      <widget class="QLineEdit" name="pages_3"/>
-                     </item>
-                     <item row="9" column="1">
-                      <widget class="QLineEdit" name="bookcase_3"/>
-                     </item>
-                     <item row="9" column="0">
-                      <widget class="QLabel" name="label_66">
-                       <property name="text">
-                        <string>馆藏位置</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="6" column="1">
-                      <widget class="QLineEdit" name="price_3"/>
-                     </item>
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="label_70">
-                       <property name="text">
-                        <string>图书编号</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="1">
-                      <widget class="QLabel" name="bookId">
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>27</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>27</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                   <item row="0" column="4">
-                    <spacer name="horizontalSpacer_16">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>176</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="1" column="0">
-                    <spacer name="horizontalSpacer_25">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="1" column="4">
-                    <spacer name="horizontalSpacer_26">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>176</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="2" column="1">
-                    <spacer name="horizontalSpacer_17">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>176</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="2" column="2">
-                    <widget class="QPushButton" name="changebook">
-                     <property name="minimumSize">
-                      <size>
-                       <width>181</width>
-                       <height>51</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>181</width>
-                       <height>51</height>
-                      </size>
-                     </property>
-                     <property name="text">
-                      <string>确认修改</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="3">
-                    <spacer name="horizontalSpacer_18">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>177</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="page_12">
-               <layout class="QGridLayout" name="gridLayout_23">
-                <item row="0" column="0">
-                 <widget class="QFrame" name="frame_14">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <layout class="QGridLayout" name="gridLayout_52">
-                   <item row="0" column="0" colspan="2">
-                    <widget class="QTableWidget" name="searchResult_7"/>
-                   </item>
-                   <item row="1" column="0">
-                    <layout class="QGridLayout" name="gridLayout_51">
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="label_39">
-                       <property name="text">
-                        <string>groupID</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="1">
-                      <widget class="QLineEdit" name="lineEdit_2"/>
-                     </item>
-                     <item row="0" column="2">
-                      <widget class="QPushButton" name="changegroup">
-                       <property name="text">
-                        <string>更改图书组</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                   <item row="1" column="1">
-                    <spacer name="horizontalSpacer_29">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>457</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tab_deleteBook">
-           <attribute name="title">
-            <string>读者管理</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_5">
-            <item row="3" column="0">
-             <spacer name="verticalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>592</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="0" column="0">
-             <widget class="QPushButton" name="ADDREADER">
-              <property name="text">
-               <string>添加读者</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QPushButton" name="DELETEREADER">
-              <property name="text">
-               <string>查询读者</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QPushButton" name="MODIFYREADERGROUP">
-              <property name="text">
-               <string>更改读者组</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1" rowspan="4">
-             <widget class="QStackedWidget" name="readerStackedWidget">
-              <property name="currentIndex">
-               <number>1</number>
-              </property>
-              <widget class="QWidget" name="page_13">
-               <layout class="QGridLayout" name="gridLayout_40">
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QFrame" name="frame_7">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <layout class="QGridLayout" name="gridLayout_46">
-                   <item row="0" column="1" rowspan="3" colspan="3">
-                    <layout class="QGridLayout" name="gridLayout_41">
-                     <property name="spacing">
-                      <number>7</number>
-                     </property>
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="label_29">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                       <property name="text">
-                        <string>groupID</string>
-                       </property>
-                      </widget>
-<<<<<<< HEAD
-                     </item>
-                     <item row="4" column="0">
-                      <widget class="QLabel" name="label_32">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                       <property name="text">
-                        <string>Tel</string>
-=======
                      </widget>
                     </item>
                    </layout>
@@ -2030,279 +1932,412 @@
                          <x>50</x>
                          <y>30</y>
                          <width>384</width>
-                         <height>35</height>
+                         <height>31</height>
                         </rect>
->>>>>>> 87adae490fa4edcac8230b83755f7400f2058bb4
                        </property>
+                       <layout class="QGridLayout" name="gridLayout_50">
+                        <item row="0" column="0">
+                         <widget class="QLabel" name="label_21">
+                          <property name="text">
+                           <string>groupID</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="1">
+                         <widget class="QLineEdit" name="groupid_2"/>
+                        </item>
+                        <item row="0" column="2">
+                         <widget class="QPushButton" name="pushButton">
+                          <property name="text">
+                           <string>查询</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
                       </widget>
-                     </item>
-                     <item row="1" column="0">
-                      <widget class="QLabel" name="label_30">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                       <property name="text">
-                        <string>用户名</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="7" column="0">
-                      <widget class="QLabel" name="label_35">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                       <property name="text">
-                        <string>确认密码</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="3" column="0">
-                      <widget class="QLabel" name="label_31">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                       <property name="text">
-                        <string>性别</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="4" column="1">
-                      <widget class="QLineEdit" name="tel_2">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="5" column="1">
-                      <widget class="QLineEdit" name="email_2">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="5" column="0">
-                      <widget class="QLabel" name="label_33">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                       <property name="text">
-                        <string>E-mail</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="6" column="1">
-                      <widget class="QLineEdit" name="pwd">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                       <property name="echoMode">
-                        <enum>QLineEdit::Password</enum>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="7" column="1">
-                      <widget class="QLineEdit" name="pwd2">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                       <property name="echoMode">
-                        <enum>QLineEdit::Password</enum>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="6" column="0">
-                      <widget class="QLabel" name="label_34">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                       <property name="text">
-                        <string>密码</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="0">
-                      <widget class="QLabel" name="label_37">
-                       <property name="text">
-                        <string>昵称</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="3" column="1">
-                      <widget class="QLineEdit" name="sex_2">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="1">
-                      <widget class="QComboBox" name="groupid"/>
-                     </item>
-                     <item row="1" column="1">
-                      <widget class="QLineEdit" name="username">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="1">
-                      <widget class="QLineEdit" name="name_2"/>
-                     </item>
-                    </layout>
-                   </item>
-                   <item row="0" column="4">
-                    <spacer name="horizontalSpacer_9">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>218</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="1" column="0">
-                    <spacer name="horizontalSpacer_5">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>198</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="2" column="0">
-                    <spacer name="horizontalSpacer_27">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>195</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="2" column="4">
-                    <spacer name="horizontalSpacer_28">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>198</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="3" column="1">
-                    <spacer name="horizontalSpacer_7">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>198</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="3" column="2">
-                    <widget class="QPushButton" name="createreader">
-                     <property name="minimumSize">
-                      <size>
-                       <width>181</width>
-                       <height>51</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>181</width>
-                       <height>51</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>13</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>确认添加</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="3">
-                    <spacer name="horizontalSpacer_8">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>198</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                  </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
                  </widget>
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="page_7">
-               <layout class="QGridLayout" name="gridLayout_47">
+              <widget class="QWidget" name="tab">
+               <attribute name="title">
+                <string>组管理</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_15">
                 <item row="0" column="0">
-                 <widget class="QFrame" name="frame_9">
+                 <widget class="QPushButton" name="ADDGROUP">
+                  <property name="text">
+                   <string>添加组</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1" rowspan="4">
+                 <widget class="QStackedWidget" name="groupStackedWidget">
+                  <property name="currentIndex">
+                   <number>0</number>
+                  </property>
+                  <widget class="QWidget" name="page_14"/>
+                  <widget class="QWidget" name="page_15"/>
+                  <widget class="QWidget" name="page_16"/>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="DELETEGROUP">
+                  <property name="text">
+                   <string>删除组</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="MODIFYGROUP">
+                  <property name="text">
+                   <string>修改组信息</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <spacer name="verticalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>556</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_changeInformation">
+               <attribute name="title">
+                <string>修改信息</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_38">
+                <item row="0" column="2">
+                 <widget class="QLabel" name="label_28">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>个人信息：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <spacer name="horizontalSpacer_11">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>159</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="1" column="1">
+                 <spacer name="horizontalSpacer_14">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>160</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="1" column="2" colspan="3">
+                 <widget class="QFrame" name="frame_5">
                   <property name="frameShape">
                    <enum>QFrame::StyledPanel</enum>
                   </property>
                   <property name="frameShadow">
                    <enum>QFrame::Raised</enum>
                   </property>
-                  <layout class="QGridLayout" name="gridLayout_11">
+                  <layout class="QGridLayout" name="gridLayout_12">
                    <item row="0" column="0">
-                    <layout class="QGridLayout" name="gridLayout_2">
-                     <item row="0" column="1">
-                      <widget class="QLineEdit" name="lineEdit_8"/>
+                    <layout class="QGridLayout" name="gridLayout_13">
+                     <item row="5" column="1">
+                      <widget class="QLineEdit" name="tel"/>
                      </item>
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="label_20">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="label_13">
                        <property name="text">
                         <string>用户名</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLabel" name="label_17">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>29</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>29</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="5" column="0">
+                      <widget class="QLabel" name="label_14">
+                       <property name="text">
+                        <string>Tel</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_11">
+                       <property name="text">
+                        <string>真实姓名</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QLabel" name="label_18">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>29</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>29</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="6" column="0">
+                      <widget class="QLabel" name="label_15">
+                       <property name="text">
+                        <string>邮箱</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLabel" name="label_16">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>29</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>29</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_12">
+                       <property name="text">
+                        <string>学号</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="6" column="1">
+                      <widget class="QLineEdit" name="email"/>
+                     </item>
+                     <item row="3" column="1">
+                      <widget class="QLineEdit" name="name_4"/>
+                     </item>
+                     <item row="3" column="0">
+                      <widget class="QLabel" name="label_23">
+                       <property name="text">
+                        <string>昵称</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="0">
+                      <widget class="QLabel" name="label_24">
+                       <property name="text">
+                        <string>性别</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="1">
+                      <widget class="QLineEdit" name="sex"/>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="1" column="5">
+                 <spacer name="horizontalSpacer_13">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>160</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="1" column="6">
+                 <spacer name="horizontalSpacer_12">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>159</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="2" column="2">
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>159</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QPushButton" name="pushButton_5">
+                  <property name="text">
+                   <string>确认修改</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="4">
+                 <spacer name="horizontalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>159</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="3" column="2">
+                 <widget class="QLabel" name="label_36">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>修改密码：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="2" colspan="3">
+                 <widget class="QFrame" name="frame_4">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>240</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>240</height>
+                   </size>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_9">
+                   <item row="0" column="0">
+                    <layout class="QGridLayout" name="gridLayout_10">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_8">
+                       <property name="text">
+                        <string>原密码</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLineEdit" name="oldpwd">
+                       <property name="echoMode">
+                        <enum>QLineEdit::Password</enum>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_9">
+                       <property name="text">
+                        <string>新密码</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLineEdit" name="newpwd">
+                       <property name="echoMode">
+                        <enum>QLineEdit::Password</enum>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="label_10">
+                       <property name="text">
+                        <string>确认密码</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QLineEdit" name="newpwd2">
+                       <property name="echoMode">
+                        <enum>QLineEdit::Password</enum>
                        </property>
                       </widget>
                      </item>
@@ -2311,41 +2346,61 @@
                   </layout>
                  </widget>
                 </item>
-                <item row="0" column="1">
-                 <widget class="QPushButton" name="search_3">
-                  <property name="text">
-                   <string>查询</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="2">
-                 <spacer name="horizontalSpacer_10">
+                <item row="5" column="2">
+                 <spacer name="horizontalSpacer_3">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
-                    <width>419</width>
+                    <width>159</width>
                     <height>20</height>
                    </size>
                   </property>
                  </spacer>
                 </item>
-                <item row="1" column="0" colspan="3">
-                 <widget class="QScrollArea" name="scrollArea_7">
+                <item row="5" column="3">
+                 <widget class="QPushButton" name="changepwd">
+                  <property name="text">
+                   <string>确认修改</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="4">
+                 <spacer name="horizontalSpacer_4">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>159</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_2">
+               <attribute name="title">
+                <string>操作历史</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_17">
+                <item row="0" column="0">
+                 <widget class="QScrollArea" name="scrollArea_3">
                   <property name="widgetResizable">
                    <bool>true</bool>
                   </property>
-                  <widget class="QWidget" name="scrollAreaWidgetContents_7">
+                  <widget class="QWidget" name="scrollAreaWidgetContents_2">
                    <property name="geometry">
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>969</width>
-                     <height>583</height>
+                     <width>1107</width>
+                     <height>665</height>
                     </rect>
                    </property>
-                   <layout class="QGridLayout" name="gridLayout_48">
+                   <layout class="QGridLayout" name="gridLayout_18">
                     <property name="leftMargin">
                      <number>0</number>
                     </property>
@@ -2353,56 +2408,48 @@
                      <number>0</number>
                     </property>
                     <item row="0" column="0">
-                     <widget class="QTableWidget" name="searchResult_6"/>
-                    </item>
-                    <item row="0" column="1">
-                     <widget class="QPushButton" name="pushButton_2">
-                      <property name="text">
-                       <string>确认删除</string>
+                     <widget class="QFrame" name="frame_11">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
                       </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="page_8">
-               <layout class="QGridLayout" name="gridLayout_49">
-                <item row="0" column="0">
-                 <widget class="QFrame" name="frame_12">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <widget class="QWidget" name="layoutWidget">
-                   <property name="geometry">
-                    <rect>
-                     <x>50</x>
-                     <y>30</y>
-                     <width>384</width>
-                     <height>31</height>
-                    </rect>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_50">
-                    <item row="0" column="0">
-                     <widget class="QLabel" name="label_21">
-                      <property name="text">
-                       <string>groupID</string>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
                       </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="1">
-                     <widget class="QLineEdit" name="groupid_2"/>
-                    </item>
-                    <item row="0" column="2">
-                     <widget class="QPushButton" name="pushButton">
-                      <property name="text">
-                       <string>查询</string>
-                      </property>
+                      <widget class="QLabel" name="label_22">
+                       <property name="geometry">
+                        <rect>
+                         <x>0</x>
+                         <y>90</y>
+                         <width>1091</width>
+                         <height>561</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>结果</string>
+                       </property>
+                      </widget>
+                      <widget class="QWidget" name="layoutWidget_3">
+                       <property name="geometry">
+                        <rect>
+                         <x>80</x>
+                         <y>30</y>
+                         <width>651</width>
+                         <height>41</height>
+                        </rect>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_4">
+                        <item>
+                         <widget class="QLineEdit" name="lineEdit_10"/>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="pushButton_3">
+                          <property name="text">
+                           <string>查询</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
                      </widget>
                     </item>
                    </layout>
@@ -2415,912 +2462,98 @@
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tab">
-           <attribute name="title">
-            <string>组管理</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_15">
-            <item row="0" column="0">
-             <widget class="QPushButton" name="ADDGROUP">
+          <widget class="QWidget" name="page_2">
+           <layout class="QGridLayout" name="gridLayout_43">
+            <item row="2" column="1">
+             <widget class="QPushButton" name="pushButton_4">
               <property name="text">
-               <string>添加组</string>
+               <string>添加书签</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="0">
-             <widget class="QPushButton" name="MODIFYGROUP">
-              <property name="text">
-               <string>修改组信息</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QPushButton" name="DELETEGROUP">
-              <property name="text">
-               <string>查询组</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <spacer name="verticalSpacer_3">
+            <item row="5" column="1">
+             <spacer name="verticalSpacer_23">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>20</width>
-                <height>556</height>
+                <height>85</height>
                </size>
               </property>
              </spacer>
             </item>
-            <item row="0" column="1" rowspan="4">
-             <widget class="QStackedWidget" name="groupStackedWidget">
-              <property name="currentIndex">
-               <number>1</number>
+            <item row="6" column="1">
+             <spacer name="verticalSpacer_22">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
               </property>
-              <widget class="QWidget" name="page_14">
-               <layout class="QGridLayout" name="gridLayout_53">
-                <item row="0" column="0">
-                 <widget class="QFrame" name="frame_13">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <widget class="QLabel" name="label_11">
-                   <property name="geometry">
-                    <rect>
-                     <x>12</x>
-                     <y>12</y>
-                     <width>120</width>
-                     <height>20</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>添加读者组：</string>
-                   </property>
-                  </widget>
-                  <widget class="QPushButton" name="createreader_2">
-                   <property name="geometry">
-                    <rect>
-                     <x>210</x>
-                     <y>220</y>
-                     <width>109</width>
-                     <height>29</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>添加读者组</string>
-                   </property>
-                  </widget>
-                  <widget class="QWidget" name="layoutWidget_2">
-                   <property name="geometry">
-                    <rect>
-                     <x>120</x>
-                     <y>50</y>
-                     <width>314</width>
-                     <height>158</height>
-                    </rect>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_54">
-                    <item row="0" column="0">
-                     <widget class="QLabel" name="label_12">
-                      <property name="text">
-                       <string>读者组名</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="1">
-                     <widget class="QLineEdit" name="name_5"/>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_17">
-                      <property name="text">
-                       <string>可借书时间</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="1">
-                     <widget class="QLineEdit" name="max_borrow_time"/>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="label_16">
-                      <property name="text">
-                       <string>可借书数量</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="QLineEdit" name="max_borrow_num"/>
-                    </item>
-                    <item row="3" column="1">
-                     <widget class="QLineEdit" name="max_renew_time"/>
-                    </item>
-                    <item row="3" column="0">
-                     <widget class="QLabel" name="label_41">
-                      <property name="text">
-                       <string>可续借次数</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QFrame" name="frame_15">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <widget class="QLabel" name="label_53">
-                   <property name="geometry">
-                    <rect>
-                     <x>12</x>
-                     <y>12</y>
-                     <width>120</width>
-                     <height>20</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>添加图书组：</string>
-                   </property>
-                  </widget>
-                  <widget class="QPushButton" name="createbook_2">
-                   <property name="geometry">
-                    <rect>
-                     <x>210</x>
-                     <y>170</y>
-                     <width>109</width>
-                     <height>29</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>添加图书组</string>
-                   </property>
-                  </widget>
-                  <widget class="QWidget" name="layoutWidget_3">
-                   <property name="geometry">
-                    <rect>
-                     <x>110</x>
-                     <y>60</y>
-                     <width>354</width>
-                     <height>90</height>
-                    </rect>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_55">
-                    <item row="1" column="1">
-                     <widget class="QLineEdit" name="max_time"/>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="label_56">
-                      <property name="text">
-                       <string>最大借出时间：</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="1">
-                     <widget class="QLineEdit" name="name_6"/>
-                    </item>
-                    <item row="0" column="0">
-                     <widget class="QLabel" name="label_55">
-                      <property name="text">
-                       <string>图书组名：</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="page_15">
-               <layout class="QGridLayout" name="gridLayout_60">
-                <item row="0" column="0">
-                 <widget class="QFrame" name="frame_18">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <layout class="QGridLayout" name="gridLayout_59">
-                   <item row="0" column="3">
-                    <widget class="QPushButton" name="searchReadergroup">
-                     <property name="text">
-                      <string>查询读者组</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="0">
-                    <widget class="QLabel" name="label_69">
-                     <property name="text">
-                      <string>groupID</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QLineEdit" name="groupid_4"/>
-                   </item>
-                   <item row="0" column="2">
-                    <widget class="QPushButton" name="searchBookgroup">
-                     <property name="text">
-                      <string>查询图书组</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <spacer name="horizontalSpacer_30">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>451</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="1" column="0" colspan="2">
-                 <widget class="QScrollArea" name="scrollArea_8">
-                  <property name="widgetResizable">
-                   <bool>true</bool>
-                  </property>
-                  <widget class="QWidget" name="scrollAreaWidgetContents_8">
-                   <property name="geometry">
-                    <rect>
-                     <x>0</x>
-                     <y>0</y>
-                     <width>969</width>
-                     <height>583</height>
-                    </rect>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_61">
-                    <item row="0" column="0" rowspan="4">
-                     <widget class="QTableWidget" name="searchResult_8"/>
-                    </item>
-                    <item row="0" column="1">
-                     <spacer name="verticalSpacer_18">
-                      <property name="orientation">
-                       <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>20</width>
-                        <height>238</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="QPushButton" name="deleteGroup">
-                      <property name="text">
-                       <string>删除组</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="1">
-                     <widget class="QPushButton" name="changeGroup">
-                      <property name="text">
-                       <string>修改组信息</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="1">
-                     <spacer name="verticalSpacer_19">
-                      <property name="orientation">
-                       <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>20</width>
-                        <height>238</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                   </layout>
-                  </widget>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="page_16">
-               <layout class="QGridLayout" name="gridLayout_58">
-                <item row="0" column="0">
-                 <widget class="QFrame" name="frame_17">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <widget class="QLabel" name="label_60">
-                   <property name="geometry">
-                    <rect>
-                     <x>12</x>
-                     <y>12</y>
-                     <width>151</width>
-                     <height>20</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>更改读者组信息：</string>
-                   </property>
-                  </widget>
-                  <widget class="QPushButton" name="changereader">
-                   <property name="geometry">
-                    <rect>
-                     <x>188</x>
-                     <y>220</y>
-                     <width>151</width>
-                     <height>29</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>更改读者组信息</string>
-                   </property>
-                  </widget>
-                  <widget class="QWidget" name="layoutWidget_4">
-                   <property name="geometry">
-                    <rect>
-                     <x>120</x>
-                     <y>50</y>
-                     <width>314</width>
-                     <height>161</height>
-                    </rect>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_57">
-                    <item row="1" column="1">
-                     <widget class="QLineEdit" name="name_8"/>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="label_61">
-                      <property name="text">
-                       <string>读者组名</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="1">
-                     <widget class="QLineEdit" name="max_borrow_num_2"/>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_62">
-                      <property name="text">
-                       <string>可借书数量</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="4" column="0">
-                     <widget class="QLabel" name="label_68">
-                      <property name="text">
-                       <string>可续借次数</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="4" column="1">
-                     <widget class="QLineEdit" name="max_renew_time_2"/>
-                    </item>
-                    <item row="3" column="1">
-                     <widget class="QLineEdit" name="max_borrow_time_2"/>
-                    </item>
-                    <item row="3" column="0">
-                     <widget class="QLabel" name="label_67">
-                      <property name="text">
-                       <string>可借书时间</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="0">
-                     <widget class="QLabel" name="label_71">
-                      <property name="text">
-                       <string>读者组编号</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="1">
-                     <widget class="QLabel" name="readerGroupid">
-                      <property name="text">
-                       <string/>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QFrame" name="frame_16">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <widget class="QLabel" name="label_57">
-                   <property name="geometry">
-                    <rect>
-<<<<<<< HEAD
-                     <x>12</x>
-                     <y>12</y>
-                     <width>151</width>
-                     <height>20</height>
-=======
-                     <x>0</x>
-                     <y>0</y>
-                     <width>1117</width>
-                     <height>678</height>
->>>>>>> 87adae490fa4edcac8230b83755f7400f2058bb4
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>更改图书组信息：</string>
-                   </property>
-                  </widget>
-                  <widget class="QPushButton" name="changebook_3">
-                   <property name="geometry">
-                    <rect>
-                     <x>190</x>
-                     <y>170</y>
-                     <width>151</width>
-                     <height>29</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>更改图书组信息</string>
-                   </property>
-                  </widget>
-                  <widget class="QWidget" name="layoutWidget_5">
-                   <property name="geometry">
-                    <rect>
-                     <x>110</x>
-                     <y>60</y>
-                     <width>354</width>
-                     <height>93</height>
-                    </rect>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_56">
-                    <item row="1" column="1">
-                     <widget class="QLineEdit" name="name_7"/>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="label_58">
-                      <property name="text">
-                       <string>图书组名：</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="1">
-                     <widget class="QLineEdit" name="max_time_2"/>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_59">
-                      <property name="text">
-                       <string>最大借出时间：</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="0">
-                     <widget class="QLabel" name="label_73">
-                      <property name="text">
-                       <string>图书组编号</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="1">
-                     <widget class="QLabel" name="bookGroupid">
-                      <property name="text">
-                       <string/>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </widget>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>308</height>
+               </size>
+              </property>
+             </spacer>
             </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tab_changeInformation">
-           <attribute name="title">
-            <string>修改信息</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_38">
-            <item row="0" column="2">
-             <widget class="QLabel" name="label_28">
+            <item row="4" column="1">
+             <spacer name="verticalSpacer_24">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>84</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="1">
+             <spacer name="verticalSpacer_25">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>85</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="3" column="1">
+             <widget class="QPushButton" name="pushButton_11">
               <property name="minimumSize">
                <size>
-                <width>0</width>
-                <height>25</height>
+                <width>93</width>
+                <height>0</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
-                <height>25</height>
+                <width>93</width>
+                <height>16777215</height>
                </size>
               </property>
               <property name="text">
-               <string>个人信息：</string>
+               <string>历史书签</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="0">
-             <spacer name="horizontalSpacer_11">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+            <item row="0" column="0" rowspan="7">
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>此处放置图书图片</string>
               </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>159</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
+             </widget>
             </item>
             <item row="1" column="1">
-             <spacer name="horizontalSpacer_14">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>160</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="1" column="2" colspan="3">
-             <widget class="QFrame" name="frame_5">
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_12">
-               <item row="0" column="0">
-                <layout class="QGridLayout" name="gridLayout_13">
-                 <item row="3" column="1">
-                  <widget class="QLineEdit" name="tel"/>
-                 </item>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_13">
-                   <property name="text">
-                    <string>用户名</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="3" column="0">
-                  <widget class="QLabel" name="label_14">
-                   <property name="text">
-                    <string>Tel</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="4" column="0">
-                  <widget class="QLabel" name="label_15">
-                   <property name="text">
-                    <string>邮箱</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="4" column="1">
-                  <widget class="QLineEdit" name="email"/>
-                 </item>
-                 <item row="1" column="1">
-                  <widget class="QLineEdit" name="name_4"/>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="label_23">
-                   <property name="text">
-                    <string>昵称</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <widget class="QLineEdit" name="sex"/>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="label_24">
-                   <property name="text">
-                    <string>性别</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <widget class="QLabel" name="label_18">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>29</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>29</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="1" column="5">
-             <spacer name="horizontalSpacer_13">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>160</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="1" column="6">
-             <spacer name="horizontalSpacer_12">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>159</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="2" column="2">
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>159</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="2" column="3">
-             <widget class="QPushButton" name="pushButton_5">
+             <widget class="QPushButton" name="BACK">
               <property name="text">
-               <string>确认修改</string>
+               <string>返回</string>
               </property>
-             </widget>
-            </item>
-            <item row="2" column="4">
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>159</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="3" column="2">
-             <widget class="QLabel" name="label_36">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>修改密码：</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="2" colspan="3">
-             <widget class="QFrame" name="frame_4">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>240</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>240</height>
-               </size>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_9">
-               <item row="0" column="0">
-                <layout class="QGridLayout" name="gridLayout_10">
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_8">
-                   <property name="text">
-                    <string>原密码</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <widget class="QLineEdit" name="oldpwd">
-                   <property name="echoMode">
-                    <enum>QLineEdit::Password</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="label_9">
-                   <property name="text">
-                    <string>新密码</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <widget class="QLineEdit" name="newpwd">
-                   <property name="echoMode">
-                    <enum>QLineEdit::Password</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="label_10">
-                   <property name="text">
-                    <string>确认密码</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <widget class="QLineEdit" name="newpwd2">
-                   <property name="echoMode">
-                    <enum>QLineEdit::Password</enum>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="5" column="2">
-             <spacer name="horizontalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>159</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="5" column="3">
-             <widget class="QPushButton" name="changepwd">
-              <property name="text">
-               <string>确认修改</string>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="4">
-             <spacer name="horizontalSpacer_4">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>159</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tab_2">
-           <attribute name="title">
-            <string>操作历史</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_17">
-            <item row="0" column="0">
-             <widget class="QScrollArea" name="scrollArea_3">
-              <property name="widgetResizable">
-               <bool>true</bool>
-              </property>
-              <widget class="QWidget" name="scrollAreaWidgetContents_2">
-               <property name="geometry">
-                <rect>
-                 <x>0</x>
-                 <y>0</y>
-                 <width>1107</width>
-                 <height>665</height>
-                </rect>
-               </property>
-               <layout class="QGridLayout" name="gridLayout_18">
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QFrame" name="frame_11">
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <widget class="QLabel" name="label_22">
-                   <property name="geometry">
-                    <rect>
-                     <x>0</x>
-                     <y>90</y>
-                     <width>1091</width>
-                     <height>561</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>结果</string>
-                   </property>
-                  </widget>
-                  <widget class="QWidget" name="layoutWidget_6">
-                   <property name="geometry">
-                    <rect>
-                     <x>80</x>
-                     <y>30</y>
-                     <width>651</width>
-                     <height>41</height>
-                    </rect>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_4">
-                    <item>
-                     <widget class="QLineEdit" name="lineEdit_10"/>
-                    </item>
-                    <item>
-                     <widget class="QPushButton" name="pushButton_3">
-                      <property name="text">
-                       <string>查询</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
              </widget>
             </item>
            </layout>
@@ -3339,7 +2572,7 @@
      <x>0</x>
      <y>0</y>
      <width>1161</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
