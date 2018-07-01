@@ -1,6 +1,7 @@
 #ifndef READER_H
 #define READER_H
 
+#include"pdfviewer/pdfreader.h"
 #include <QMainWindow>
 #include <QString>
 #include<QTableWidget>
@@ -30,7 +31,11 @@ class Reader;
 #define Initialization 101
 #define Non_initialization 102
 
+#define BOOK_GROUP_SEARCH 201
+#define READER_GROUP_SEARCH 202
 
+#define READER_IDENTITY 301
+#define STAFFS_IDENTITY 302
 
 class Reader : public QMainWindow
 {
@@ -62,6 +67,8 @@ private:
     Ui::Reader *ui;
     QString token;
     void handleEvents();
+
+    PDFReader* pdfreader=nullptr;
 };
 
 #endif // READER_H

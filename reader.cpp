@@ -7,8 +7,11 @@
 #include<QLabel>
 #include<QFrame>
 #include<QDialog>
+#include <QFileDialog>
+#include<QFile>
+#include<QDebug>
 
-int Pages = 1;
+int Pages = 1,Group = 0,Iden = 0;
 
 
 #if _MSC_VER >= 1600
@@ -47,13 +50,16 @@ void Reader::showReaderwin(QString& t)
     ui->deletebook_2->hide();
     ui->changebook_2->hide();
     ui->changebookgroup->hide();
+    Iden = READER_IDENTITY;
     this->show();
 }
 void Reader::showAdministratorwin(QString& t)
 {
     token = t;
+    ui->tabWidget->removeTab(1);
     ui->appointborrow->hide();
     ui->appointreturn->hide();
+    Iden = STAFFS_IDENTITY;
     this->show();
 }
 //切换界面，仅仅ui使用
@@ -138,10 +144,22 @@ void Reader::Result(QTableWidget* tab)
     }
     else if(tab==ui->searchResult_7)//修改图书组
     {//内容自动获取，无需搜索添加
-        tab->setColumnCount(12);//设置列数
-        header<<tr("选择图书")<<tr("ID")<<tr("书名")<<tr("groupID")
+        tab->setColumnCount(11);//设置列数
+        header<<tr("ID")<<tr("书名")<<tr("groupID")
              <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")
             <<tr("书架号")<<tr("入馆时间");
+    }
+    else if(tab==ui->searchResult_8&&Group == BOOK_GROUP_SEARCH)
+    {
+        tab->setRowCount(1);
+        tab->setColumnCount(3);//设置列数
+        header<<tr("选择组")<<tr("组名")<<tr("最大借出时间");
+    }
+    else if(tab==ui->searchResult_8&&Group == READER_GROUP_SEARCH)
+    {
+        tab->setRowCount(1);
+        tab->setColumnCount(4);//设置列数
+        header<<tr("选择组")<<tr("组名")<<tr("可借书数量")<<tr("可借书时间")<<tr("可续借次数");
     }
     tab->setHorizontalHeaderLabels(header);  //标签
 }
@@ -193,11 +211,24 @@ void Reader::handleEvents()
             [=]()
     {
         Reader::switchPage(GOOD_FIND);
+        ui->searchLineedit->clear();
     });
     connect(ui->FIND,&QPushButton::clicked,
             [=]()
     {
         Reader::switchPage(_FIND);
+        ui->name->clear();
+        ui->author->clear();
+        ui->press->clear();
+        ui->ISBN->clear();
+        ui->ID->clear();
+        ui->price->clear();
+        ui->tags->clear();
+        ui->bookcase->clear();
+        ui->available->setCheckState(Qt::Unchecked);
+        ui->checkif->setCheckState(Qt::Unchecked);
+
+
     });
 
     //book添加删除修改信息页面切换
@@ -216,12 +247,24 @@ void Reader::handleEvents()
             [=]()
     {
         Reader::switchPage(MODIFY_BOOK);
+        ui->bookId->clear();
+        ui->name_3->clear();
+        ui->author_3->clear();
+        ui->press_3->clear();
+        ui->ISBN_3->clear();
+        ui->pages_3->clear();
+        ui->price_3->clear();
+        ui->tags_3->clear();
+        ui->groupid_3->clear();
+        ui->bookcase_3->clear();
+        ui->available_3->setCheckState(Qt::Unchecked);
     });
     connect(ui->MODIFYBOOKGROUP,&QPushButton::clicked,
             [=]()
     {
         Reader::switchPage(MODIFY_BOOK_GROUP);
         Result(ui->searchResult_7);
+        ui->searchResult_7->clear();
     });
 
     //reader添加删除修改信息页面切换
@@ -231,7 +274,6 @@ void Reader::handleEvents()
         Reader::switchPage(ADD_READER);
         ui->groupid->clear();
         ui->groupid->addItem(tr("li"));//给下拉框添加内容
-        ui->groupid->addItem(tr("li"));
     });
     connect(ui->DELETEREADER,&QPushButton::clicked,
             [=]()
@@ -260,6 +302,14 @@ void Reader::handleEvents()
             [=]()
     {
         Reader::switchPage(MODIFY_GROUP);
+        ui->bookGroupid->clear();
+        ui->name_7->clear();
+        ui->max_time_2->clear();
+        ui->readerGroupid->clear();
+        ui->name_8->clear();
+        ui->max_borrow_num_2->clear();
+        ui->max_borrow_time_2->clear();
+        ui->max_renew_time_2->clear();
     });
 
     //借还管理界面切换
@@ -298,29 +348,23 @@ void Reader::handleEvents()
         Pages=1;
         ADDITEM(ui->searchResult_6,Pages);
     });
-
-    connect(ui->BACK,&QPushButton::clicked,
-            [=]()
-    {
-        ui->BOOKVIEW->setCurrentIndex(0);
-    });
-
-
+    //search界面更改图书信息按钮
     connect(ui->changebook_2,&QPushButton::clicked,
             [=]()
     {
-        ui->tabWidget->setCurrentIndex(3);
+        ui->tabWidget->setCurrentIndex(2);
         ui->OPERATEBOOK->setCurrentIndex(2);
         for(int i=0;i<10;i++)
         {
             if(ui->searchResult->item(i,0)->checkState()==Qt::Checked)
             {
+                ui->bookId->setText(ui->searchResult->item(i,2)->text());
                 ui->name_3->setText(ui->searchResult->item(i,3)->text());
                 ui->author_3->setText(ui->searchResult->item(i,5)->text());
                 ui->press_3->setText(ui->searchResult->item(i,6)->text());
                 ui->ISBN_3->setText(ui->searchResult->item(i,8)->text());
                 ui->pages_3->setText(ui->searchResult->item(i,10)->text());
-                ui->piece_3->setText(ui->searchResult->item(i,9)->text());
+                ui->price_3->setText(ui->searchResult->item(i,9)->text());
                 ui->tags_3->setText(ui->searchResult->item(i,7)->text());
                 ui->groupid_3->setText(ui->searchResult->item(i,4)->text());
                 ui->bookcase_3->setText(ui->searchResult->item(i,11)->text());
@@ -335,27 +379,67 @@ void Reader::handleEvents()
     connect(ui->changebookgroup,&QPushButton::clicked,
             [=]()
     {
-        ui->tabWidget->setCurrentIndex(3);
+        ui->tabWidget->setCurrentIndex(2);
         ui->OPERATEBOOK->setCurrentIndex(3);
         Result(ui->searchResult_7);
         for(int i=0,k=0;i<10;i++)
         {
-            if(ui->searchResult->item(i,0)!=false && ui->searchResult->item(i,0)->checkState()==Qt::Checked)
+            if(ui->searchResult->item(i,0)!=nullptr && ui->searchResult->item(i,0)->checkState()==Qt::Checked)
             {
-                QTableWidgetItem *checkBox = new QTableWidgetItem();
-                checkBox->setCheckState(Qt::Unchecked);
-                checkBox->setText("是否删除");
-                ui->searchResult_7->setItem(k, 0, checkBox);
 
                 for(int j=2;j<13;j++)
                 {
-                     ui->searchResult_7->setItem(k,j-1,new QTableWidgetItem(ui->searchResult->item(i,j)->text()));//添加内容
+                     ui->searchResult_7->setItem(k,j-2,new QTableWidgetItem(ui->searchResult->item(i,j)->text()));//添加内容
                 }
                 k++;
             }
         }
     });
 
+    //查询读者组、查询图书组按钮
+    connect(ui->searchBookgroup,&QPushButton::clicked,
+            [=]()
+    {
+        Group = BOOK_GROUP_SEARCH;
+        Result(ui->searchResult_8);
+
+    });
+    connect(ui->searchReadergroup,&QPushButton::clicked,
+            [=]()
+    {
+        Group = READER_GROUP_SEARCH;
+        Result(ui->searchResult_8);
+
+    });
+    //“删除组”按钮
+    connect(ui->deleteGroup,&QPushButton::clicked,
+            [=]()
+    {
+        //获取内容，发送删除信息
+    });
+    //修改组信息
+    connect(ui->changeGroup,&QPushButton::clicked,
+            [=]()
+    {
+        ui->groupStackedWidget->setCurrentIndex(2);
+        if(ui->searchResult_8->item(0,0)!=nullptr&&ui->searchResult_8->item(0,0)->checkState()==Qt::Checked)
+        {
+            if(Group==BOOK_GROUP_SEARCH)
+            {
+                ui->bookGroupid->setText(ui->groupid_4->text());
+                ui->name_7->setText(ui->searchResult_8->item(0,1)->text());
+                ui->max_time_2->setText(ui->searchResult_8->item(0,2)->text());
+            }
+            else if(Group==READER_GROUP_SEARCH)
+            {
+                ui->readerGroupid->setText(ui->groupid_4->text());
+                ui->name_8->setText(ui->searchResult_8->item(0,1)->text());
+                ui->max_borrow_num_2->setText(ui->searchResult_8->item(0,2)->text());
+                ui->max_borrow_time_2->setText(ui->searchResult_8->item(0,3)->text());
+                ui->max_renew_time_2->setText(ui->searchResult_8->item(0,4)->text());
+            }
+        }
+    });
 }
 
 
@@ -366,30 +450,101 @@ void Reader::on_tabWidget_tabBarClicked(int index)
     {
         Result(ui->searchResult);//初始化为数据库前十本书
         ADDITEM(ui->searchResult,0);
+        ui->searchLineedit->clear();
+        ui->name->clear();
+        ui->author->clear();
+        ui->press->clear();
+        ui->ISBN->clear();
+        ui->ID->clear();
+        ui->price->clear();
+        ui->tags->clear();
+        ui->bookcase->clear();
+        ui->available->setCheckState(Qt::Unchecked);
+        ui->checkif->setCheckState(Qt::Unchecked);
     }
-    else if(index == 1)
+    if(Iden == READER_IDENTITY)
     {
-        Result(ui->searchResult_2);//已借阅图书-初始化时的内容即为其真实内容
-        ADDITEM(ui->searchResult_2,0);
+        if(index == 1)
+        {
+            Result(ui->searchResult_2);//已借阅图书-初始化时的内容即为其真实内容
+            ADDITEM(ui->searchResult_2,0);
+        }
     }
-    else if(index == 2)
+    else if(Iden == STAFFS_IDENTITY)
     {
-        Result(ui->searchResult_3);//借阅申请—初始化时的内容即为其真实内容
-        ADDITEM(ui->searchResult_3,0);
-        Result(ui->searchResult_4);//归还申请-初始化时的内容即为其真实内容
-        ADDITEM(ui->searchResult_4,0);
+        if(index == 1)
+        {
+            Result(ui->searchResult_3);//借阅申请—初始化时的内容即为其真实内容
+            ADDITEM(ui->searchResult_3,0);
+            Result(ui->searchResult_4);//归还申请-初始化时的内容即为其真实内容
+            ADDITEM(ui->searchResult_4,0);
+        }
+        else if(index == 2)
+        {
+            ui->searchResult_7->clear();
+            ui->bookId->clear();
+            ui->name_3->clear();
+            ui->author_3->clear();
+            ui->press_3->clear();
+            ui->ISBN_3->clear();
+            ui->pages_3->clear();
+            ui->price_3->clear();
+            ui->tags_3->clear();
+            ui->groupid_3->clear();
+            ui->bookcase_3->clear();
+            ui->available_3->setCheckState(Qt::Unchecked);
+        }
+        else if(index == 4)
+        {
+            ui->bookGroupid->clear();
+            ui->name_7->clear();
+            ui->max_time_2->clear();
+            ui->readerGroupid->clear();
+            ui->name_8->clear();
+            ui->max_borrow_num_2->clear();
+            ui->max_borrow_time_2->clear();
+            ui->max_renew_time_2->clear();
+        }
     }
 }
 
 
 void Reader::on_logout_clicked()
 {
-
+    //向服务器发送退出登录信息
+    this->close();
 }
 
 void Reader::on_searchResult_cellDoubleClicked(int row, int column)
 {
-     ui->BOOKVIEW->setCurrentIndex(1);
+    if(ui->searchResult->item(row,1)==nullptr&&Iden==STAFFS_IDENTITY)
+    {
+        //定义文件对话框类
+        QFileDialog *fileDialog = new QFileDialog(this);
+        //定义文件对话框标题
+        fileDialog->setWindowTitle(tr("打开图片"));
+        //设置默认文件路径
+        fileDialog->setDirectory(".");
+        //设置文件过滤器
+        fileDialog->setNameFilter(tr("Images(*.png *.jpg *.jpeg *.bmp)"));
+        //设置可以选择多个文件,默认为只能选择一个文件QFileDialog::ExistingFiles
+        fileDialog->setFileMode(QFileDialog::ExistingFiles);
+        //设置视图模式
+        fileDialog->setViewMode(QFileDialog::Detail);
+        //打印所有选择的文件的路径
+        QStringList fileNames;
+        if(fileDialog->exec())
+        {
+            fileNames = fileDialog->selectedFiles();
+        }
+        qDebug()<<fileNames;
+    }
+    else {
+        ui->searchResult->item(row,2)->text();
+        pdfreader = new PDFReader;
+        pdfreader->resize(1161,893);
+        pdfreader->show();
+    }
 }
 
 
