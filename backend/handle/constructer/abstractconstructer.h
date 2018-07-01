@@ -10,8 +10,6 @@
 
 class constructer:public QObject
 {
-    Q_OBJECT
-
 public:
     constructer(const QString& token);
     virtual ~constructer() = 0;
