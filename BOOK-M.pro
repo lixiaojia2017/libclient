@@ -52,7 +52,8 @@ SOURCES += \
     backend/handle/constructer/userconstructer.cpp \
     waitingwindow.cpp \
     pdfviewer/pdfreader.cpp \
-    fileHandler/fileloader.cpp
+    fileHandler/fileloader.cpp \
+    backend/handle/analyser.cpp
 
 HEADERS += \
     login.h \
@@ -91,7 +92,8 @@ HEADERS += \
     backend/handle/constructer/userconstructer.h \
     waitingwindow.h \
     pdfviewer/pdfreader.h \
-    fileHandler/fileloader.h
+    fileHandler/fileloader.h \
+    backend/handle/analyser.h
 
 FORMS += \
     find_password.ui \

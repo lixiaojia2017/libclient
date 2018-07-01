@@ -62,5 +62,6 @@ queryinfo::queryinfo(const QList<QVariant> &order, int records, int page, const 
     jsonReturn.insert("order", QJsonValue::fromVariant(order));
     jsonReturn.insert("records", records);
     jsonReturn.insert("table", table);
+    jsonReturn.insert("page", page);
     jsonReturn.insert("conditions", conditions);
 }
