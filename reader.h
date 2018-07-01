@@ -80,7 +80,7 @@ private slots:
 protected:
     void switchPage(int);
     void Result(QTableWidget* tab);
-    void ADDITEM(QTableWidget* tab,int);
+    void ADDITEM(QTableWidget* tab,int,infoanalyser& hdl);
 
 private:
     waitingWindow wait;

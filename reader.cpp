@@ -178,39 +178,53 @@ void Reader::Result(QTableWidget* tab)
     tab->setHorizontalHeaderLabels(header);  //标签
 }
 
-void Reader::ADDITEM(QTableWidget *tab, int)
+void Reader::ADDITEM(QTableWidget *tab, int i,infoanalyser& hdl)
 {
     if(tab==ui->searchResult)
     {
-        for(int i=0;i<10;i++)
+        for(auto iter : hdl.info)
         {
-
             QTableWidgetItem *checkBox1 = new QTableWidgetItem();
             checkBox1->setCheckState(Qt::Unchecked);
             checkBox1->setText("勾选启用");
             tab->setItem(i, 0, checkBox1);
 
-            tab->setItem(i,2,new QTableWidgetItem("36"));//添加内容
-            tab->setItem(i,3,new QTableWidgetItem("《藏地密码》"));//添加内容
-            tab->setItem(i,4,new QTableWidgetItem("6"));//添加内容
-            tab->setItem(i,5,new QTableWidgetItem("何马"));//添加内容
-            tab->setItem(i,6,new QTableWidgetItem("……出版社"));//添加内容
-            tab->setItem(i,7,new QTableWidgetItem("……tags"));//添加内容
-            tab->setItem(i,8,new QTableWidgetItem("……IBSN"));//添加内容
-            tab->setItem(i,9,new QTableWidgetItem("299.98"));//添加内容
-            tab->setItem(i,10,new QTableWidgetItem("1099"));//添加内容
-            tab->setItem(i,11,new QTableWidgetItem("1-23"));//添加内容
-            tab->setItem(i,12,new QTableWidgetItem("2010-1-1"));//添加内容
+            tab->setItem(i,2,new QTableWidgetItem(iter->take("ID").toString()));//添加内容
+            tab->setItem(i,3,new QTableWidgetItem(iter->take("name").toString()));//添加内容
+            tab->setItem(i,4,new QTableWidgetItem(iter->take("groupID").toString()));//添加内容
+            tab->setItem(i,5,new QTableWidgetItem(iter->take("author").toString()));//添加内容
+            tab->setItem(i,6,new QTableWidgetItem(iter->take("press").toString()));//添加内容
+
+            QString tags;
+            for(auto _take_tags : iter->take("tags").toList())
+            {
+                tags += (_take_tags.toString()+",");
+            }
+            tags=tags.left(tags.length()-1);
+
+            tab->setItem(i,7,new QTableWidgetItem(tags));//添加内容
+            tab->setItem(i,8,new QTableWidgetItem(iter->take("ISBN").toString()));//添加内容
+            tab->setItem(i,9,new QTableWidgetItem(iter->take("price").toString()));//添加内容
+            tab->setItem(i,10,new QTableWidgetItem(iter->take("pages").toString()));//添加内容
+            tab->setItem(i,11,new QTableWidgetItem(iter->take("bookcase").toString()));//添加内容
+            tab->setItem(i,12,new QTableWidgetItem(iter->take("inTime").toString()));//添加内容
 
             QTableWidgetItem *checkBox2 = new QTableWidgetItem();
-            checkBox2->setCheckState(Qt::Checked);
+            if(iter->take("available")==true)
+            {
+                checkBox2->setCheckState(Qt::Checked);
+            }
+            else{
+                checkBox2->setCheckState(Qt::Unchecked);
+            }
             checkBox2->setText("Available");
             tab->setItem(i, 13, checkBox2);
+            i++;
         }
-    }
-    if(tab==ui->searchResult)
-    {
+        if(tab==ui->searchResult)
+        {
 
+        }
     }
 }
 
@@ -344,7 +358,7 @@ void Reader::handleEvents()
     {
         Result(ui->searchResult);
         Pages=1;
-        ADDITEM(ui->searchResult,Pages);
+//        ADDITEM(ui->searchResult,Pages);
     });
     //删除图书查询
     connect(ui->search_2,&QPushButton::clicked,
@@ -352,7 +366,7 @@ void Reader::handleEvents()
     {       
         Result(ui->searchResult_5);
         Pages=1;
-        ADDITEM(ui->searchResult_5,Pages);
+//        ADDITEM(ui->searchResult_5,Pages);
     });
     //删除读者查询
     connect(ui->search_3,&QPushButton::clicked,
@@ -360,7 +374,7 @@ void Reader::handleEvents()
     {
         Result(ui->searchResult_6);
         Pages=1;
-        ADDITEM(ui->searchResult_6,Pages);
+//        ADDITEM(ui->searchResult_6,Pages);
     });
     //search界面更改图书信息按钮
     connect(ui->changebook_2,&QPushButton::clicked,
@@ -463,7 +477,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
     if(index == 0)
     {
         Result(ui->searchResult);//初始化为数据库前十本书
-        ADDITEM(ui->searchResult,0);
+//        ADDITEM(ui->searchResult,0);
         ui->searchLineedit->clear();
         ui->name->clear();
         ui->author->clear();
@@ -481,7 +495,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
         if(index == 1)
         {
             Result(ui->searchResult_2);//已借阅图书-初始化时的内容即为其真实内容
-            ADDITEM(ui->searchResult_2,0);
+//            ADDITEM(ui->searchResult_2,0);
         }
     }
     else if(Iden == STAFFS_IDENTITY)
@@ -489,9 +503,9 @@ void Reader::on_tabWidget_tabBarClicked(int index)
         if(index == 1)
         {
             Result(ui->searchResult_3);//借阅申请—初始化时的内容即为其真实内容
-            ADDITEM(ui->searchResult_3,0);
+//            ADDITEM(ui->searchResult_3,0);
             Result(ui->searchResult_4);//归还申请-初始化时的内容即为其真实内容
-            ADDITEM(ui->searchResult_4,0);
+//            ADDITEM(ui->searchResult_4,0);
         }
         else if(index == 2)
         {
@@ -602,6 +616,7 @@ void Reader::on_search_clicked()
             RESTORE(search)
             QMessageBox::about(this,"Failed",hdl.detail);
         }
+        ADDITEM(ui->searchResult,0,hdl);
     });
     thr->start();
 }
@@ -657,6 +672,8 @@ void Reader::on_pushButton_13_clicked()
     });
     connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
+        //ResponseHdl hdl(rsp);
+        /*
         infoanalyser hdl(*rsp);
         if(hdl.result){
             RESTORE(pushButton_13)
@@ -666,6 +683,7 @@ void Reader::on_pushButton_13_clicked()
             RESTORE(pushButton_13)
             QMessageBox::about(this,"Failed",hdl.detail);
         }
+        */
     });
     thr->start();
 }
