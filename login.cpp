@@ -190,7 +190,7 @@ void Login::handleEvents() // 信号槽事件处理
 
 bool Login::getIdentity()
 {
-    if(ui->group->currentText() == "staff")
+    if(ui->group->currentText() == "staffs")
     {
         return true;
     }
