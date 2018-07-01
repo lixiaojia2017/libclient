@@ -13,7 +13,8 @@
 #include <QFileDialog>
 #include<QFile>
 #include<QDebug>
-
+#include "backend/token.h"
+#include "backend/handle/constructer/operateuserconstructer.h"
 int Pages = 1,Group = 0,Iden = 0;
 
 
@@ -285,8 +286,8 @@ void Reader::handleEvents()
             [=]()
     {
         Reader::switchPage(ADD_READER);
-        ui->groupid->clear();
-        ui->groupid->addItem(tr("li"));//给下拉框添加内容
+        /*ui->groupid->clear();
+        ui->groupid->addItem(tr("li"));*///给下拉框添加内容
     });
     connect(ui->DELETEREADER,&QPushButton::clicked,
             [=]()
@@ -628,7 +629,7 @@ void Reader::on_next_clicked()
 #define IFNE(a) if(ui->a->text()!="")
 void Reader::on_pushButton_13_clicked()
 {
-    ui->pushButton->setEnabled(false);
+    ui->pushButton_13->setEnabled(false);
     wait.show();
     QString rule=ui->checkif->checkState()?"completesearch":"fuzzysearch";
     QMap<QString,QVariant> info;
@@ -656,7 +657,6 @@ void Reader::on_pushButton_13_clicked()
     });
     connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
-        //ResponseHdl hdl(rsp);
         infoanalyser hdl(*rsp);
         if(hdl.result){
             RESTORE(pushButton_13)
@@ -672,4 +672,80 @@ void Reader::on_pushButton_13_clicked()
 
 void Reader::reset_page(){
     Pages=1;
+}
+
+void Reader::on_ngetnewr_clicked()
+{
+    if(TEXT(pwd)!=TEXT(pwd2)){
+        QMessageBox::about(this,"Failed","two passwords do not match");
+        return;
+    }
+    ui->ngetnewr->setEnabled(false);
+    wait.show();
+    QMap<QString,QVariant> info;
+    info["username"]=TEXT(username);
+    info["name"]=TEXT(name_2);
+    info["sex"]=TEXT(sex_2);
+    info["tel"]=TEXT(tel_2);
+    info["email"]=TEXT(email_2);
+    info["password"]=token::getMD5(TEXT(pwd));
+    info["groupid"]=ui->groupid->currentText().toInt();
+    createuser rqt(info,token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        RESTORE(ngetnewr)
+        QMessageBox::about(this,"Failed","connection timeout");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        RESTORE(ngetnewr)
+        QMessageBox::about(this,"Failed","server error");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result){
+            RESTORE(ngetnewr)
+            QMessageBox::about(this,"Success","successfully added");
+        }
+        else
+        {
+            RESTORE(ngetnewr)
+            QMessageBox::about(this,"Failed",hdl.detail);
+        }
+    });
+    thr->start();
+}
+
+void Reader::on_changepwd_clicked()
+{
+    if(TEXT(newpwd)!=TEXT(newpwd2)){
+        QMessageBox::about(this,"Failed","two passwords do not match");
+        return;
+    }
+    ui->changepwd->setEnabled(false);
+    wait.show();
+    userchangepwd rqt(token::getMD5(TEXT(oldpwd)),token::getMD5(TEXT(newpwd)),token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        RESTORE(changepwd)
+        QMessageBox::about(this,"Failed","connection timeout");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        RESTORE(changepwd)
+        QMessageBox::about(this,"Failed","server error");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result){
+            RESTORE(changepwd)
+            QMessageBox::about(this,"Success","password has been changed.\nlogin with new password next time");
+        }
+        else
+        {
+            RESTORE(changepwd)
+            QMessageBox::about(this,"Failed",hdl.detail);
+        }
+    });
+    thr->start();
 }
