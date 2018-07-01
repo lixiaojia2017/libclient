@@ -37,7 +37,16 @@ SOURCES += \
     find_password.cpp \
     fileHandler/confighandler.cpp \
     3rd-party/aes256.cpp \
-    fileHandler/qbyteaes.cpp
+    fileHandler/qbyteaes.cpp \
+    backend/handle/constructer/userconstructer.cpp \
+    backend/handle/constructer/queryconstructer.cpp \
+    backend/handle/constructer/abstractconstructer.cpp \
+    backend/handle/constructer/operateuserconstructer.cpp \
+    backend/handle/constructer/operategroupconstructer.cpp \
+    backend/handle/constructer/operatebookconstructer.cpp \
+    backend/handle/constructer/loadconstructer.cpp \
+    backend/handle/constructer/appointconstructer.cpp \
+    backend/handle/constructer/checkconstructer.cpp
 
 HEADERS += \
     login.h \
@@ -53,7 +62,26 @@ HEADERS += \
     fileHandler/confighandler.h \
     3rd-party/aes256.h \
     3rd-party/json.hpp \
-    fileHandler/qbyteaes.h
+    fileHandler/qbyteaes.h \
+    backend/handle/constructer/constructer.h.autosave \
+    backend/handle/constructer/handle.h.autosave \
+    backend/handle/constructer/loadhdl.h.autosave \
+    backend/handle/constructer/operatebookhdl.h.autosave \
+    backend/handle/constructer/operategrouphdl.h.autosave \
+    backend/handle/constructer/operateuserhdl.h.autosave \
+    backend/handle/constructer/queryhdl.h.autosave \
+    backend/handle/constructer/userhdl.h.autosave \
+    backend/handle/constructer/userconstructer.h \
+    backend/handle/constructer/class querybook: public queryconstructer \
+    backend/handle/constructer/queryconstructer.h \
+    backend/handle/constructer/abstractconstructer.h \
+    backend/handle/constructer/operateuserconstructer.h \
+    backend/handle/constructer/operategroupconstructer.h \
+    backend/handle/constructer/operatebookconstructer.h \
+    backend/handle/constructer/loadconstructer.h \
+    backend/handle/constructer/appointconstructer.h \
+    backend/handle/constructer/checkconstructer.h
+
 FORMS += \
     find_password.ui \
     login.ui \
