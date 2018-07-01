@@ -1,6 +1,8 @@
 #pragma once
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QVector>
+#include <QVariant>
 #include <QList>
 #include <QMap>
 

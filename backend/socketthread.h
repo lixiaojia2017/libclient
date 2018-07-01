@@ -12,7 +12,7 @@ class SocketThread : public QThread
 {
     Q_OBJECT
     public:
-        SocketThread(QString ip,quint16 port,QJsonDocument *obj,QObject *parent = 0);
+        SocketThread(QString ip,quint16 port,const QJsonObject &obj,QObject *parent = 0);
         ~SocketThread();
         virtual void run();
     protected:
@@ -22,7 +22,7 @@ class SocketThread : public QThread
         QString ip;
         quint16 port;
         QTcpSocket *tcpSocket;
-        QJsonDocument *rqt;
+        QJsonDocument rqt;
         QJsonObject* result;
     signals:
         void connectFailed();

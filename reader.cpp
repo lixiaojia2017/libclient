@@ -381,9 +381,16 @@ void Reader::on_tabWidget_tabBarClicked(int index)
     }
 }
 
+
+void Reader::on_logout_clicked()
+{
+
+}
+
 void Reader::on_searchResult_cellDoubleClicked(int row, int column)
 {
      ui->BOOKVIEW->setCurrentIndex(1);
 }
+
 
 

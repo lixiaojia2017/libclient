@@ -34,17 +34,17 @@ void Find_password::setServer(QString addr, int p)
 
 void Find_password::on_sentcode_clicked()
 {
-    UserRqt rqt("unknown");
     ui->sentcode->setEnabled(false);
     wait.show();
-    rqt.construct("forget",ui->frame->children()[1]);
+    userforget rqt(ui->username->text(),ui->group->currentText(),ui->auth->text());
     if(serverport==-1 || serverAddr.isEmpty())
       {
         RESTORE
         QMessageBox::about(this,"Error","Server address or port not set");
         return;
       }
-    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.getRequest());
+
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
     connect(thr,&SocketThread::connectFailed,this,[&](){
         RESTORE
         QMessageBox::about(this,"Failed","connection timeout");
