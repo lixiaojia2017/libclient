@@ -115,13 +115,6 @@
          <item row="3" column="2">
           <widget class="QLineEdit" name="username"/>
          </item>
-         <item row="3" column="3">
-          <widget class="QPushButton" name="newReader">
-           <property name="text">
-            <string>注册</string>
-           </property>
-          </widget>
-         </item>
          <item row="4" column="0">
           <widget class="QLabel" name="label_password">
            <property name="text">

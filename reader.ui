@@ -138,7 +138,7 @@
                </font>
               </property>
               <property name="currentIndex">
-               <number>4</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="tab_searchBook">
                <attribute name="title">
@@ -1509,14 +1509,7 @@
                 <item row="1" column="0">
                  <widget class="QPushButton" name="DELETEREADER">
                   <property name="text">
-                   <string>删除读者</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QPushButton" name="MODIFYREADERGROUP">
-                  <property name="text">
-                   <string>更改读者组</string>
+                   <string>查询读者</string>
                   </property>
                  </widget>
                 </item>
@@ -1530,7 +1523,7 @@
                 <item row="0" column="1" rowspan="4">
                  <widget class="QStackedWidget" name="readerStackedWidget">
                   <property name="currentIndex">
-                   <number>0</number>
+                   <number>1</number>
                   </property>
                   <widget class="QWidget" name="page_13">
                    <layout class="QGridLayout" name="gridLayout_40">
@@ -1785,7 +1778,7 @@
                         </spacer>
                        </item>
                        <item row="3" column="2">
-                        <widget class="QPushButton" name="ngetnewr">
+                        <widget class="QPushButton" name="createreader">
                          <property name="minimumSize">
                           <size>
                            <width>181</width>
@@ -1889,8 +1882,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>165</width>
-                         <height>79</height>
+                         <width>969</width>
+                         <height>583</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_48">
@@ -1961,6 +1954,13 @@
                   </widget>
                  </widget>
                 </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="MODIFYREADERGROUP">
+                  <property name="text">
+                   <string>更改读者组</string>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </widget>
               <widget class="QWidget" name="tab">
@@ -1975,27 +1975,17 @@
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="1" rowspan="4">
-                 <widget class="QStackedWidget" name="groupStackedWidget">
-                  <property name="currentIndex">
-                   <number>0</number>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="MODIFYGROUP">
+                  <property name="text">
+                   <string>修改组信息</string>
                   </property>
-                  <widget class="QWidget" name="page_14"/>
-                  <widget class="QWidget" name="page_15"/>
-                  <widget class="QWidget" name="page_16"/>
                  </widget>
                 </item>
                 <item row="1" column="0">
                  <widget class="QPushButton" name="DELETEGROUP">
                   <property name="text">
-                   <string>删除组</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QPushButton" name="MODIFYGROUP">
-                  <property name="text">
-                   <string>修改组信息</string>
+                   <string>查询组</string>
                   </property>
                  </widget>
                 </item>
@@ -2011,6 +2001,448 @@
                    </size>
                   </property>
                  </spacer>
+                </item>
+                <item row="0" column="1" rowspan="4">
+                 <widget class="QStackedWidget" name="groupStackedWidget">
+                  <property name="currentIndex">
+                   <number>1</number>
+                  </property>
+                  <widget class="QWidget" name="page_14">
+                   <layout class="QGridLayout" name="gridLayout_53">
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frame_13">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <widget class="QLabel" name="label_11">
+                       <property name="geometry">
+                        <rect>
+                         <x>12</x>
+                         <y>12</y>
+                         <width>120</width>
+                         <height>20</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>添加读者组：</string>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="createreader_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>210</x>
+                         <y>220</y>
+                         <width>109</width>
+                         <height>29</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>添加读者组</string>
+                       </property>
+                      </widget>
+                      <widget class="QWidget" name="">
+                       <property name="geometry">
+                        <rect>
+                         <x>120</x>
+                         <y>50</y>
+                         <width>314</width>
+                         <height>131</height>
+                        </rect>
+                       </property>
+                       <layout class="QGridLayout" name="gridLayout_54">
+                        <item row="0" column="0">
+                         <widget class="QLabel" name="label_12">
+                          <property name="text">
+                           <string>读者组名</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="1">
+                         <widget class="QLineEdit" name="name_5"/>
+                        </item>
+                        <item row="1" column="0">
+                         <widget class="QLabel" name="label_16">
+                          <property name="text">
+                           <string>可借书数量</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="1">
+                         <widget class="QLineEdit" name="max_borrow_num"/>
+                        </item>
+                        <item row="2" column="0">
+                         <widget class="QLabel" name="label_17">
+                          <property name="text">
+                           <string>可借书时间</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="1">
+                         <widget class="QLineEdit" name="max_borrow_time"/>
+                        </item>
+                        <item row="3" column="0">
+                         <widget class="QLabel" name="label_41">
+                          <property name="text">
+                           <string>可续借次数</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="1">
+                         <widget class="QLineEdit" name="max_renew_time"/>
+                        </item>
+                       </layout>
+                      </widget>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QFrame" name="frame_15">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <widget class="QLabel" name="label_53">
+                       <property name="geometry">
+                        <rect>
+                         <x>12</x>
+                         <y>12</y>
+                         <width>120</width>
+                         <height>20</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>添加图书组：</string>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="createbook_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>210</x>
+                         <y>170</y>
+                         <width>109</width>
+                         <height>29</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>添加图书组</string>
+                       </property>
+                      </widget>
+                      <widget class="QWidget" name="">
+                       <property name="geometry">
+                        <rect>
+                         <x>110</x>
+                         <y>60</y>
+                         <width>354</width>
+                         <height>63</height>
+                        </rect>
+                       </property>
+                       <layout class="QGridLayout" name="gridLayout_55">
+                        <item row="0" column="0">
+                         <widget class="QLabel" name="label_55">
+                          <property name="text">
+                           <string>图书组名：</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="1">
+                         <widget class="QLineEdit" name="name_6"/>
+                        </item>
+                        <item row="1" column="0">
+                         <widget class="QLabel" name="label_56">
+                          <property name="text">
+                           <string>最大借出时间：</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="1">
+                         <widget class="QLineEdit" name="max_time"/>
+                        </item>
+                       </layout>
+                      </widget>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="page_15">
+                   <layout class="QGridLayout" name="gridLayout_60">
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frame_18">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QGridLayout" name="gridLayout_59">
+                       <item row="0" column="3">
+                        <widget class="QPushButton" name="pushButton_17">
+                         <property name="text">
+                          <string>查询读者组</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_69">
+                         <property name="text">
+                          <string>groupID</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLineEdit" name="lineEdit_3"/>
+                       </item>
+                       <item row="0" column="2">
+                        <widget class="QPushButton" name="pushButton_20">
+                         <property name="text">
+                          <string>查询图书组</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <spacer name="horizontalSpacer_30">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>451</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item row="1" column="0" colspan="2">
+                     <widget class="QScrollArea" name="scrollArea_8">
+                      <property name="widgetResizable">
+                       <bool>true</bool>
+                      </property>
+                      <widget class="QWidget" name="scrollAreaWidgetContents_8">
+                       <property name="geometry">
+                        <rect>
+                         <x>0</x>
+                         <y>0</y>
+                         <width>969</width>
+                         <height>583</height>
+                        </rect>
+                       </property>
+                       <layout class="QGridLayout" name="gridLayout_61">
+                        <item row="0" column="0" rowspan="4">
+                         <widget class="QTableWidget" name="searchResult_8"/>
+                        </item>
+                        <item row="0" column="1">
+                         <spacer name="verticalSpacer_18">
+                          <property name="orientation">
+                           <enum>Qt::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>238</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item row="1" column="1">
+                         <widget class="QPushButton" name="pushButton_19">
+                          <property name="text">
+                           <string>删除组</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="1">
+                         <widget class="QPushButton" name="pushButton_18">
+                          <property name="text">
+                           <string>修改读者信息</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="1">
+                         <spacer name="verticalSpacer_19">
+                          <property name="orientation">
+                           <enum>Qt::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>238</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </widget>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="page_16">
+                   <layout class="QGridLayout" name="gridLayout_58">
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frame_17">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <widget class="QLabel" name="label_60">
+                       <property name="geometry">
+                        <rect>
+                         <x>12</x>
+                         <y>12</y>
+                         <width>151</width>
+                         <height>20</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>更改读者组信息：</string>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="changereader">
+                       <property name="geometry">
+                        <rect>
+                         <x>188</x>
+                         <y>220</y>
+                         <width>151</width>
+                         <height>29</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>更改读者组信息</string>
+                       </property>
+                      </widget>
+                      <widget class="QWidget" name="layoutWidget_4">
+                       <property name="geometry">
+                        <rect>
+                         <x>120</x>
+                         <y>50</y>
+                         <width>314</width>
+                         <height>131</height>
+                        </rect>
+                       </property>
+                       <layout class="QGridLayout" name="gridLayout_57">
+                        <item row="0" column="0">
+                         <widget class="QLabel" name="label_61">
+                          <property name="text">
+                           <string>读者组名</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="1">
+                         <widget class="QLineEdit" name="name_8"/>
+                        </item>
+                        <item row="1" column="0">
+                         <widget class="QLabel" name="label_62">
+                          <property name="text">
+                           <string>可借书数量</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="1">
+                         <widget class="QLineEdit" name="max_borrow_num_2"/>
+                        </item>
+                        <item row="2" column="0">
+                         <widget class="QLabel" name="label_67">
+                          <property name="text">
+                           <string>可借书时间</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="1">
+                         <widget class="QLineEdit" name="max_borrow_time_2"/>
+                        </item>
+                        <item row="3" column="0">
+                         <widget class="QLabel" name="label_68">
+                          <property name="text">
+                           <string>可续借次数</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="1">
+                         <widget class="QLineEdit" name="max_renew_time_2"/>
+                        </item>
+                       </layout>
+                      </widget>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QFrame" name="frame_16">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <widget class="QLabel" name="label_57">
+                       <property name="geometry">
+                        <rect>
+                         <x>12</x>
+                         <y>12</y>
+                         <width>151</width>
+                         <height>20</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>更改图书组信息：</string>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="changebook_3">
+                       <property name="geometry">
+                        <rect>
+                         <x>190</x>
+                         <y>170</y>
+                         <width>151</width>
+                         <height>29</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>更改图书组信息</string>
+                       </property>
+                      </widget>
+                      <widget class="QWidget" name="layoutWidget_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>110</x>
+                         <y>60</y>
+                         <width>354</width>
+                         <height>63</height>
+                        </rect>
+                       </property>
+                       <layout class="QGridLayout" name="gridLayout_56">
+                        <item row="0" column="0">
+                         <widget class="QLabel" name="label_58">
+                          <property name="text">
+                           <string>图书组名：</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="1">
+                         <widget class="QLineEdit" name="name_7"/>
+                        </item>
+                        <item row="1" column="0">
+                         <widget class="QLabel" name="label_59">
+                          <property name="text">
+                           <string>最大借出时间：</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="1">
+                         <widget class="QLineEdit" name="max_time_2"/>
+                        </item>
+                       </layout>
+                      </widget>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </widget>
                 </item>
                </layout>
               </widget>

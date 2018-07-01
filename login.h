@@ -33,7 +33,6 @@ private:
     void handleEvents(); // 信号槽事件处理
 
     Ui::Login *ui;
-    New_user new_user;
     Find_password find_password;
     configHandler config;
     bool success = false;
