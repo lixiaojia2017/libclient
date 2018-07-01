@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
     w.show();
     //w.close();
     //r.show();
+    /*
     /// loading from enrypted data, example
     PDFReader pdf(&w);
     fileLoader loader;
@@ -47,6 +48,8 @@ int main(int argc, char *argv[])
     wait2.show();
     loader.load();
     ////
+    /// \brief ret
+///*/
     int ret = a.exec();
     delete[] args;
     return ret;
