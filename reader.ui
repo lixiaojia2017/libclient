@@ -41,7 +41,7 @@
          <x>0</x>
          <y>0</y>
          <width>1159</width>
-         <height>826</height>
+         <height>842</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_8">
@@ -138,7 +138,7 @@
                </font>
               </property>
               <property name="currentIndex">
-               <number>6</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="tab_searchBook">
                <attribute name="title">
@@ -383,8 +383,8 @@
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>1107</width>
-                        <height>457</height>
+                        <width>1129</width>
+                        <height>507</height>
                        </rect>
                       </property>
                       <layout class="QGridLayout" name="gridLayout_19">
@@ -508,8 +508,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>1129</width>
-                     <height>687</height>
+                     <width>1141</width>
+                     <height>724</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_39">
@@ -596,7 +596,7 @@
                 <item row="1" column="1" rowspan="5">
                  <widget class="QStackedWidget" name="brbookStackedWidget">
                   <property name="currentIndex">
-                   <number>1</number>
+                   <number>0</number>
                   </property>
                   <widget class="QWidget" name="page_10">
                    <layout class="QGridLayout" name="gridLayout_28">
@@ -622,8 +622,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>234</width>
-                         <height>98</height>
+                         <width>1045</width>
+                         <height>712</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_29">
@@ -639,7 +639,7 @@
                         <item row="0" column="1">
                          <widget class="QPushButton" name="pushButton_6">
                           <property name="text">
-                           <string>同意借阅申请</string>
+                           <string>同意申请</string>
                           </property>
                          </widget>
                         </item>
@@ -673,8 +673,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>1007</width>
-                         <height>665</height>
+                         <width>136</width>
+                         <height>52</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_30">
@@ -690,7 +690,7 @@
                         <item row="0" column="1">
                          <widget class="QPushButton" name="pushButton_9">
                           <property name="text">
-                           <string>同意归还申请</string>
+                           <string>同意申请</string>
                           </property>
                          </widget>
                         </item>
@@ -705,14 +705,14 @@
                 <item row="4" column="0">
                  <widget class="QPushButton" name="RETURNBOOK">
                   <property name="text">
-                   <string>还书</string>
+                   <string>归还申请</string>
                   </property>
                  </widget>
                 </item>
                 <item row="3" column="0">
                  <widget class="QPushButton" name="BORROWBOOK">
                   <property name="text">
-                   <string>借书</string>
+                   <string>借阅申请</string>
                   </property>
                  </widget>
                 </item>
@@ -767,7 +767,7 @@
                 <item row="0" column="1" rowspan="5">
                  <widget class="QStackedWidget" name="OPERATEBOOK">
                   <property name="currentIndex">
-                   <number>2</number>
+                   <number>1</number>
                   </property>
                   <widget class="QWidget" name="page_5">
                    <layout class="QGridLayout" name="gridLayout_7">
@@ -779,128 +779,206 @@
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <widget class="QPushButton" name="createbook">
-                       <property name="geometry">
-                        <rect>
-                         <x>380</x>
-                         <y>570</y>
-                         <width>181</width>
-                         <height>51</height>
-                        </rect>
-                       </property>
-                       <property name="text">
-                        <string>添加图书</string>
-                       </property>
-                      </widget>
-                      <widget class="QWidget" name="layoutWidget">
-                       <property name="geometry">
-                        <rect>
-                         <x>231</x>
-                         <y>27</y>
-                         <width>471</width>
-                         <height>521</height>
-                        </rect>
-                       </property>
-                       <layout class="QGridLayout" name="gridLayout_20">
-                        <item row="0" column="0">
-                         <widget class="QLabel" name="label_38">
-                          <property name="text">
-                           <string>图书名称</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="0" column="1">
-                         <widget class="QLineEdit" name="name_3"/>
-                        </item>
-                        <item row="1" column="0">
-                         <widget class="QLabel" name="label_40">
-                          <property name="text">
-                           <string>图书作者</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="1" column="1">
-                         <widget class="QLineEdit" name="author_2"/>
-                        </item>
-                        <item row="2" column="0">
-                         <widget class="QLabel" name="label_43">
-                          <property name="text">
-                           <string>图书出版社</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="1">
-                         <widget class="QLineEdit" name="press_2"/>
-                        </item>
-                        <item row="3" column="0">
-                         <widget class="QLabel" name="label_45">
-                          <property name="text">
-                           <string>IBSN</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="3" column="1">
-                         <widget class="QLineEdit" name="IBSN"/>
-                        </item>
-                        <item row="4" column="0">
-                         <widget class="QLabel" name="label_47">
-                          <property name="text">
-                           <string>页数</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="4" column="1">
-                         <widget class="QSpinBox" name="pages"/>
-                        </item>
-                        <item row="5" column="0">
-                         <widget class="QLabel" name="label_48">
-                          <property name="text">
-                           <string>价格</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="5" column="1">
-                         <widget class="QDoubleSpinBox" name="doubleSpinBox_2"/>
-                        </item>
-                        <item row="6" column="0">
-                         <widget class="QLabel" name="label_49">
-                          <property name="text">
-                           <string>Tags</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="6" column="1">
-                         <widget class="QLineEdit" name="tags_2"/>
-                        </item>
-                        <item row="7" column="0">
-                         <widget class="QLabel" name="label_26">
-                          <property name="text">
-                           <string>groupID</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="7" column="1">
-                         <widget class="QLineEdit" name="groupID"/>
-                        </item>
-                        <item row="8" column="0">
-                         <widget class="QLabel" name="label_50">
-                          <property name="text">
-                           <string>馆藏位置</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="8" column="1">
-                         <widget class="QLineEdit" name="bookcase_2"/>
-                        </item>
-                        <item row="9" column="1">
-                         <widget class="QCheckBox" name="checkBox">
-                          <property name="text">
-                           <string>Available</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
+                      <layout class="QGridLayout" name="gridLayout_45">
+                       <item row="0" column="0">
+                        <spacer name="horizontalSpacer_23">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>177</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="0" column="1" rowspan="2" colspan="3">
+                        <layout class="QGridLayout" name="gridLayout_20">
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="label_38">
+                           <property name="text">
+                            <string>图书名称</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QLineEdit" name="name_3"/>
+                         </item>
+                         <item row="1" column="0">
+                          <widget class="QLabel" name="label_40">
+                           <property name="text">
+                            <string>图书作者</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="1" column="1">
+                          <widget class="QLineEdit" name="author_2"/>
+                         </item>
+                         <item row="2" column="0">
+                          <widget class="QLabel" name="label_43">
+                           <property name="text">
+                            <string>图书出版社</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="1">
+                          <widget class="QLineEdit" name="press_2"/>
+                         </item>
+                         <item row="3" column="0">
+                          <widget class="QLabel" name="label_45">
+                           <property name="text">
+                            <string>IBSN</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="3" column="1">
+                          <widget class="QLineEdit" name="IBSN"/>
+                         </item>
+                         <item row="4" column="0">
+                          <widget class="QLabel" name="label_47">
+                           <property name="text">
+                            <string>页数</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="4" column="1">
+                          <widget class="QSpinBox" name="pages"/>
+                         </item>
+                         <item row="5" column="0">
+                          <widget class="QLabel" name="label_48">
+                           <property name="text">
+                            <string>价格</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="5" column="1">
+                          <widget class="QDoubleSpinBox" name="doubleSpinBox_2"/>
+                         </item>
+                         <item row="6" column="0">
+                          <widget class="QLabel" name="label_49">
+                           <property name="text">
+                            <string>Tags</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="6" column="1">
+                          <widget class="QLineEdit" name="tags_2"/>
+                         </item>
+                         <item row="7" column="0">
+                          <widget class="QLabel" name="label_26">
+                           <property name="text">
+                            <string>groupID</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="7" column="1">
+                          <widget class="QLineEdit" name="groupID"/>
+                         </item>
+                         <item row="8" column="0">
+                          <widget class="QLabel" name="label_50">
+                           <property name="text">
+                            <string>馆藏位置</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="8" column="1">
+                          <widget class="QLineEdit" name="bookcase_2"/>
+                         </item>
+                         <item row="9" column="1">
+                          <widget class="QCheckBox" name="checkBox">
+                           <property name="text">
+                            <string>Available</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="1" column="0">
+                        <spacer name="horizontalSpacer_19">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>177</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="1" column="4">
+                        <spacer name="horizontalSpacer_20">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>176</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="2" column="1">
+                        <spacer name="horizontalSpacer_21">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>176</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="2" column="2">
+                        <widget class="QPushButton" name="createbook">
+                         <property name="minimumSize">
+                          <size>
+                           <width>181</width>
+                           <height>51</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>181</width>
+                           <height>51</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string>添加图书</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="3">
+                        <spacer name="horizontalSpacer_22">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>177</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="0" column="4">
+                        <spacer name="horizontalSpacer_24">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
                      </widget>
                     </item>
                    </layout>
@@ -917,8 +995,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>198</width>
-                         <height>98</height>
+                         <width>1033</width>
+                         <height>657</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_33">
@@ -1000,128 +1078,209 @@
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <widget class="QPushButton" name="changebook">
-                       <property name="geometry">
-                        <rect>
-                         <x>380</x>
-                         <y>570</y>
-                         <width>181</width>
-                         <height>51</height>
-                        </rect>
-                       </property>
-                       <property name="text">
-                        <string>确认修改</string>
-                       </property>
-                      </widget>
-                      <widget class="QWidget" name="layoutWidget_4">
-                       <property name="geometry">
-                        <rect>
-                         <x>230</x>
-                         <y>20</y>
-                         <width>471</width>
-                         <height>521</height>
-                        </rect>
-                       </property>
-                       <layout class="QGridLayout" name="gridLayout_34">
-                        <item row="0" column="0">
-                         <widget class="QLabel" name="label_42">
-                          <property name="text">
-                           <string>图书名称</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="0" column="1">
-                         <widget class="QLineEdit" name="name_4"/>
-                        </item>
-                        <item row="1" column="0">
-                         <widget class="QLabel" name="label_44">
-                          <property name="text">
-                           <string>图书作者</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="1" column="1">
-                         <widget class="QLineEdit" name="author_3"/>
-                        </item>
-                        <item row="2" column="0">
-                         <widget class="QLabel" name="label_46">
-                          <property name="text">
-                           <string>图书出版社</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="1">
-                         <widget class="QLineEdit" name="press_3"/>
-                        </item>
-                        <item row="3" column="0">
-                         <widget class="QLabel" name="label_51">
-                          <property name="text">
-                           <string>IBSN</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="3" column="1">
-                         <widget class="QLineEdit" name="IBSN_2"/>
-                        </item>
-                        <item row="4" column="0">
-                         <widget class="QLabel" name="label_54">
-                          <property name="text">
-                           <string>页数</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="4" column="1">
-                         <widget class="QSpinBox" name="pages_2"/>
-                        </item>
-                        <item row="5" column="0">
-                         <widget class="QLabel" name="label_63">
-                          <property name="text">
-                           <string>价格</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="5" column="1">
-                         <widget class="QDoubleSpinBox" name="doubleSpinBox_4"/>
-                        </item>
-                        <item row="6" column="0">
-                         <widget class="QLabel" name="label_64">
-                          <property name="text">
-                           <string>Tags</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="6" column="1">
-                         <widget class="QLineEdit" name="tags_3"/>
-                        </item>
-                        <item row="7" column="0">
-                         <widget class="QLabel" name="label_27">
-                          <property name="text">
-                           <string>groupID</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="7" column="1">
-                         <widget class="QLineEdit" name="groupID_2"/>
-                        </item>
-                        <item row="8" column="0">
-                         <widget class="QLabel" name="label_66">
-                          <property name="text">
-                           <string>馆藏位置</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="8" column="1">
-                         <widget class="QLineEdit" name="bookcase_3"/>
-                        </item>
-                        <item row="9" column="1">
-                         <widget class="QCheckBox" name="checkBox_2">
-                          <property name="text">
-                           <string>Available</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
+                      <layout class="QGridLayout" name="gridLayout_44">
+                       <item row="0" column="0">
+                        <spacer name="horizontalSpacer_15">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>177</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="0" column="1" rowspan="2" colspan="3">
+                        <layout class="QGridLayout" name="gridLayout_34">
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="label_42">
+                           <property name="enabled">
+                            <bool>true</bool>
+                           </property>
+                           <property name="text">
+                            <string>图书名称</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QLineEdit" name="name_4"/>
+                         </item>
+                         <item row="1" column="0">
+                          <widget class="QLabel" name="label_44">
+                           <property name="text">
+                            <string>图书作者</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="1" column="1">
+                          <widget class="QLineEdit" name="author_3"/>
+                         </item>
+                         <item row="2" column="0">
+                          <widget class="QLabel" name="label_46">
+                           <property name="text">
+                            <string>图书出版社</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="1">
+                          <widget class="QLineEdit" name="press_3"/>
+                         </item>
+                         <item row="3" column="0">
+                          <widget class="QLabel" name="label_51">
+                           <property name="text">
+                            <string>IBSN</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="3" column="1">
+                          <widget class="QLineEdit" name="IBSN_2"/>
+                         </item>
+                         <item row="4" column="0">
+                          <widget class="QLabel" name="label_54">
+                           <property name="text">
+                            <string>页数</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="4" column="1">
+                          <widget class="QSpinBox" name="pages_2"/>
+                         </item>
+                         <item row="5" column="0">
+                          <widget class="QLabel" name="label_63">
+                           <property name="text">
+                            <string>价格</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="5" column="1">
+                          <widget class="QDoubleSpinBox" name="doubleSpinBox_4"/>
+                         </item>
+                         <item row="6" column="0">
+                          <widget class="QLabel" name="label_64">
+                           <property name="text">
+                            <string>Tags</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="6" column="1">
+                          <widget class="QLineEdit" name="tags_3"/>
+                         </item>
+                         <item row="7" column="0">
+                          <widget class="QLabel" name="label_27">
+                           <property name="text">
+                            <string>groupID</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="7" column="1">
+                          <widget class="QLineEdit" name="groupID_2"/>
+                         </item>
+                         <item row="8" column="0">
+                          <widget class="QLabel" name="label_66">
+                           <property name="text">
+                            <string>馆藏位置</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="8" column="1">
+                          <widget class="QLineEdit" name="bookcase_3"/>
+                         </item>
+                         <item row="9" column="1">
+                          <widget class="QCheckBox" name="checkBox_2">
+                           <property name="text">
+                            <string>Available</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="0" column="4">
+                        <spacer name="horizontalSpacer_16">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>176</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="1" column="0">
+                        <spacer name="horizontalSpacer_25">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="1" column="4">
+                        <spacer name="horizontalSpacer_26">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>176</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="2" column="1">
+                        <spacer name="horizontalSpacer_17">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>176</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item row="2" column="2">
+                        <widget class="QPushButton" name="changebook">
+                         <property name="minimumSize">
+                          <size>
+                           <width>181</width>
+                           <height>51</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>181</width>
+                           <height>51</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string>确认修改</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="3">
+                        <spacer name="horizontalSpacer_18">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>177</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
                      </widget>
                     </item>
                    </layout>
@@ -1149,7 +1308,7 @@
                 <string>读者管理</string>
                </attribute>
                <layout class="QGridLayout" name="gridLayout_5">
-                <item row="4" column="0">
+                <item row="3" column="0">
                  <spacer name="verticalSpacer_2">
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
@@ -1162,7 +1321,14 @@
                   </property>
                  </spacer>
                 </item>
-                <item row="3" column="0">
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="DELETEREADER">
+                  <property name="text">
+                   <string>删除读者</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
                  <widget class="QPushButton" name="MODIFYREADERGROUP">
                   <property name="text">
                    <string>更改读者组</string>
@@ -1176,21 +1342,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
-                 <widget class="QPushButton" name="MODIFYREADER">
-                  <property name="text">
-                   <string>修改读者信息</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QPushButton" name="DELETEREADER">
-                  <property name="text">
-                   <string>删除读者</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1" rowspan="5">
+                <item row="0" column="1" rowspan="4">
                  <widget class="QStackedWidget" name="readerStackedWidget">
                   <property name="currentIndex">
                    <number>1</number>
@@ -1218,15 +1370,179 @@
                        <enum>QFrame::Raised</enum>
                       </property>
                       <layout class="QGridLayout" name="gridLayout_46">
-                       <item row="0" column="2">
-                        <spacer name="verticalSpacer_17">
+                       <item row="0" column="1" rowspan="3" colspan="3">
+                        <layout class="QGridLayout" name="gridLayout_41">
+                         <property name="spacing">
+                          <number>7</number>
+                         </property>
+                         <item row="0" column="0">
+                          <widget class="QLabel" name="label_29">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>groupID</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="4" column="0">
+                          <widget class="QLabel" name="label_32">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Tel</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="1" column="0">
+                          <widget class="QLabel" name="label_30">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>用户名</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="7" column="0">
+                          <widget class="QLabel" name="label_35">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>确认密码</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="3" column="0">
+                          <widget class="QLabel" name="label_31">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>性别</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="4" column="1">
+                          <widget class="QLineEdit" name="tel_2">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="5" column="1">
+                          <widget class="QLineEdit" name="email_2">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="5" column="0">
+                          <widget class="QLabel" name="label_33">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>E-mail</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="6" column="1">
+                          <widget class="QLineEdit" name="pwd">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="echoMode">
+                            <enum>QLineEdit::Password</enum>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="7" column="1">
+                          <widget class="QLineEdit" name="pwd2">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="echoMode">
+                            <enum>QLineEdit::Password</enum>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="6" column="0">
+                          <widget class="QLabel" name="label_34">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>密码</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="0">
+                          <widget class="QLabel" name="label_37">
+                           <property name="text">
+                            <string>昵称</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="3" column="1">
+                          <widget class="QLineEdit" name="sex_2">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QComboBox" name="groupid"/>
+                         </item>
+                         <item row="1" column="1">
+                          <widget class="QLineEdit" name="username">
+                           <property name="font">
+                            <font>
+                             <pointsize>13</pointsize>
+                            </font>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="2" column="1">
+                          <widget class="QLineEdit" name="name"/>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="0" column="4">
+                        <spacer name="horizontalSpacer_9">
                          <property name="orientation">
-                          <enum>Qt::Vertical</enum>
+                          <enum>Qt::Horizontal</enum>
                          </property>
                          <property name="sizeHint" stdset="0">
                           <size>
-                           <width>20</width>
-                           <height>62</height>
+                           <width>218</width>
+                           <height>20</height>
                           </size>
                          </property>
                         </spacer>
@@ -1244,185 +1560,28 @@
                          </property>
                         </spacer>
                        </item>
-                       <item row="1" column="1" colspan="3">
-                        <layout class="QGridLayout" name="gridLayout_41">
-                         <item row="0" column="0">
-                          <widget class="QLabel" name="label_29">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                           <property name="text">
-                            <string>真实姓名</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="0" column="1">
-                          <widget class="QLineEdit" name="realname">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="0">
-                          <widget class="QLabel" name="label_30">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                           <property name="text">
-                            <string>学号</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="1">
-                          <widget class="QLineEdit" name="nIDnumber_3">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="2" column="1">
-                          <widget class="QLineEdit" name="username">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="3" column="0">
-                          <widget class="QLabel" name="label_32">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                           <property name="text">
-                            <string>Tel</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="3" column="1">
-                          <widget class="QLineEdit" name="tel_2">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="2" column="0">
-                          <widget class="QLabel" name="label_31">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                           <property name="text">
-                            <string>用户名</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="4" column="0">
-                          <widget class="QLabel" name="label_33">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                           <property name="text">
-                            <string>E-mail</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="4" column="1">
-                          <widget class="QLineEdit" name="email_2">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="6" column="0">
-                          <widget class="QLabel" name="label_35">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                           <property name="text">
-                            <string>确认密码</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="5" column="0">
-                          <widget class="QLabel" name="label_34">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                           <property name="text">
-                            <string>密码</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="5" column="1">
-                          <widget class="QLineEdit" name="pwd">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                           <property name="echoMode">
-                            <enum>QLineEdit::Password</enum>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="6" column="1">
-                          <widget class="QLineEdit" name="pwd2">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                           <property name="echoMode">
-                            <enum>QLineEdit::Password</enum>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                       <item row="1" column="4">
-                        <spacer name="horizontalSpacer_9">
+                       <item row="2" column="0">
+                        <spacer name="horizontalSpacer_27">
                          <property name="orientation">
                           <enum>Qt::Horizontal</enum>
                          </property>
                          <property name="sizeHint" stdset="0">
                           <size>
-                           <width>218</width>
+                           <width>195</width>
                            <height>20</height>
                           </size>
                          </property>
                         </spacer>
                        </item>
-                       <item row="2" column="2">
-                        <spacer name="verticalSpacer_21">
+                       <item row="2" column="4">
+                        <spacer name="horizontalSpacer_28">
                          <property name="orientation">
-                          <enum>Qt::Vertical</enum>
+                          <enum>Qt::Horizontal</enum>
                          </property>
                          <property name="sizeHint" stdset="0">
                           <size>
-                           <width>20</width>
-                           <height>61</height>
+                           <width>198</width>
+                           <height>20</height>
                           </size>
                          </property>
                         </spacer>
@@ -1442,6 +1601,18 @@
                        </item>
                        <item row="3" column="2">
                         <widget class="QPushButton" name="ngetnewr">
+                         <property name="minimumSize">
+                          <size>
+                           <width>181</width>
+                           <height>51</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>181</width>
+                           <height>51</height>
+                          </size>
+                         </property>
                          <property name="font">
                           <font>
                            <pointsize>13</pointsize>
@@ -1465,45 +1636,6 @@
                          </property>
                         </spacer>
                        </item>
-                       <item row="4" column="2">
-                        <spacer name="verticalSpacer_18">
-                         <property name="orientation">
-                          <enum>Qt::Vertical</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>20</width>
-                           <height>62</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item row="5" column="2">
-                        <spacer name="verticalSpacer_19">
-                         <property name="orientation">
-                          <enum>Qt::Vertical</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>20</width>
-                           <height>61</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item row="6" column="2">
-                        <spacer name="verticalSpacer_20">
-                         <property name="orientation">
-                          <enum>Qt::Vertical</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>20</width>
-                           <height>62</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
                       </layout>
                      </widget>
                     </item>
@@ -1522,17 +1654,8 @@
                       <layout class="QGridLayout" name="gridLayout_11">
                        <item row="0" column="0">
                         <layout class="QGridLayout" name="gridLayout_2">
-                         <item row="1" column="0">
-                          <widget class="QLabel" name="label_21">
-                           <property name="font">
-                            <font>
-                             <pointsize>13</pointsize>
-                            </font>
-                           </property>
-                           <property name="text">
-                            <string>学号</string>
-                           </property>
-                          </widget>
+                         <item row="0" column="1">
+                          <widget class="QLineEdit" name="lineEdit_8"/>
                          </item>
                          <item row="0" column="0">
                           <widget class="QLabel" name="label_20">
@@ -1546,19 +1669,13 @@
                            </property>
                           </widget>
                          </item>
-                         <item row="0" column="1">
-                          <widget class="QLineEdit" name="lineEdit_8"/>
-                         </item>
-                         <item row="1" column="1">
-                          <widget class="QLineEdit" name="lineEdit_9"/>
-                         </item>
                         </layout>
                        </item>
                       </layout>
                      </widget>
                     </item>
                     <item row="0" column="1">
-                     <widget class="QPushButton" name="pushButton">
+                     <widget class="QPushButton" name="search_3">
                       <property name="text">
                        <string>查询</string>
                       </property>
@@ -1587,8 +1704,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>949</width>
-                         <height>549</height>
+                         <width>1033</width>
+                         <height>658</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_48">
@@ -1599,7 +1716,7 @@
                          <number>0</number>
                         </property>
                         <item row="0" column="0">
-                         <widget class="QTableWidget" name="tableWidget"/>
+                         <widget class="QTableWidget" name="searchResult_6"/>
                         </item>
                         <item row="0" column="1">
                          <widget class="QPushButton" name="pushButton_2">
@@ -1826,7 +1943,7 @@
                       <widget class="QLineEdit" name="email"/>
                      </item>
                      <item row="3" column="1">
-                      <widget class="QLineEdit" name="name"/>
+                      <widget class="QLineEdit" name="name_0"/>
                      </item>
                      <item row="3" column="0">
                       <widget class="QLabel" name="label_23">
@@ -2048,8 +2165,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>1107</width>
-                     <height>665</height>
+                     <width>1129</width>
+                     <height>712</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_18">
@@ -2224,7 +2341,7 @@
      <x>0</x>
      <y>0</y>
      <width>1161</width>
-     <height>26</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>

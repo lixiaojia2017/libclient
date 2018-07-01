@@ -11,6 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = BOOK-M
 TEMPLATE = app
 
+include(pdfviewer/qpdflib/qpdflib.pri)
+
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -22,6 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+RC_FILE = image/icon.rc
 
 SOURCES += \
     main.cpp \
@@ -47,6 +50,9 @@ SOURCES += \
     backend/handle/constructer/loadconstructer.cpp \
     backend/handle/constructer/appointconstructer.cpp \
     backend/handle/constructer/checkconstructer.cpp
+    waitingwindow.cpp \
+    pdfviewer/pdfreader.cpp \
+    fileHandler/fileloader.cpp
 
 HEADERS += \
     login.h \
@@ -81,15 +87,20 @@ HEADERS += \
     backend/handle/constructer/loadconstructer.h \
     backend/handle/constructer/appointconstructer.h \
     backend/handle/constructer/checkconstructer.h
+    waitingwindow.h \
+    pdfviewer/pdfreader.h \
+    fileHandler/fileloader.h
 
 FORMS += \
     find_password.ui \
     login.ui \
     new_user.ui \
-    reader.ui
+    reader.ui \
+    waitingwindow.ui
 
 RESOURCES += \
     image/image.qrc \
-    image/qss.qrc
+    image/qss.qrc \
+    pdfviewer/pdfviewer.qrc
 
 CONFIG += c++11

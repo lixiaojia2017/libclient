@@ -9,6 +9,10 @@
 #include "backend/socketthread.h"
 #include "backend/responsehdl.h"
 #include <QMessageBox>
+
+#define RESTORE   ui->sentcode->setEnabled(true);\
+                  wait.close();
+
 Find_password::Find_password(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Find_password),
@@ -31,29 +35,36 @@ void Find_password::setServer(QString addr, int p)
 void Find_password::on_sentcode_clicked()
 {
     UserRqt rqt("unknown");
+    ui->sentcode->setEnabled(false);
+    wait.show();
     rqt.construct("forget",ui->frame->children()[1]);
     if(serverport==-1 || serverAddr.isEmpty())
       {
+        RESTORE
         QMessageBox::about(this,"Error","Server address or port not set");
         return;
       }
-    SocketThread thr(serverAddr,serverport,rqt.getRequest());
-    connect(&thr,&SocketThread::connectFailed,[&](){
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.getRequest());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        RESTORE
         QMessageBox::about(this,"Failed","connection timeout");
     });
-    connect(&thr,&SocketThread::badResponse,[&](){
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        RESTORE
         QMessageBox::about(this,"Failed","server error");
     });
-    connect(&thr,&SocketThread::onSuccess,[&](QJsonObject* rsp)
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
         ResponseHdl hdl(rsp);
-        connect(&hdl,&ResponseHdl::onSuccess,[&](){
+        connect(&hdl,&ResponseHdl::onSuccess,this,[&](){
+            RESTORE
             QMessageBox::about(this,"Success","reset password has been sent to email");
         });
-        connect(&hdl,&ResponseHdl::onFailed,[&](QString& info){
+        connect(&hdl,&ResponseHdl::onFailed,this,[&](QString& info){
+            RESTORE
             QMessageBox::about(this,"Failed",info);
         });
         hdl.deal();
     });
-    thr.run();
+    thr->start();
 }

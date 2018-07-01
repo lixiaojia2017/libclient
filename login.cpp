@@ -1,4 +1,4 @@
-#include "login.h"
+﻿#include "login.h"
 #include "ui_login.h"
 #include "new_user.h"
 #include<QKeyEvent>
@@ -13,6 +13,13 @@
 #include "backend/responsehdl.h"
 #include "backend/loginhdl.h"
 #include <QMessageBox>
+
+#if _MSC_VER >= 1600
+
+#pragma execution_character_set("utf-8")
+
+#endif
+
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Login)
@@ -72,6 +79,7 @@ void Login::handleEvents() // 信号槽事件处理
             QMessageBox::about(this,"Error","Server address cannot be empty");
             ui->logIn->setEnabled(true);
             ui->logIn->setText("登录");
+            ui->password->setText("");
             return;
           }
         QStringList serverlist = server.split(':');
@@ -80,21 +88,44 @@ void Login::handleEvents() // 信号槽事件处理
             QMessageBox::about(this,"Error","Please specify a port for the server");
             ui->logIn->setEnabled(true);
             ui->logIn->setText("登录");
+            ui->password->setText("");
+            return;
+          }
+        // check username and password not empty
+        if(ui->username->text().isEmpty())
+          {
+            QMessageBox::about(this,"Error","Username cannot be empty");
+            ui->logIn->setEnabled(true);
+            ui->logIn->setText("登录");
+            ui->password->setText("");
+            return;
+          }
+        if(ui->password->text().isEmpty())
+          {
+            QMessageBox::about(this,"Error","Password cannot be empty");
+            ui->logIn->setEnabled(true);
+            ui->logIn->setText("登录");
+            ui->password->setText("");
             return;
           }
         SocketThread *thr= new SocketThread(serverlist[0],serverlist[1].toUInt(),rqt.getRequest());
         connect(thr,&SocketThread::connectFailed,this,[&](){
+            wait.close();
             QMessageBox::about(this,"Login failed","connection timeout");
             ui->logIn->setEnabled(true);
             ui->logIn->setText("登录");
+            ui->password->setText("");
         });
         connect(thr,&SocketThread::badResponse,this,[&](){
+            wait.close();
             QMessageBox::about(this,"Login failed","server error");
             ui->logIn->setEnabled(true);
             ui->logIn->setText("登录");
+            ui->password->setText("");
         });
         connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
         {
+          wait.close();
           // remember password & server addr
           config.setServerAddr(ui->serveraddr->text());
           if(!ui->remPassword->isChecked())
@@ -123,10 +154,12 @@ void Login::handleEvents() // 信号槽事件处理
                 QMessageBox::about(this,"Login failed",info);
                 ui->logIn->setEnabled(true);
                 ui->logIn->setText("登录");
+                ui->password->setText("");
             });
             hdl.deal();
         });
         thr->start();
+        wait.show();
     });
 
 

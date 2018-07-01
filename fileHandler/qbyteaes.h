@@ -11,7 +11,7 @@ public:
   std::vector<uint8_t> Encrypt(std::vector<uint8_t>& src);
   std::vector<uint8_t> Decrypt(std::vector<uint8_t>& src);
   std::string Encrypt(std::string& src);
-  std::string Decrypt( std::string& src);
+  std::string Decrypt(std::string& src);
   void setKey(std::string &key);
   static std::vector<uint8_t> Encrypt(std::vector<uint8_t>& src, std::vector<uint8_t>& key);
   static std::vector<uint8_t> Decrypt(std::vector<uint8_t>& src, std::vector<uint8_t>& key);
