@@ -41,7 +41,7 @@
          <x>0</x>
          <y>0</y>
          <width>1159</width>
-         <height>826</height>
+         <height>830</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_8">
@@ -138,7 +138,7 @@
                </font>
               </property>
               <property name="currentIndex">
-               <number>6</number>
+               <number>4</number>
               </property>
               <widget class="QWidget" name="tab_searchBook">
                <attribute name="title">
@@ -383,8 +383,8 @@
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>1107</width>
-                        <height>457</height>
+                        <width>1117</width>
+                        <height>471</height>
                        </rect>
                       </property>
                       <layout class="QGridLayout" name="gridLayout_19">
@@ -515,8 +515,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>1129</width>
-                     <height>687</height>
+                     <width>1135</width>
+                     <height>696</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_39">
@@ -656,8 +656,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>1007</width>
-                         <height>665</height>
+                         <width>1031</width>
+                         <height>678</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_29">
@@ -763,8 +763,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>209</width>
-                         <height>656</height>
+                         <width>174</width>
+                         <height>659</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_30">
@@ -1141,8 +1141,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>198</width>
-                         <height>98</height>
+                         <width>165</width>
+                         <height>79</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_33">
@@ -1889,8 +1889,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>198</width>
-                         <height>98</height>
+                         <width>165</width>
+                         <height>79</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_48">
@@ -1932,7 +1932,7 @@
                          <x>50</x>
                          <y>30</y>
                          <width>384</width>
-                         <height>31</height>
+                         <height>35</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_50">
@@ -2344,8 +2344,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>1107</width>
-                     <height>665</height>
+                     <width>1117</width>
+                     <height>678</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_18">
@@ -2520,7 +2520,7 @@
      <x>0</x>
      <y>0</y>
      <width>1161</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

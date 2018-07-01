@@ -37,9 +37,16 @@ Reader::~Reader()
     delete ui;
 }
 
-void Reader::showReaderwin(QString& t)
+void Reader::setServer(QString addr, int p)
+{
+  serverAddr = addr;
+  serverport = p;
+}
+
+void Reader::showReaderwin(QString& t,QString& addr,int p)
 {
     token = t;
+    setServer(addr,p);
     ui->tabWidget->removeTab(5);
     ui->tabWidget->removeTab(4);
     ui->tabWidget->removeTab(3);
@@ -49,9 +56,10 @@ void Reader::showReaderwin(QString& t)
     ui->changebookgroup->hide();
     this->show();
 }
-void Reader::showAdministratorwin(QString& t)
+void Reader::showAdministratorwin(QString& t,QString& addr,int p)
 {
     token = t;
+    setServer(addr,p);
     ui->appointborrow->hide();
     ui->appointreturn->hide();
     this->show();
@@ -340,7 +348,7 @@ void Reader::handleEvents()
         Result(ui->searchResult_7);
         for(int i=0,k=0;i<10;i++)
         {
-            if(ui->searchResult->item(i,0)!=false && ui->searchResult->item(i,0)->checkState()==Qt::Checked)
+            if(ui->searchResult->item(i,0)!=nullptr && ui->searchResult->item(i,0)->checkState()==Qt::Checked)
             {
                 QTableWidgetItem *checkBox = new QTableWidgetItem();
                 checkBox->setCheckState(Qt::Unchecked);
@@ -384,7 +392,20 @@ void Reader::on_tabWidget_tabBarClicked(int index)
 
 void Reader::on_logout_clicked()
 {
-
+    ui->logout->setEnabled(false);
+    userlogout rqt(token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        this->close();
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        this->close();
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&]()
+    {
+        this->close();
+    });
+    thr->start();
 }
 
 void Reader::on_searchResult_cellDoubleClicked(int row, int column)

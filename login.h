@@ -24,9 +24,9 @@ public:
     void initStyle();
 
 signals:
-    void showReaderwin(QString&);
+    void showReaderwin(QString&,QString&,int);
 
-    void showAdministratorwin(QString&);
+    void showAdministratorwin(QString&,QString&,int);
 
 private:
     waitingWindow wait;
