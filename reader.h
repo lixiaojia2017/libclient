@@ -73,10 +73,14 @@ private slots:
 
     void reset_page();
 
+    void on_ngetnewr_clicked();
+
+    void on_changepwd_clicked();
+
 protected:
     void switchPage(int);
     void Result(QTableWidget* tab);
-    void ADDITEM(QTableWidget* tab,int,infoanalyser& hdl);
+    void ADDITEM(QTableWidget* tab,infoanalyser& hdl);
 
 private:
     waitingWindow wait;
