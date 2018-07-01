@@ -27,9 +27,7 @@ public:
 
 class infoanalyser: public analyser
 {
-
 public:
-
     QVector<infoObject*> info;
     infoanalyser(QJsonObject& _json);
     ~infoanalyser();
