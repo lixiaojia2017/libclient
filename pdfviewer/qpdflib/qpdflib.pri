@@ -1,5 +1,5 @@
 INCLUDEPATH += $$PWD
-CONFIG += dll
+#CONFIG += dll
 CONFIG += c++11
 
 QT += widgets\

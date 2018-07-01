@@ -1,4 +1,4 @@
-#include "reader.h"
+﻿#include "reader.h"
 #include "ui_reader.h"
 #include <QIcon>
 #include <QFont>

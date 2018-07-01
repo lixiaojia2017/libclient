@@ -1,4 +1,4 @@
-#include "pdfviewer/pdfreader.h"
+﻿#include "pdfviewer/pdfreader.h"
 #include "login.h"
 #include "reader.h"
 #include "new_user.h"

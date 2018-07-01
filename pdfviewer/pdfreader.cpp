@@ -1,4 +1,4 @@
-/*
+﻿/*
                           qpdf
 
     Copyright (C) 2015 Arthur Benilov,

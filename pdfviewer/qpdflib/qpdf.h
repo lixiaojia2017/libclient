@@ -6,7 +6,8 @@
     #ifdef QPDFLIB_BUILD
     #   define QPDF_EXPORT  __declspec(dllexport)
     #else
-    #   define QPDF_EXPORT  __declspec(dllimport)
+    # define QPDF_EXPORT
+    //#   define QPDF_EXPORT  __declspec(dllimport)
     #endif
 
 #else
