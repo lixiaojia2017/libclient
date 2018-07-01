@@ -161,14 +161,6 @@ void Login::handleEvents() // 信号槽事件处理
         thr->start();
         wait.show();
     });
-
-
-    connect(ui->newReader,&QPushButton::clicked,
-            [=]()
-    {
-        this->new_user.show();
-    });
-
     connect(ui->findPassword,&QPushButton::clicked,
             [=]()
     {

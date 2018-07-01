@@ -29,7 +29,6 @@ RC_FILE = image/icon.rc
 SOURCES += \
     main.cpp \
     login.cpp \
-    new_user.cpp \
     reader.cpp \
     backend/abstractrqt.cpp \
     backend/loginhdl.cpp \
@@ -57,7 +56,6 @@ SOURCES += \
 
 HEADERS += \
     login.h \
-    new_user.h \
     reader.h \
     backend/abstractrqt.h \
     backend/loginhdl.h \
@@ -98,7 +96,6 @@ HEADERS += \
 FORMS += \
     find_password.ui \
     login.ui \
-    new_user.ui \
     reader.ui \
     waitingwindow.ui
 
