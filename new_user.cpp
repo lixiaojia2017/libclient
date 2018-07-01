@@ -12,3 +12,8 @@ New_user::~New_user()
 {
     delete ui;
 }
+
+void New_user::on_ngetnewr_clicked()
+{
+
+}

@@ -297,3 +297,8 @@ void Reader::on_tabWidget_tabBarClicked(int index)
         Result(ui->searchResult_4,Non_initialization);//归还申请-初始化时的内容即为其真实内容,故将其规定为非初始化内容
     }
 }
+
+void Reader::on_logout_clicked()
+{
+
+}

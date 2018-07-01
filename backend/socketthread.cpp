@@ -2,7 +2,7 @@
 
 
 
-SocketThread::SocketThread(QString ip,quint16 port,QJsonDocument *obj,QObject *parent):ip(ip),port(port),QThread(parent),rqt(obj)
+SocketThread::SocketThread(QString ip,quint16 port,const QJsonObject &obj,QObject *parent):ip(ip),port(port),QThread(parent),rqt(QJsonDocument(obj))
 {
 }
 SocketThread::~SocketThread()
@@ -14,7 +14,7 @@ void SocketThread::run()
     tcpSocket = new QTcpSocket();
     tcpSocket->connectToHost(ip,port);
     if(tcpSocket->waitForConnected(10000)){
-        QByteArray rqtData=rqt->toBinaryData();
+        QByteArray rqtData=rqt.toBinaryData();
         QByteArray sendData;
         QDataStream out(&sendData,QIODevice::WriteOnly);
         out << (qint8)'Q';
@@ -22,7 +22,6 @@ void SocketThread::run()
         out << rqtData;
         tcpSocket->write(sendData);
         tcpSocket->flush();
-        delete rqt;
     }
     else{
         emit(connectFailed());

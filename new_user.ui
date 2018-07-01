@@ -104,12 +104,12 @@
             <widget class="QComboBox" name="comboBox">
              <item>
               <property name="text">
-               <string>staffs</string>
+               <string>readers</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>readers</string>
+               <string>staffs</string>
               </property>
              </item>
             </widget>
@@ -282,7 +282,7 @@
      <x>0</x>
      <y>0</y>
      <width>475</width>
-     <height>26</height>
+     <height>7</height>
     </rect>
    </property>
   </widget>

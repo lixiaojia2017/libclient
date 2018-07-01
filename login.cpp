@@ -70,8 +70,7 @@ void Login::handleEvents() // 信号槽事件处理
         }
         ui->logIn->setEnabled(false);
         ui->logIn->setText("登录中...");
-        UserRqt rqt("unknown");
-        rqt.construct("login",ui->frame);
+        userlogin rqt(ui->username->text(),ui->password->text(),ui->group->currentText());
         // server addr detection
         QString server = ui->serveraddr->text();
         if(server.isEmpty())
@@ -108,7 +107,7 @@ void Login::handleEvents() // 信号槽事件处理
             ui->password->setText("");
             return;
           }
-        SocketThread *thr= new SocketThread(serverlist[0],serverlist[1].toUInt(),rqt.getRequest());
+        SocketThread *thr= new SocketThread(serverlist[0],serverlist[1].toUInt(),rqt.GetReturn());
         connect(thr,&SocketThread::connectFailed,this,[&](){
             wait.close();
             QMessageBox::about(this,"Login failed","connection timeout");

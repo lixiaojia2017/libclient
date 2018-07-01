@@ -47,6 +47,8 @@ private slots:
 
     void on_tabWidget_tabBarClicked(int index);
 
+    void on_logout_clicked();
+
 protected:
     void switchPage(int);
     void Result(QTableWidget* tab,int i);
