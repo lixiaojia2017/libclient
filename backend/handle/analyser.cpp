@@ -43,3 +43,12 @@ infoanalyser::infoanalyser(QJsonObject& _json): analyser(_json)
         info.push_back(new infoObject(iter.toObject()));
     }
 }
+
+infoanalyser::~infoanalyser()
+{
+    for(auto iter : info)
+    {
+        if(iter != nullptr)
+            delete iter;
+    }
+}

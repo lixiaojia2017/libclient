@@ -1,7 +1,7 @@
 #ifndef LOGIN_H
 #define LOGIN_H
-#include"new_user.h"
-#include"find_password.h"
+#include "new_user.h"
+#include "find_password.h"
 #include "waitingwindow.h"
 #include "backend/handle/constructer/userconstructer.h"
 #include "fileHandler/confighandler.h"
