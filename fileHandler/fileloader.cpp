@@ -1,4 +1,4 @@
-#include "fileloader.h"
+﻿#include "fileloader.h"
 #include "fileHandler/qbyteaes.h"
 #include "3rd-party/aes256.h"
 #include <QFile>
@@ -63,7 +63,7 @@ void fileLoader::run()
       for(int i=0;i<iPartCounter;i++){
                   //decrypting block
           aes256_decrypt_ecb(&ctx,(unsigned char*)pcInput[i]);
-          emit process((i+1)*100/iPartCounter);
+          emit process((i+1)*80/iPartCounter);
                   //append block to string
                   for (int j = 0; j < BLOCK; j++) {
                           sResult += pcInput[i][j];
@@ -73,6 +73,7 @@ void fileLoader::run()
           //removing char's arrays
       for(int i=0;i<iPartCounter;i++){
           delete[] pcInput[i];
+          emit process(80+(i+1)*20/iPartCounter);
       }
       delete[] pcInput;
 

@@ -1,4 +1,4 @@
-#include "login.h"
+﻿#include "login.h"
 #include "ui_login.h"
 #include "new_user.h"
 #include<QKeyEvent>
@@ -13,6 +13,13 @@
 #include "backend/responsehdl.h"
 #include "backend/loginhdl.h"
 #include <QMessageBox>
+
+#if _MSC_VER >= 1600
+
+#pragma execution_character_set("utf-8")
+
+#endif
+
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Login)

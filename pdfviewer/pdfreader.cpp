@@ -23,6 +23,12 @@
 #include "QPdfWidget"
 #include "pdfreader.h"
 
+#if _MSC_VER >= 1600
+
+#pragma execution_character_set("utf-8")
+
+#endif
+
 PDFReader::PDFReader(QWidget *pParent, Qt::WindowFlags flags)
     : QMainWindow(pParent, flags)
 {
