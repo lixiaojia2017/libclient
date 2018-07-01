@@ -7,6 +7,9 @@
 #include<QLabel>
 #include<QFrame>
 #include<QDialog>
+#include<QMessageBox>
+#define RESTORE(b)   ui->b->setEnabled(true);\
+                  wait.close();
 
 int Pages = 1;
 
@@ -30,6 +33,8 @@ Reader::Reader(QWidget *parent) :
     ui->search->setIcon(searchImage);
     ui->search->setIconSize(QSize(85,46));
     ui->search->setFlat(true);
+    connect(ui->search,&QPushButton::clicked,this,&Reader::reset_page);
+    connect(ui->pushButton_13,&QPushButton::clicked,this,&Reader::reset_page);
 }
 
 Reader::~Reader()
@@ -415,3 +420,102 @@ void Reader::on_searchResult_cellDoubleClicked(int row, int column)
 
 
 
+
+void Reader::on_search_clicked()
+{
+    ui->search->setEnabled(false);
+    wait.show();
+    QList<QVariant> ord={"ID"};
+    querybook rqt("intelligentsearch",ord,10,Pages,ui->lineEdit->text(),token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        RESTORE(search)
+        QMessageBox::about(this,"Failed","connection timeout");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        RESTORE(search)
+        QMessageBox::about(this,"Failed","server error");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result){
+            RESTORE(search)
+        }
+        else
+        {
+            RESTORE(search)
+            QMessageBox::about(this,"Failed",hdl.detail);
+        }
+    });
+    thr->start();
+}
+
+void Reader::on_last_clicked()
+{
+    if(Pages>=1){
+        Pages--;
+    }
+    if(ui->searchStackedWidget->currentWidget()==0)
+        on_search_clicked();
+    else
+        on_pushButton_13_clicked();
+}
+
+void Reader::on_next_clicked()
+{
+    Pages++;
+    if(ui->searchStackedWidget->currentWidget()==0)
+        on_search_clicked();
+    else
+        on_pushButton_13_clicked();
+}
+#define TEXT(a)   ui->a->text()
+#define IFNE(a) if(ui->a->text()!="")
+void Reader::on_pushButton_13_clicked()
+{
+    ui->pushButton->setEnabled(false);
+    wait.show();
+    QString rule=ui->checkif->checkState()?"completesearch":"fuzzysearch";
+    QMap<QString,QVariant> info;
+    IFNE(name)info["name"]=TEXT(name);
+    IFNE(author)info["author"]=TEXT(author);
+    IFNE(press)info["press"]=TEXT(press);
+    IFNE(ISBN)info["ISBN"]=TEXT(ISBN);
+    IFNE(ID)info["ID"]=TEXT(ID);
+    if(ui->tags->text()!=""){
+        QString TAG=TEXT(tags);
+        QStringList tgs=TAG.split(',');
+        info["tags"]=tgs;
+    }
+    info["available"]=ui->available->checkState();
+    QList<QVariant> ord={"ID"};
+    querybook rqt(rule,ord,10,Pages,info,token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        RESTORE(pushButton_13)
+        QMessageBox::about(this,"Failed","connection timeout");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        RESTORE(pushButton_13)
+        QMessageBox::about(this,"Failed","server error");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        //ResponseHdl hdl(rsp);
+        infoanalyser hdl(*rsp);
+        if(hdl.result){
+            RESTORE(pushButton_13)
+        }
+        else
+        {
+            RESTORE(pushButton_13)
+            QMessageBox::about(this,"Failed",hdl.detail);
+        }
+    });
+    thr->start();
+}
+
+void Reader::reset_page(){
+    Pages=1;
+}

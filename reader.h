@@ -5,7 +5,10 @@
 #include <QString>
 #include<QTableWidget>
 #include "backend/handle/constructer/userconstructer.h"
+#include "backend/handle/constructer/queryconstructer.h"
 #include "backend/socketthread.h"
+#include "waitingwindow.h"
+#include "backend/handle/analyser.h"
 namespace Ui {
 class Reader;
 }
@@ -55,12 +58,23 @@ private slots:
     void on_searchResult_cellDoubleClicked(int row, int column);
 
 
+    void on_search_clicked();
+
+    void on_last_clicked();
+
+    void on_next_clicked();
+
+    void on_pushButton_13_clicked();
+
+    void reset_page();
+
 protected:
     void switchPage(int);
     void Result(QTableWidget* tab);
     void ADDITEM(QTableWidget* tab,int);
 
 private:
+    waitingWindow wait;
     Ui::Reader *ui;
     QString token;
     QString serverAddr;

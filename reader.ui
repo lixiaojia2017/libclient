@@ -78,7 +78,7 @@
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap resource="image/image.qrc">:/image/background.png</pixmap>
+              <pixmap>:/image/background.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>false</bool>
@@ -138,7 +138,7 @@
                </font>
               </property>
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="tab_searchBook">
                <attribute name="title">
@@ -175,7 +175,7 @@
                       </size>
                      </property>
                      <property name="currentIndex">
-                      <number>1</number>
+                      <number>0</number>
                      </property>
                      <widget class="QWidget" name="page_3">
                       <layout class="QGridLayout" name="gridLayout_37">
@@ -307,7 +307,11 @@
                                </widget>
                               </item>
                               <item row="1" column="5" colspan="2">
-                               <widget class="QLineEdit" name="tags"/>
+                               <widget class="QLineEdit" name="tags">
+                                <property name="placeholderText">
+                                 <string>多个tag用&quot;,&quot;划分</string>
+                                </property>
+                               </widget>
                               </item>
                               <item row="2" column="0">
                                <widget class="QLabel" name="label_19">
@@ -1882,8 +1886,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>969</width>
-                         <height>583</height>
+                         <width>1005</width>
+                         <height>605</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_48">
@@ -2043,7 +2047,7 @@
                         <string>添加读者组</string>
                        </property>
                       </widget>
-                      <widget class="QWidget" name="">
+                      <widget class="QWidget" name="layoutWidget">
                        <property name="geometry">
                         <rect>
                          <x>120</x>
@@ -2131,7 +2135,7 @@
                         <string>添加图书组</string>
                        </property>
                       </widget>
-                      <widget class="QWidget" name="">
+                      <widget class="QWidget" name="layoutWidget">
                        <property name="geometry">
                         <rect>
                          <x>110</x>
@@ -2228,8 +2232,8 @@
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>969</width>
-                         <height>583</height>
+                         <width>1005</width>
+                         <height>601</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_61">
@@ -2967,8 +2971,6 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="image/image.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
