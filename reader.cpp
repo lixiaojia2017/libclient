@@ -152,7 +152,7 @@ void Reader::Result(QTableWidget* tab)
     }
     else if(tab==ui->searchResult_6)//删除用户
     {
-        tab->setColumnCount(18);//设置列数
+        tab->setColumnCount(8);//设置列数
         header<<tr("选择读者")<<tr("用户名")<<tr("userID")<<tr("groupID")
              <<tr("昵称")<<tr("性别")<<tr("手机")<<tr("邮箱");
     }
@@ -175,11 +175,18 @@ void Reader::Result(QTableWidget* tab)
         tab->setColumnCount(4);//设置列数
         header<<tr("选择组")<<tr("组名")<<tr("可借书数量")<<tr("可借书时间")<<tr("可续借次数");
     }
+    else if(tab==ui->searchResult_9)
+    {//内容自动获取，无需添加
+        tab->setColumnCount(7);
+        header<<tr("用户名")<<tr("userID")<<tr("groupID")
+             <<tr("昵称")<<tr("性别")<<tr("手机")<<tr("邮箱");
+    }
     tab->setHorizontalHeaderLabels(header);  //标签
 }
 
-void Reader::ADDITEM(QTableWidget *tab, int i,infoanalyser& hdl)
+void Reader::ADDITEM(QTableWidget *tab,infoanalyser& hdl)
 {
+    int i=0;
     if(tab==ui->searchResult)
     {
         for(auto iter : hdl.info)
@@ -220,10 +227,6 @@ void Reader::ADDITEM(QTableWidget *tab, int i,infoanalyser& hdl)
             checkBox2->setText("Available");
             tab->setItem(i, 13, checkBox2);
             i++;
-        }
-        if(tab==ui->searchResult)
-        {
-
         }
     }
 }
@@ -468,6 +471,26 @@ void Reader::handleEvents()
             }
         }
     });
+
+    //修改读者组
+    connect(ui->changeReadergroup,&QPushButton::clicked,
+            [=]()
+    {
+        ui->readerStackedWidget->setCurrentIndex(2);
+        Result(ui->searchResult_9);
+        for(int i=0,k=0;i<10;i++)
+        {
+            if(ui->searchResult_6->item(i,0)!=nullptr && ui->searchResult_6->item(i,0)->checkState()==Qt::Checked)
+            {
+
+                for(int j=1;j<8;j++)
+                {
+                     ui->searchResult_9->setItem(k,j-1,new QTableWidgetItem(ui->searchResult_6->item(i,j)->text()));//添加内容
+                }
+                k++;
+            }
+        }
+    });
 }
 
 
@@ -587,11 +610,10 @@ void Reader::on_searchResult_cellDoubleClicked(int row, int column)
     }
 }
 
-
-
-
 void Reader::on_search_clicked()
 {
+    ui->searchResult->clear();
+    Result(ui->searchResult);
     ui->search->setEnabled(false);
     wait.show();
     QList<QVariant> ord={"ID"};
@@ -644,6 +666,8 @@ void Reader::on_next_clicked()
 #define IFNE(a) if(ui->a->text()!="")
 void Reader::on_pushButton_13_clicked()
 {
+    ui->searchResult->clear();
+    Result(ui->searchResult);
     ui->pushButton_13->setEnabled(false);
     wait.show();
     QString rule=ui->checkif->checkState()?"completesearch":"fuzzysearch";
@@ -672,18 +696,6 @@ void Reader::on_pushButton_13_clicked()
     });
     connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
-        //ResponseHdl hdl(rsp);
-        /*
-        infoanalyser hdl(*rsp);
-        if(hdl.result){
-            RESTORE(pushButton_13)
-        }
-        else
-        {
-            RESTORE(pushButton_13)
-            QMessageBox::about(this,"Failed",hdl.detail);
-        }
-        */
         infoanalyser hdl(*rsp);
         if(hdl.result){
             RESTORE(pushButton_13)
