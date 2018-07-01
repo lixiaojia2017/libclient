@@ -40,9 +40,16 @@ Reader::~Reader()
     delete ui;
 }
 
-void Reader::showReaderwin(QString& t)
+void Reader::setServer(QString addr, int p)
+{
+  serverAddr = addr;
+  serverport = p;
+}
+
+void Reader::showReaderwin(QString& t,QString& addr,int p)
 {
     token = t;
+    setServer(addr,p);
     ui->tabWidget->removeTab(5);
     ui->tabWidget->removeTab(4);
     ui->tabWidget->removeTab(3);
@@ -53,10 +60,11 @@ void Reader::showReaderwin(QString& t)
     Iden = READER_IDENTITY;
     this->show();
 }
-void Reader::showAdministratorwin(QString& t)
+void Reader::showAdministratorwin(QString& t,QString& addr,int p)
 {
     token = t;
     ui->tabWidget->removeTab(1);
+    setServer(addr,p);
     ui->appointborrow->hide();
     ui->appointreturn->hide();
     Iden = STAFFS_IDENTITY;
@@ -511,8 +519,20 @@ void Reader::on_tabWidget_tabBarClicked(int index)
 
 void Reader::on_logout_clicked()
 {
-    //向服务器发送退出登录信息
-    this->close();
+    ui->logout->setEnabled(false);
+    userlogout rqt(token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        this->close();
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        this->close();
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&]()
+    {
+        this->close();
+    });
+    thr->start();
 }
 
 void Reader::on_searchResult_cellDoubleClicked(int row, int column)
