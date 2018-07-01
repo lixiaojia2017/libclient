@@ -187,7 +187,7 @@ void Reader::Result(QTableWidget* tab)
 void Reader::ADDITEM(QTableWidget *tab,infoanalyser& hdl)
 {
     int i=0;
-    if(tab==ui->searchResult)
+    if(tab==ui->searchResult||tab==ui->searchResult_2||ui->searchResult_5)
     {
         for(auto iter : hdl.info)
         {
@@ -229,10 +229,92 @@ void Reader::ADDITEM(QTableWidget *tab,infoanalyser& hdl)
             i++;
         }
     }
+    else if(tab==ui->searchResult_3||tab==ui->searchResult_4)
+    {
+        for(auto iter : hdl.info)
+        {
+            QTableWidgetItem *checkBox1 = new QTableWidgetItem();
+            checkBox1->setCheckState(Qt::Unchecked);
+            checkBox1->setText("勾选启用");
+            tab->setItem(i, 0, checkBox1);
+            tab->setItem(i,1,new QTableWidgetItem(iter->take("appointid").toString()));//借阅编号
+            tab->setItem(i,3,new QTableWidgetItem(iter->take("ID").toString()));//添加内容
+            tab->setItem(i,4,new QTableWidgetItem(iter->take("name").toString()));//添加内容
+            tab->setItem(i,5,new QTableWidgetItem(iter->take("groupID").toString()));//添加内容
+            tab->setItem(i,6,new QTableWidgetItem(iter->take("author").toString()));//添加内容
+            tab->setItem(i,7,new QTableWidgetItem(iter->take("press").toString()));//添加内容
+
+            QString tags;
+            for(auto _take_tags : iter->take("tags").toList())
+            {
+                tags += (_take_tags.toString()+",");
+            }
+            tags=tags.left(tags.length()-1);
+
+            tab->setItem(i,8,new QTableWidgetItem(tags));//添加内容
+            tab->setItem(i,9,new QTableWidgetItem(iter->take("ISBN").toString()));//添加内容
+            tab->setItem(i,10,new QTableWidgetItem(iter->take("price").toString()));//添加内容
+            tab->setItem(i,11,new QTableWidgetItem(iter->take("pages").toString()));//添加内容
+            tab->setItem(i,12,new QTableWidgetItem(iter->take("bookcase").toString()));//添加内容
+            tab->setItem(i,13,new QTableWidgetItem(iter->take("inTime").toString()));//添加内容
+
+            QTableWidgetItem *checkBox2 = new QTableWidgetItem();
+            if(iter->take("available")==true)
+            {
+                checkBox2->setCheckState(Qt::Checked);
+            }
+            else{
+                checkBox2->setCheckState(Qt::Unchecked);
+            }
+            checkBox2->setText("Available");
+            tab->setItem(i, 14, checkBox2);
+            i++;
+        }
+    }
+    else if(tab==ui->searchResult_6){
+        for(auto iter : hdl.info)
+        {
+            QTableWidgetItem *checkBox1 = new QTableWidgetItem();
+            checkBox1->setCheckState(Qt::Unchecked);
+            checkBox1->setText("勾选启用");
+            tab->setItem(i, 0, checkBox1);
+            tab->setItem(i,1,new QTableWidgetItem(iter->take("username").toString()));//添加内容
+            tab->setItem(i,2,new QTableWidgetItem(iter->take("userid").toString()));//添加内容
+            tab->setItem(i,3,new QTableWidgetItem(iter->take("name").toString()));//添加内容
+            tab->setItem(i,4,new QTableWidgetItem(iter->take("groupid").toString()));//添加内容
+            tab->setItem(i,5,new QTableWidgetItem(iter->take("sex").toString()));//添加内容
+            tab->setItem(i,6,new QTableWidgetItem(iter->take("tel").toString()));//添加内容
+            tab->setItem(i,7,new QTableWidgetItem(iter->take("email").toString()));//添加内容
+            i++;
+        }
+    }
+    else if(tab==ui->searchResult_8&&Group==BOOK_GROUP_SEARCH ){
+        for(auto iter : hdl.info)//仅仅支持传入一个参数，即info中只有一条信息，下面一个与此相同
+        {
+            QTableWidgetItem *checkBox1 = new QTableWidgetItem();
+            checkBox1->setCheckState(Qt::Unchecked);
+            checkBox1->setText("勾选启用");
+            tab->setItem(i, 0, checkBox1);
+            tab->setItem(i,1,new QTableWidgetItem(iter->take("name").toString()));//添加内容
+            tab->setItem(i,2,new QTableWidgetItem(iter->take("max_time").toString()));//添加内容
+            i++;
+        }
+    }
+    else if(tab==ui->searchResult_8&&Group==READER_GROUP_SEARCH ){
+        for(auto iter : hdl.info)
+        {
+            QTableWidgetItem *checkBox1 = new QTableWidgetItem();
+            checkBox1->setCheckState(Qt::Unchecked);
+            checkBox1->setText("勾选启用");
+            tab->setItem(i, 0, checkBox1);
+            tab->setItem(i,1,new QTableWidgetItem(iter->take("name").toString()));//添加内容
+            tab->setItem(i,2,new QTableWidgetItem(iter->take("max_borrow_num").toString()));//添加内容
+            tab->setItem(i,3,new QTableWidgetItem(iter->take("max_borrow_time").toString()));//添加内容
+            tab->setItem(i,4,new QTableWidgetItem(iter->take("max_renew_time").toString()));//添加内容
+            i++;
+        }
+    }
 }
-
-
-
 
 //事件处理函数重载
 void Reader::handleEvents()
@@ -492,7 +574,6 @@ void Reader::handleEvents()
         }
     });
 }
-
 
 //槽函数
 void Reader::on_tabWidget_tabBarClicked(int index)
