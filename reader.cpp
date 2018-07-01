@@ -713,13 +713,13 @@ void Reader::on_search_clicked()
         infoanalyser hdl(*rsp);
         if(hdl.result){
             RESTORE(search)
+            ADDITEM(ui->searchResult,0,hdl);
         }
         else
         {
             RESTORE(search)
             QMessageBox::about(this,"Failed",hdl.detail);
         }
-        ADDITEM(ui->searchResult,hdl);
     });
     thr->start();
 }
@@ -777,17 +777,16 @@ void Reader::on_pushButton_13_clicked()
     });
     connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
-        //ResponseHdl hdl(rsp);
         infoanalyser hdl(*rsp);
         if(hdl.result){
             RESTORE(pushButton_13)
+            ADDITEM(ui->searchResult,0,hdl);
         }
         else
         {
             RESTORE(pushButton_13)
             QMessageBox::about(this,"Failed",hdl.detail);
         }
-        ADDITEM(ui->searchResult,hdl);
     });
     thr->start();
 }
