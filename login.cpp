@@ -139,13 +139,20 @@ void Login::handleEvents() // 信号槽事件处理
               {
                 config.setPassword(ui->username->text(),ui->password->text());
               }
+              QString && str = this->ui->serveraddr->text();
+              QStringList && list = str.split(':');
+              if(str.isEmpty() || list.size()==1)
+                {
+                  QMessageBox::about(this,"Error","Server address or port not set");
+                  return;
+                }
                 if(getIdentity())
                 {
-                    emit showAdministratorwin(token);
+                    emit showAdministratorwin(token,list[0],list[1].toInt());
                 }
                 else
                 {
-                    emit showReaderwin(token);
+                    emit showReaderwin(token,list[0],list[1].toInt());
                 }
                 this->close();
             });

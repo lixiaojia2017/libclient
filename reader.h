@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QString>
 #include<QTableWidget>
+#include "backend/handle/constructer/userconstructer.h"
+#include "backend/socketthread.h"
 namespace Ui {
 class Reader;
 }
@@ -39,10 +41,10 @@ class Reader : public QMainWindow
 public:
     explicit Reader(QWidget *parent = 0);
     ~Reader();
-
+    void setServer(QString addr, int p);
 public slots:
-	void showReaderwin(QString&);
-    void showAdministratorwin(QString&);
+    void showReaderwin(QString&,QString&,int);
+    void showAdministratorwin(QString&,QString&,int);
 private slots:
 
     void on_tabWidget_tabBarClicked(int index);
@@ -61,6 +63,8 @@ protected:
 private:
     Ui::Reader *ui;
     QString token;
+    QString serverAddr;
+    int serverport;
     void handleEvents();
 };
 

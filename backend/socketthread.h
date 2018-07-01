@@ -28,6 +28,7 @@ class SocketThread : public QThread
         void connectFailed();
         void onSuccess(QJsonObject*);
         void badResponse();
+        void finished();
 };
 
 
