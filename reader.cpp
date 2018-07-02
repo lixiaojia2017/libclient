@@ -651,15 +651,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
                 infoanalyser hdl(*rsp);
                 if(hdl.result)
                 {
-                    requested = true;
-                    for(auto iter: hdl.info)
-                    {
-                        ui->label_18->setText(iter->take("username").toString());
-                        ui->name_4->setText(iter->take("name").toString());
-                        ui->email->setText(iter->take("email").toString());
-                        ui->sex->setCurrentText(iter->take("sex").toString());
-                        ui->tel->setText(iter->take("tel").toString());
-                    }
+                   ADDITEM(ui->searchResult_2,hdl);
                 }
                 else
                 {
