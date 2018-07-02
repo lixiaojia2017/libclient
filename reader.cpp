@@ -667,7 +667,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
                         ui->label_18->setText(iter->take("username").toString());
                         ui->name_4->setText(iter->take("name").toString());
                         ui->email->setText(iter->take("email").toString());
-                        ui->sex->setText(iter->take("sex").toString());
+                        ui->sex->setCurrentText(iter->take("sex").toString());
                         ui->tel->setText(iter->take("tel").toString());
                     }
                 }
