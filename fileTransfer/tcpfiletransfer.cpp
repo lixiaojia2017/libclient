@@ -88,6 +88,7 @@ void tcpFileTransfer::receiveFile(QString dir)
     {
         QDir _path;
         _path.mkpath(dir);
+        _path.mkpath("./cache/pdf");
     }
     while(true)
     {
