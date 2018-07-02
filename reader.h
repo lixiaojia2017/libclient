@@ -1,4 +1,4 @@
-﻿#ifndef READER_H
+#ifndef READER_H
 #define READER_H
 
 #include"pdfviewer/pdfreader.h"
@@ -7,12 +7,6 @@
 #include<QTableWidget>
 #include "backend/handle/constructer/userconstructer.h"
 #include "backend/handle/constructer/queryconstructer.h"
-#include "backend/handle/constructer/appointconstructer.h"
-#include "backend/handle/constructer/checkconstructer.h"
-#include "backend/handle/constructer/loadconstructer.h"
-#include "backend/handle/constructer/operatebookconstructer.h"
-#include "backend/handle/constructer/operategroupconstructer.h"
-#include "backend/handle/constructer/operateuserconstructer.h"
 #include "backend/socketthread.h"
 #include "waitingwindow.h"
 #include "backend/handle/analyser.h"
@@ -58,8 +52,8 @@ public:
     void setServer(QString addr, int p);
     void setUsername(const QString username);
 public slots:
-    void showReaderwin(QString&,QString&,int);
-    void showAdministratorwin(QString&,QString&,int);
+    void showReaderwin(QString&,QString&,int,int);
+    void showAdministratorwin(QString&,QString&,int,int);
 private slots:
     void on_tabWidget_tabBarClicked(int index);
     void on_logout_clicked();
@@ -76,17 +70,11 @@ private slots:
     void on_appointreturnpushbutton_clicked();
     void on_pushButton_clicked();
 
+    void on_createbook_clicked();
+
     void on_pushButton_6_clicked();
 
     void on_deletebook_2_clicked();
-
-    void on_BORROWBOOK_clicked();
-
-    void on_RETURNBOOK_clicked();
-
-    void on_search_2_clicked();
-
-
 
 
 protected:
@@ -106,6 +94,5 @@ private:
     PDFReader* pdfreader=nullptr;
     bool requested = false;
 };
-
 
 #endif // READER_H

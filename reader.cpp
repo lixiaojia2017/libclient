@@ -18,7 +18,7 @@
 #include <QTime>
 #include"backend/handle/constructer/appointconstructer.h"
 #include "backend/handle/constructer/operategroupconstructer.h"
-
+#include "backend/handle/constructer/operatebookconstructer.h"
 int Pages = 1,Group = 0,Iden = 0;
 
 
@@ -62,9 +62,10 @@ void Reader::setServer(QString addr, int p)
     serverport = p;
 }
 
-void Reader::showReaderwin(QString& t,QString& addr,int p)
+void Reader::showReaderwin(QString& t,QString& addr,int p,int ID)
 {
     token = t;
+    userID=ID;
     setServer(addr,p);
     ui->tabWidget->removeTab(7);
     ui->tabWidget->removeTab(5);
@@ -78,9 +79,10 @@ void Reader::showReaderwin(QString& t,QString& addr,int p)
     Iden = READER_IDENTITY;
     this->show();
 }
-void Reader::showAdministratorwin(QString& t,QString& addr,int p)
+void Reader::showAdministratorwin(QString& t,QString& addr,int p,int ID)
 {
     token = t;
+    userID=ID;
     ui->tabWidget->removeTab(1);
     setServer(addr,p);
     ui->cover->hide();
@@ -1327,17 +1329,50 @@ void Reader::on_pushButton_clicked()
     thr->start();
 }
 
-void Reader::on_BORROWBOOK_clicked()
+void Reader::on_createbook_clicked()
 {
-    on_tabWidget_tabBarClicked(1);
-}
-
-void Reader::on_RETURNBOOK_clicked()
-{
-    on_tabWidget_tabBarClicked(1);
-}
-
-void Reader::on_search_2_clicked()
-{
-
+    ui->createbook->setEnabled(false);
+    wait.show();
+    if(!(NE(name_1)&&NE(press_2)&&NE(author_2)&&NE(ISBN)&&NE(pages)&&NE(piece)&&NE(tags_2)&&NE(groupID)&&NE(bookcase))){
+        QMessageBox::about(this,"Failed","图书信息不完整");
+        RESTORE(createbook)
+        return;
+    }
+    QMap<QString,QVariant> info;
+    info["name"]=TEXT(name_1);
+    info["press"]=TEXT(press_2);
+    info["author"]=TEXT(author_2);
+    info["ISBN"]=TEXT(ISBN);
+    info["price"]=ui->piece->text().toFloat();
+    info["groupID"]=ui->groupID->text().toInt();
+    info["pages"]=ui->pages->text().toInt();
+    info["bookcase"]=ui->bookcase->text().toInt();
+    info["available"]=ui->checkBox->checkState();
+    QString TAG=TEXT(tags);
+    QStringList tgs=TAG.split(',');
+    info["tags"]=tgs;
+    createbook rqt(info,token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        RESTORE(createbook)
+        QMessageBox::about(this,"Failed","connection timeout");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        RESTORE(createbook)
+        QMessageBox::about(this,"Failed","server error");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result){
+            RESTORE(createbook)
+            QMessageBox::about(this,"Success","successfully added");
+        }
+        else
+        {
+            RESTORE(createbook)
+            QMessageBox::about(this,"Failed",hdl.detail);
+        }
+    });
+    thr->start();
 }

@@ -145,7 +145,7 @@ void Login::handleEvents() // 信号槽事件处理
           // connect success, handle the login request
             LoginHdl hdl(rsp);
           connect(&hdl,&LoginHdl::onSuccess,[&](QString& token,int ID){
-              Q_UNUSED(ID)
+
 
               if(ui->remPassword->isChecked())
               {
@@ -160,11 +160,11 @@ void Login::handleEvents() // 信号槽事件处理
                 }
                 if(getIdentity())
                 {
-                    emit showAdministratorwin(token,list[0],list[1].toInt());
+                    emit showAdministratorwin(token,list[0],list[1].toInt(),ID);
                 }
                 else
                 {
-                    emit showReaderwin(token,list[0],list[1].toInt());
+                    emit showReaderwin(token,list[0],list[1].toInt(),ID);
                 }
                 this->close();
             });
