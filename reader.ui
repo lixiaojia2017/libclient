@@ -1411,7 +1411,7 @@
             <item row="0" column="1" rowspan="4">
              <widget class="QStackedWidget" name="readerStackedWidget">
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="page_13">
                <layout class="QGridLayout" name="gridLayout_40">
@@ -1791,8 +1791,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>182</width>
-                     <height>186</height>
+                     <width>1005</width>
+                     <height>605</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_48">
@@ -2228,7 +2228,7 @@
                      <x>0</x>
                      <y>0</y>
                      <width>1005</width>
-                     <height>613</height>
+                     <height>619</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_53">
