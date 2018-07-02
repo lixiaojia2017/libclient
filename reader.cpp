@@ -1121,8 +1121,6 @@ void Reader::on_pushButton_6_clicked()
 {
 
 }
-
-
 void Reader::on_deletebook_2_clicked()
 {
     QList<QVariant> bookid;
