@@ -52,8 +52,8 @@ public:
     void setServer(QString addr, int p);
     void setUsername(const QString username);
 public slots:
-    void showReaderwin(QString&,QString&,int);
-    void showAdministratorwin(QString&,QString&,int);
+    void showReaderwin(QString&,QString&,int,int);
+    void showAdministratorwin(QString&,QString&,int,int);
 private slots:
     void on_tabWidget_tabBarClicked(int index);
     void on_logout_clicked();
@@ -70,6 +70,8 @@ private slots:
     void on_appointreturnpushbutton_clicked();
     void on_pushButton_clicked();
 
+    void on_createbook_clicked();
+
 protected:
     void switchPage(int);
     void Result(QTableWidget* tab);
@@ -83,6 +85,7 @@ private:
     int serverport;
     void handleEvents();
     QString username="NULL";
+    int userID;
     PDFReader* pdfreader=nullptr;
     bool requested = false;
 };

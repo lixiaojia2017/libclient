@@ -57,7 +57,7 @@ changebook::changebook(int bookid, const QMap<QString, QVariant> _info, const QS
     jsonReturn.insert("info", info);
 }
 
-changegroup::changegroup(int groupid, const QList<QVariant> &bookid, const QString &token)
+changebookgroup::changebookgroup(int groupid, const QList<QVariant> &bookid, const QString &token)
     : operatebookconstructer(token)
 {
     jsonReturn.insert("command", "changegroup");
