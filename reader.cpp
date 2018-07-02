@@ -1030,7 +1030,45 @@ void Reader::on_search_clicked()
                 ui->next->setEnabled(false);
             }
             RESTORE(search)
-                    ADDITEM(ui->searchResult,hdl);
+                   /* ADDITEM(ui->searchResult,hdl);
+            QVector<SocketThread*> thrlst;
+            for(int iii=0;iii<10;iii++){
+                 if(ui->searchResult->item(iii,0)!=nullptr){
+                     int bookID=ui->searchResult->item(iii,2)->text().toInt();
+                     QJsonObject rqt;
+                     rqt.insert("token",token);
+                     rqt.insert("type","LOAD");
+                     rqt.insert("command","down");
+                     rqt.insert("object","cover");
+                     rqt.insert("id",bookID);
+
+                     SocketThread *imthr;
+                     imthr=new SocketThread(serverAddr,serverport,rqt);
+                     connect(imthr,&SocketThread::connectFailed,this,[&](){
+
+                     });
+                     connect(imthr,&SocketThread::badResponse,this,[&](){
+
+                     });
+                     connect(imthr,&SocketThread::downloadComplete,this,[&](QString fn){
+
+                             QLabel *coverground=new QLabel("");
+                             QImage img=QImage("./cache/"+fn).scaled(138,200);
+                             coverground->setPixmap(QPixmap::fromImage(img));
+                             ui->searchResult->setCellWidget(1,1,coverground);
+
+
+                     },Qt::DirectConnection);
+                    thrlst.push_back(imthr);
+}}
+            for(auto it=thrlst.begin();it!=thrlst.end()-1;it++){
+                connect(*it,&SocketThread::finished,*(it+1),[&](){
+                    (*(it+1))->start();
+                });
+            }
+            SocketThread *first=*(thrlst.begin());
+            first->start();*/
+
         }
         else
         {
