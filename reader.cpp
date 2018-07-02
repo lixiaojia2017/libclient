@@ -1545,7 +1545,7 @@ void Reader::on_pushButton_clicked()
     info["max_borrow_num"]=TEXT(max_borrow_num).toInt();
     info["max_borrow_time"]=TEXT(max_borrow_time).toInt();
     info["max_renew_time"]=TEXT(max_renew_time).toInt();
-    creategroup rqt("user",info,token);
+    creategroup rqt("reader",info,token);
     SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
     connect(thr,&SocketThread::connectFailed,this,[&](){
         RESTORE(pushButton)
@@ -2115,14 +2115,14 @@ void Reader::on_pushButton_20_clicked()
     if(!NE(bookGroupid)){return;}
     ui->pushButton_20->setEnabled(false);
     wait.show();
-    if(!(NE(name_7)&&NE(max_time))){
+    if(!(NE(name_7)&&NE(max_time_2))){
         QMessageBox::about(this,"Failed","图书组信息不完整");
         RESTORE(pushButton)
                 return;
     }
     QMap<QString,QVariant> info;
     info["name"]=TEXT(name_7);
-    info["max_time"]=TEXT(max_time).toInt();
+    info["max_time"]=TEXT(max_time_2).toInt();
     changegroup rqt("book",ui->bookGroupid->text().toInt(),info,token);
     SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
     connect(thr,&SocketThread::connectFailed,this,[&](){
