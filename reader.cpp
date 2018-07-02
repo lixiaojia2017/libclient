@@ -944,12 +944,15 @@ void Reader::on_searchResult_cellDoubleClicked(int row, int column)
         rqt.insert("command","down");
         rqt.insert("object","pdf");
         rqt.insert("id",bookID);
+        wait.show();
         SocketThread *thr;
         thr=new SocketThread(serverAddr,serverport,rqt);
         connect(thr,&SocketThread::connectFailed,this,[&](){
+            wait.close();
             QMessageBox::about(this,"Failed","connection timeout");
         });
         connect(thr,&SocketThread::badResponse,this,[&](){
+            wait.close();
             QMessageBox::about(this,"Failed","server error");
         });
         connect(thr,&SocketThread::downloadComplete,this,[&](QString fn){
@@ -961,10 +964,12 @@ void Reader::on_searchResult_cellDoubleClicked(int row, int column)
                 pdfreader->resize(1161,893);
                 pdfreader->loadData(byte2);
                 pdfreader->setAttribute(Qt::WA_DeleteOnClose);
+                wait.close();
                 pdfreader->show();
             }
             else
             {
+                wait.close();
                 QMessageBox::about(this,"Failed","file currupted");
             }
         },Qt::QueuedConnection);
@@ -1005,7 +1010,45 @@ void Reader::on_search_clicked()
                 ui->next->setEnabled(false);
             }
             RESTORE(search)
-                    ADDITEM(ui->searchResult,hdl);
+                   /* ADDITEM(ui->searchResult,hdl);
+            QVector<SocketThread*> thrlst;
+            for(int iii=0;iii<10;iii++){
+                 if(ui->searchResult->item(iii,0)!=nullptr){
+                     int bookID=ui->searchResult->item(iii,2)->text().toInt();
+                     QJsonObject rqt;
+                     rqt.insert("token",token);
+                     rqt.insert("type","LOAD");
+                     rqt.insert("command","down");
+                     rqt.insert("object","cover");
+                     rqt.insert("id",bookID);
+
+                     SocketThread *imthr;
+                     imthr=new SocketThread(serverAddr,serverport,rqt);
+                     connect(imthr,&SocketThread::connectFailed,this,[&](){
+
+                     });
+                     connect(imthr,&SocketThread::badResponse,this,[&](){
+
+                     });
+                     connect(imthr,&SocketThread::downloadComplete,this,[&](QString fn){
+
+                             QLabel *coverground=new QLabel("");
+                             QImage img=QImage("./cache/"+fn).scaled(138,200);
+                             coverground->setPixmap(QPixmap::fromImage(img));
+                             ui->searchResult->setCellWidget(1,1,coverground);
+
+
+                     },Qt::DirectConnection);
+                    thrlst.push_back(imthr);
+}}
+            for(auto it=thrlst.begin();it!=thrlst.end()-1;it++){
+                connect(*it,&SocketThread::finished,*(it+1),[&](){
+                    (*(it+1))->start();
+                });
+            }
+            SocketThread *first=*(thrlst.begin());
+            first->start();*/
+
         }
         else
         {
@@ -2210,6 +2253,42 @@ void Reader::on_pushButton_8_clicked()
     });
     thr->start();
     Result(ui->searchResult_2);//已借阅图书-初始化时的内容即为其真实内容
+}
+
+void Reader::on_deletereader_clicked()
+{
+    QList<QVariant> uid;
+    for(int i = 0; i < 10; i++)
+    {
+        if(ui->searchResult_6->item(i,0)!=nullptr && ui->searchResult_6->item(i,0)->checkState()==Qt::Checked)
+        {
+            uid.append(ui->searchResult_6->item(i, 2)->text().toInt());
+        }
+    }
+    if(!uid.isEmpty())
+    {
+        deleteuser rqt(uid, token);
+        SocketThread *skt= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+        connect(skt,&SocketThread::connectFailed,this,[&](){
+            QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+        });
+        connect(skt,&SocketThread::badResponse,this,[&](){
+            QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+        });
+        connect(skt,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+        {
+            infoanalyser hdl(*rsp);
+            if(hdl.result)
+            {
+                QMessageBox::about(this,"Success","deleted user");
+            }
+            else
+            {
+                QMessageBox::warning(this,"Warning","Unable to delete user.");
+            }
+        });
+        skt->start();
+    }
 }
 //更改读者组
 void Reader::on_pushButton_21_clicked()
