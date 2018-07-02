@@ -79,6 +79,10 @@ private slots:
 
     void on_pushButton_5_clicked();
 
+    void on_appointborrowpushbutton_clicked();
+
+    void on_appointreturnpushbutton_clicked();
+
 protected:
     void switchPage(int);
     void Result(QTableWidget* tab);
