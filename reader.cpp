@@ -640,6 +640,42 @@ void Reader::on_tabWidget_tabBarClicked(int index)
     {
         if(index == 1)
         {
+            const QString prefix = "$dbPrefix$";
+            QString sql="SELECT "+prefix+"currborrow.ID,"+prefix+"currborrow.readerid,"+prefix+"currborrow.bookid,"\
+                +prefix+"currborrow.borrowtime,"+prefix+"currborrow.exptime,"+prefix+"currborrow.remaintime,"\
+                +prefix+"books.name FROM "+prefix+"currborrow,"+prefix+"books WHERE "+prefix+"currborrow.bookid="\
+                +prefix+"books.ID AND"+prefix+"currborrow.readerid=";
+            // need limit here
+            queryinfo rqt(sql,token);
+            SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+            connect(thr,&SocketThread::connectFailed,this,[&](){
+                QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+            });
+            connect(thr,&SocketThread::badResponse,this,[&](){
+                QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+            });
+            connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+            {
+                infoanalyser hdl(*rsp);
+                if(hdl.result && !hdl.info.isEmpty())
+                {
+                    requested = true;
+                    for(auto iter: hdl.info)
+                    {
+                        ui->label_18->setText(iter->take("username").toString());
+                        ui->name_4->setText(iter->take("name").toString());
+                        ui->email->setText(iter->take("email").toString());
+                        ui->sex->setText(iter->take("sex").toString());
+                        ui->tel->setText(iter->take("tel").toString());
+                    }
+                }
+                else
+                {
+                    QMessageBox::warning(this,"Warning","Unable to get user info. Maybe user is not properly set?");
+                }
+                // get result
+            });
+            thr->start();
             Result(ui->searchResult_2);//已借阅图书-初始化时的内容即为其真实内容
         }//else if(index==3)
         //{

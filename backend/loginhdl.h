@@ -9,7 +9,7 @@ public:
     virtual void deal();
     virtual ~LoginHdl();
 signals:
-    void onSuccess(QString&);
+    void onSuccess(QString&,int);
     void onFailed(QString&);
 };
 #endif // LOGINHDL_H

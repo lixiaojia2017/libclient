@@ -144,7 +144,8 @@ void Login::handleEvents() // 信号槽事件处理
             }
           // connect success, handle the login request
             LoginHdl hdl(rsp);
-            connect(&hdl,&LoginHdl::onSuccess,[&](QString& token){
+            connect(&hdl,&LoginHdl::onSuccess,[&](QString& token,int ID){
+              Q_UNUSED(ID)
               if(ui->remPassword->isChecked())
               {
                 config.setPassword(ui->username->text(),ui->password->text());

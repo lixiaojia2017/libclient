@@ -65,3 +65,9 @@ queryinfo::queryinfo(const QList<QVariant> &order, int records, int page, const 
     jsonReturn.insert("page", page);
     jsonReturn.insert("conditions", conditions);
 }
+
+queryinfo::queryinfo(const QString sql,const QString token):queryconstructer(token)
+{
+  jsonReturn["command"]="bareSQL";
+  jsonReturn["bareSQL"]=sql;
+}
