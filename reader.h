@@ -72,6 +72,8 @@ private slots:
 
     void on_createbook_clicked();
 
+    void on_changebook_clicked();
+
 protected:
     void switchPage(int);
     void Result(QTableWidget* tab);

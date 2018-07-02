@@ -1230,7 +1230,7 @@ void Reader::on_pushButton_clicked()
     });
     thr->start();
 }
-
+//create book
 void Reader::on_createbook_clicked()
 {
     ui->createbook->setEnabled(false);
@@ -1273,6 +1273,59 @@ void Reader::on_createbook_clicked()
         else
         {
             RESTORE(createbook)
+            QMessageBox::about(this,"Failed",hdl.detail);
+        }
+    });
+    thr->start();
+}
+//change book
+void Reader::on_changebook_clicked()
+{
+    ui->changebook->setEnabled(false);
+    wait.show();
+    if((!(NE(name_3)&&NE(press_3)&&NE(author_3)&&NE(ISBN_3)&&NE(pages_3)&&NE(price_3)&&NE(tags_3)&&NE(groupid_3)&&NE(bookcase_3)))||ui->bookId->text()==""){
+        QMessageBox::about(this,"Failed","图书信息不完整");
+        ui->changebook->setEnabled(true);
+        wait.close();
+        return;
+    }
+    QMap<QString,QVariant> info;
+    info["name"]=TEXT(name_3);
+    info["press"]=TEXT(press_3);
+    info["author"]=TEXT(author_3);
+    info["ISBN"]=TEXT(ISBN_3);
+    info["price"]=ui->price_3->text().toFloat();
+    info["groupID"]=ui->groupid_3->text().toInt();
+    info["pages"]=ui->pages_3->text().toInt();
+    info["bookcase"]=ui->bookcase_3->text().toInt();
+    info["available"]=ui->available_3->checkState();
+    QString TAG=TEXT(tags_3);
+    QStringList tgs=TAG.split(',');
+    info["tags"]=tgs;
+    changebook rqt(ui->bookId->text().toInt(),info,token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        ui->changebook->setEnabled(true);
+        wait.close();
+        QMessageBox::about(this,"Failed","connection timeout");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        ui->changebook->setEnabled(true);
+        wait.close();
+        QMessageBox::about(this,"Failed","server error");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result){
+            ui->changebook->setEnabled(true);
+            wait.close();
+            QMessageBox::about(this,"Success","successfully added");
+        }
+        else
+        {
+            ui->changebook->setEnabled(true);
+            wait.close();
             QMessageBox::about(this,"Failed",hdl.detail);
         }
     });
