@@ -13,6 +13,7 @@ SocketThread::~SocketThread()
 void SocketThread::run()
 {
     tcpSocket = new QTcpSocket();
+
     tcpSocket->connectToHost(ip,port);
     if(tcpSocket->waitForConnected(10000)){
         QByteArray rqtData=rqt.toBinaryData();
@@ -31,7 +32,7 @@ void SocketThread::run()
         this->quit();
         return;
     }
-
+    tcpSocket->setReadBufferSize(32768);
     if(tcpSocket->waitForReadyRead(10000)){
         QByteArray ReadData =tcpSocket->readAll();
         QDataStream in(&ReadData,QIODevice::ReadOnly);
