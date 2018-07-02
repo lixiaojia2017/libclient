@@ -56,7 +56,6 @@ public slots:
     void showAdministratorwin(QString&,QString&,int);
 private slots:
     void on_tabWidget_tabBarClicked(int index);
-
     void on_logout_clicked();
     void on_searchResult_cellDoubleClicked(int row, int column);
     void on_search_clicked();
