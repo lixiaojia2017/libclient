@@ -29,6 +29,8 @@ signals:
 
     void showAdministratorwin(QString&,QString&,int,int);
 
+private slots:
+
 private:
     waitingWindow wait;
     void handleEvents(); // 信号槽事件处理

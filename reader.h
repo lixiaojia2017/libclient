@@ -114,6 +114,10 @@ private slots:
 
     void on_RETURNBOOK_clicked();
 
+    void on_pushButton_12_clicked();
+
+    void on_pushButton_14_clicked();
+
 protected:
     void switchPage(int);
     void Result(QTableWidget* tab);

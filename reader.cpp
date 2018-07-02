@@ -709,8 +709,9 @@ void Reader::on_tabWidget_tabBarClicked(int index)
             Pages = 1;
             if(ui->brbookStackedWidget->currentIndex() == 0)
             {
+                ui->searchResult_3->clear();
                 Result(ui->searchResult_3);//借阅申请—初始化时的内容即为其真实内容
-                queryinfo rqt1({"ID"}, 10, 1, "currappoint", "type = 'borrow'", token);
+                queryinfo rqt1({"ID"}, 10, Pages, "currappoint", "type = 'borrow'", token);
                 SocketThread* sktBorrow = new SocketThread(serverAddr,serverport, rqt1.GetReturn());
                 connect(sktBorrow,&SocketThread::connectFailed,this,[&](){
                     QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
@@ -723,8 +724,8 @@ void Reader::on_tabWidget_tabBarClicked(int index)
                     infoanalyser hdl(*rsp);
                     if(hdl.result)
                     {
-                        ui->pushButton_16->setEnabled(true);
                         ui->pushButton_15->setEnabled(true);
+                        ui->pushButton_16->setEnabled(true);
                         if(hdl.info.size() < 10)
                         {
                             ui->pushButton_16->setEnabled(false);
@@ -744,8 +745,9 @@ void Reader::on_tabWidget_tabBarClicked(int index)
             }
             else
             {
+                ui->searchResult_4->clear();
                 Result(ui->searchResult_4);//归还申请-初始化时的内容即为其真实内容
-                queryinfo rqt2({"ID"}, 10, 1, "currappoint", "type = 'return'", token);
+                queryinfo rqt2({"ID"}, 10, Pages, "currappoint", "type = 'return'", token);
                 SocketThread* sktReturn = new SocketThread(serverAddr,serverport, rqt2.GetReturn());
                 connect(sktReturn,&SocketThread::connectFailed,this,[&](){
                     QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
@@ -758,15 +760,15 @@ void Reader::on_tabWidget_tabBarClicked(int index)
                     infoanalyser hdl(*rsp);
                     if(hdl.result)
                     {
-                        ui->pushButton_16->setEnabled(true);
-                        ui->pushButton_15->setEnabled(true);
+                        ui->pushButton_12->setEnabled(true);
+                        ui->pushButton_14->setEnabled(true);
                         if(hdl.info.size() < 10)
                         {
-                            ui->pushButton_16->setEnabled(false);
+                            ui->pushButton_14->setEnabled(false);
                         }
                         if(Pages == 1)
                         {
-                            ui->pushButton_15->setEnabled(false);
+                            ui->pushButton_12->setEnabled(false);
                         }
                         ADDITEM(ui->searchResult_4, hdl);
                     }
@@ -1521,7 +1523,7 @@ void Reader::on_appointborrowpushbutton_clicked()
     connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
         RESTORE(appointborrowpushbutton)
-        infoanalyser hdl(*rsp);
+                infoanalyser hdl(*rsp);
         if(hdl.result){
             QMessageBox::about(this,"Success","The application has been successful!");
         }
@@ -1566,7 +1568,7 @@ void Reader::on_appointreturnpushbutton_clicked()
     connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
         RESTORE(appointreturnpushbutton)
-        infoanalyser hdl(*rsp);
+                infoanalyser hdl(*rsp);
         if(hdl.result){
             QMessageBox::about(this,"Success","The application has been successful!");
         }
@@ -1710,13 +1712,12 @@ void Reader::on_search_3_clicked()
 
 void Reader::on_searchBookgroup_clicked()
 {
-
     ui->searchResult_8->clear();
     Result(ui->searchResult_8);
     Group = BOOK_GROUP_SEARCH;
     ui->searchBookgroup->setEnabled(false);
     wait.show();
-    queryinfo rqt({"ID"}, 10, Pages, "bookgroup", " name LIKE '%" + ui->groupid_4->text() + "%' ", token);
+    queryinfo rqt({"ID"}, 10, Pages, "bookgroup", " ID = " + ui->groupid_4->text() + " ", token);
     SocketThread *thr= new SocketThread(serverAddr, serverport, rqt.GetReturn());
     connect(thr,&SocketThread::connectFailed,this,[&](){
         RESTORE(search_3)
@@ -1749,7 +1750,7 @@ void Reader::on_searchReadergroup_clicked()
     Group = READER_GROUP_SEARCH;
     ui->searchBookgroup->setEnabled(false);
     wait.show();
-    queryinfo rqt({"ID"}, 10, Pages, "readergroup", " name LIKE '%" + ui->groupid_4->text() + "%' ", token);
+    queryinfo rqt({"ID"}, 10, Pages, "readergroup", " ID = " + ui->groupid_4->text() + " ", token);
     SocketThread *thr= new SocketThread(serverAddr, serverport, rqt.GetReturn());
     connect(thr,&SocketThread::connectFailed,this,[&](){
         RESTORE(search_3)
@@ -1918,151 +1919,77 @@ void Reader::on_pushButton_11_clicked()
 void Reader::on_pushButton_15_clicked()
 {
     Pages--;
-    if(ui->brbookStackedWidget->currentIndex() == 0)
+    ui->searchResult_3->clear();
+    Result(ui->searchResult_3);//借阅申请—初始化时的内容即为其真实内容
+    queryinfo rqt1({"ID"}, 10, Pages, "currappoint", "type = 'borrow'", token);
+    SocketThread* sktBorrow = new SocketThread(serverAddr,serverport, rqt1.GetReturn());
+    connect(sktBorrow,&SocketThread::connectFailed,this,[&](){
+        QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+    });
+    connect(sktBorrow,&SocketThread::badResponse,this,[&](){
+        QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+    });
+    connect(sktBorrow,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
-        Result(ui->searchResult_3);//借阅申请—初始化时的内容即为其真实内容
-        queryinfo rqt1({"ID"}, 10, 1, "currappoint", "type = 'borrow'", token);
-        SocketThread* sktBorrow = new SocketThread(serverAddr,serverport, rqt1.GetReturn());
-        connect(sktBorrow,&SocketThread::connectFailed,this,[&](){
-            QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
-        });
-        connect(sktBorrow,&SocketThread::badResponse,this,[&](){
-            QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
-        });
-        connect(sktBorrow,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+        infoanalyser hdl(*rsp);
+        if(hdl.result)
         {
-            infoanalyser hdl(*rsp);
-            if(hdl.result)
+            ui->pushButton_16->setEnabled(true);
+            ui->pushButton_15->setEnabled(true);
+            if(hdl.info.size() < 10)
             {
-                ui->pushButton_16->setEnabled(true);
-                ui->pushButton_15->setEnabled(true);
-                if(hdl.info.size() < 10)
-                {
-                    ui->pushButton_16->setEnabled(false);
-                }
-                if(Pages == 1)
-                {
-                    ui->pushButton_15->setEnabled(false);
-                }
-                ADDITEM(ui->searchResult_3, hdl);
+                ui->pushButton_16->setEnabled(false);
             }
-            else
+            if(Pages == 1)
             {
-                QMessageBox::warning(this,"Warning","Unable to get the info. Maybe user is not properly set?");
+                ui->pushButton_15->setEnabled(false);
             }
-        });
-        sktBorrow->start();
-    }
-    else
-    {
-        Result(ui->searchResult_4);//归还申请-初始化时的内容即为其真实内容
-        queryinfo rqt2({"ID"}, 10, 1, "currappoint", "type = 'return'", token);
-        SocketThread* sktReturn = new SocketThread(serverAddr,serverport, rqt2.GetReturn());
-        connect(sktReturn,&SocketThread::connectFailed,this,[&](){
-            QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
-        });
-        connect(sktReturn,&SocketThread::badResponse,this,[&](){
-            QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
-        });
-        connect(sktReturn,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+            ADDITEM(ui->searchResult_3, hdl);
+        }
+        else
         {
-            infoanalyser hdl(*rsp);
-            if(hdl.result)
-            {
-                ui->pushButton_15->setEnabled(true);
-                ui->pushButton_16->setEnabled(true);
-                if(hdl.info.size() < 10)
-                {
-                    ui->pushButton_16->setEnabled(false);
-                }
-                if(Pages == 1)
-                {
-                    ui->pushButton_15->setEnabled(false);
-                }
-                ADDITEM(ui->searchResult_4, hdl);
-            }
-            else
-            {
-                QMessageBox::warning(this,"Warning","Unable to get the info. Maybe user is not properly set?");
-            }
-        });
-        sktReturn->start();
-    }
+            QMessageBox::warning(this,"Warning","Unable to get the info. Maybe user is not properly set?");
+        }
+    });
+    sktBorrow->start();
 }
 
 void Reader::on_pushButton_16_clicked()
 {
     Pages++;
-    if(ui->brbookStackedWidget->currentIndex() == 0)
+    ui->searchResult_3->clear();
+    Result(ui->searchResult_3);//借阅申请—初始化时的内容即为其真实内容
+    queryinfo rqt1({"ID"}, 10, Pages, "currappoint", "type = 'borrow'", token);
+    SocketThread* sktBorrow = new SocketThread(serverAddr,serverport, rqt1.GetReturn());
+    connect(sktBorrow,&SocketThread::connectFailed,this,[&](){
+        QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+    });
+    connect(sktBorrow,&SocketThread::badResponse,this,[&](){
+        QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+    });
+    connect(sktBorrow,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
-        Result(ui->searchResult_3);//借阅申请—初始化时的内容即为其真实内容
-        queryinfo rqt1({"ID"}, 10, 1, "currappoint", "type = 'borrow'", token);
-        SocketThread* sktBorrow = new SocketThread(serverAddr,serverport, rqt1.GetReturn());
-        connect(sktBorrow,&SocketThread::connectFailed,this,[&](){
-            QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
-        });
-        connect(sktBorrow,&SocketThread::badResponse,this,[&](){
-            QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
-        });
-        connect(sktBorrow,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+        infoanalyser hdl(*rsp);
+        if(hdl.result)
         {
-            infoanalyser hdl(*rsp);
-            if(hdl.result)
+            ui->pushButton_16->setEnabled(true);
+            ui->pushButton_15->setEnabled(true);
+            if(hdl.info.size() < 10)
             {
-                ui->pushButton_16->setEnabled(true);
-                ui->pushButton_15->setEnabled(true);
-                if(hdl.info.size() < 10)
-                {
-                    ui->pushButton_16->setEnabled(false);
-                }
-                if(Pages == 1)
-                {
-                    ui->pushButton_15->setEnabled(false);
-                }
-                ADDITEM(ui->searchResult_3, hdl);
+                ui->pushButton_16->setEnabled(false);
             }
-            else
+            if(Pages == 1)
             {
-                QMessageBox::warning(this,"Warning","Unable to get the info. Maybe user is not properly set?");
+                ui->pushButton_15->setEnabled(false);
             }
-        });
-        sktBorrow->start();
-    }
-    else
-    {
-        Result(ui->searchResult_4);//归还申请-初始化时的内容即为其真实内容
-        queryinfo rqt2({"ID"}, 10, 1, "currappoint", "type = 'return'", token);
-        SocketThread* sktReturn = new SocketThread(serverAddr,serverport, rqt2.GetReturn());
-        connect(sktReturn,&SocketThread::connectFailed,this,[&](){
-            QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
-        });
-        connect(sktReturn,&SocketThread::badResponse,this,[&](){
-            QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
-        });
-        connect(sktReturn,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+            ADDITEM(ui->searchResult_3, hdl);
+        }
+        else
         {
-            infoanalyser hdl(*rsp);
-            if(hdl.result)
-            {
-                ui->pushButton_16->setEnabled(true);
-                ui->pushButton_15->setEnabled(true);
-                if(hdl.info.size() < 10)
-                {
-                    ui->pushButton_16->setEnabled(false);
-                }
-                if(Pages == 1)
-                {
-                    ui->pushButton_15->setEnabled(false);
-                }
-                ADDITEM(ui->searchResult_4, hdl);
-            }
-            else
-            {
-                QMessageBox::warning(this,"Warning","Unable to get the info. Maybe user is not properly set?");
-            }
-        });
-        sktReturn->start();
-    }
+            QMessageBox::warning(this,"Warning","Unable to get the info. Maybe user is not properly set?");
+        }
+    });
+    sktBorrow->start();
 }
 
 //change book
@@ -2199,12 +2126,90 @@ void Reader::on_pushButton_20_clicked()
 
 void Reader::on_pushButton_7_clicked()
 {
-
+    Pages++;
+    const QString prefix = "$dbPrefix$";
+    QString sql="SELECT "+prefix+"currborrow.ID,"+prefix+"currborrow.readerid,"+prefix+"currborrow.bookid,"\
+            +prefix+"currborrow.borrowtime,"+prefix+"currborrow.exptime,"+prefix+"currborrow.remaintime,"\
+            +prefix+"books.name FROM "+prefix+"currborrow,"+prefix+"books WHERE "+prefix+"currborrow.bookid="\
+            +prefix+"books.ID AND "+prefix+"currborrow.readerid="+QString::number(userID);
+    // need limit here
+    queryinfo rqt(sql,token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result)
+        {
+            ui->pushButton_7->setEnabled(true);
+            ui->pushButton_8->setEnabled(true);
+            if(Pages == 1)
+            {
+                ui->pushButton_8->setEnabled(false);
+            }
+            if(hdl.info.size() < 10)
+            {
+                ui->pushButton_7->setEnabled(false);
+            }
+            ADDITEM(ui->searchResult_2,hdl);
+        }
+        else
+        {
+            QMessageBox::warning(this,"Warning","Unable to get user info. Maybe user is not properly set?");
+        }
+        // get result
+    });
+    thr->start();
+    Result(ui->searchResult_2);//已借阅图书-初始化时的内容即为其真实内容
 }
 
 void Reader::on_pushButton_8_clicked()
 {
-
+    Pages--;
+    const QString prefix = "$dbPrefix$";
+    QString sql="SELECT "+prefix+"currborrow.ID,"+prefix+"currborrow.readerid,"+prefix+"currborrow.bookid,"\
+            +prefix+"currborrow.borrowtime,"+prefix+"currborrow.exptime,"+prefix+"currborrow.remaintime,"\
+            +prefix+"books.name FROM "+prefix+"currborrow,"+prefix+"books WHERE "+prefix+"currborrow.bookid="\
+            +prefix+"books.ID AND "+prefix+"currborrow.readerid="+QString::number(userID);
+    // need limit here
+    queryinfo rqt(sql,token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result)
+        {
+            ui->pushButton_7->setEnabled(true);
+            ui->pushButton_8->setEnabled(true);
+            if(Pages == 1)
+            {
+                ui->pushButton_8->setEnabled(false);
+            }
+            if(hdl.info.size() < 10)
+            {
+                ui->pushButton_7->setEnabled(false);
+            }
+            ADDITEM(ui->searchResult_2,hdl);
+        }
+        else
+        {
+            QMessageBox::warning(this,"Warning","Unable to get user info. Maybe user is not properly set?");
+        }
+        // get result
+    });
+    thr->start();
+    Result(ui->searchResult_2);//已借阅图书-初始化时的内容即为其真实内容
 }
 //更改读者组
 void Reader::on_pushButton_21_clicked()
@@ -2297,7 +2302,6 @@ void Reader::on_pushButton_9_clicked()
 
 void Reader::on_BORROWBOOK_clicked()
 {
-
     Result(ui->searchResult_3);//借阅申请—初始化时的内容即为其真实内容
     queryinfo rqt1({"ID"}, 10, 1, "currappoint", "type = 'borrow'", token);
     SocketThread* sktBorrow = new SocketThread(serverAddr,serverport, rqt1.GetReturn());
@@ -2348,15 +2352,91 @@ void Reader::on_RETURNBOOK_clicked()
         infoanalyser hdl(*rsp);
         if(hdl.result)
         {
-            ui->pushButton_16->setEnabled(true);
-            ui->pushButton_15->setEnabled(true);
+            ui->pushButton_14->setEnabled(true);
+            ui->pushButton_12->setEnabled(true);
             if(hdl.info.size() < 10)
             {
-                ui->pushButton_16->setEnabled(false);
+                ui->pushButton_14->setEnabled(false);
             }
             if(Pages == 1)
             {
-                ui->pushButton_15->setEnabled(false);
+                ui->pushButton_12->setEnabled(false);
+            }
+            ADDITEM(ui->searchResult_4, hdl);
+        }
+        else
+        {
+            QMessageBox::warning(this,"Warning","Unable to get the info. Maybe user is not properly set?");
+        }
+    });
+    sktReturn->start();
+}
+
+void Reader::on_pushButton_12_clicked()
+{
+    Pages--;
+    ui->searchResult_4->clear();
+    Result(ui->searchResult_4);//归还申请-初始化时的内容即为其真实内容
+    queryinfo rqt2({"ID"}, 10, Pages, "currappoint", "type = 'return'", token);
+    SocketThread* sktReturn = new SocketThread(serverAddr,serverport, rqt2.GetReturn());
+    connect(sktReturn,&SocketThread::connectFailed,this,[&](){
+        QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+    });
+    connect(sktReturn,&SocketThread::badResponse,this,[&](){
+        QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+    });
+    connect(sktReturn,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result)
+        {
+            ui->pushButton_12->setEnabled(true);
+            ui->pushButton_14->setEnabled(true);
+            if(hdl.info.size() < 10)
+            {
+                ui->pushButton_14->setEnabled(false);
+            }
+            if(Pages == 1)
+            {
+                ui->pushButton_12->setEnabled(false);
+            }
+            ADDITEM(ui->searchResult_4, hdl);
+        }
+        else
+        {
+            QMessageBox::warning(this,"Warning","Unable to get the info. Maybe user is not properly set?");
+        }
+    });
+    sktReturn->start();
+}
+
+void Reader::on_pushButton_14_clicked()
+{
+    Pages++;
+    ui->searchResult_4->clear();
+    Result(ui->searchResult_4);//归还申请-初始化时的内容即为其真实内容
+    queryinfo rqt2({"ID"}, 10, Pages, "currappoint", "type = 'return'", token);
+    SocketThread* sktReturn = new SocketThread(serverAddr,serverport, rqt2.GetReturn());
+    connect(sktReturn,&SocketThread::connectFailed,this,[&](){
+        QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+    });
+    connect(sktReturn,&SocketThread::badResponse,this,[&](){
+        QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+    });
+    connect(sktReturn,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result)
+        {
+            ui->pushButton_12->setEnabled(true);
+            ui->pushButton_14->setEnabled(true);
+            if(hdl.info.size() < 10)
+            {
+                ui->pushButton_14->setEnabled(false);
+            }
+            if(Pages == 1)
+            {
+                ui->pushButton_12->setEnabled(false);
             }
             ADDITEM(ui->searchResult_4, hdl);
         }
