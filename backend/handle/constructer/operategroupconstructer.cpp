@@ -30,7 +30,7 @@ deletegroup::deletegroup(const QString &command, int groupid, const QString &tok
 changegroup::changegroup(const QString &command, int groupid, const QMap<QString, QVariant> &_info, const QString &token)
 : operategroupconstructer(token)
 {
-    jsonReturn.insert("command", "delete" + command);
+    jsonReturn.insert("command", "change" + command);
     jsonReturn.insert("groupid", groupid);
     QJsonArray info;
     for(auto iter = _info.begin(); iter != _info.end(); iter++)
