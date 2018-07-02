@@ -72,6 +72,7 @@ void Reader::showReaderwin(QString& t,QString& addr,int p)
     ui->tabWidget->removeTab(2);
     ui->deletebook_2->hide();
     ui->changebook_2->hide();
+    ui->cover->hide();
     ui->changebookgroup->hide();
     Iden = READER_IDENTITY;
     this->show();
@@ -81,6 +82,7 @@ void Reader::showAdministratorwin(QString& t,QString& addr,int p)
     token = t;
     ui->tabWidget->removeTab(1);
     setServer(addr,p);
+    ui->cover->hide();
     ui->appointborrowpushbutton->hide();
     Iden = STAFFS_IDENTITY;
     this->show();
@@ -99,14 +101,11 @@ void Reader::switchPage(int i)
     case ADD_BOOK:
         ui->OPERATEBOOK->setCurrentIndex(0);
         break;
-    case DELETE_BOOK:
+    case MODIFY_BOOK:
         ui->OPERATEBOOK->setCurrentIndex(1);
         break;
-    case MODIFY_BOOK:
-        ui->OPERATEBOOK->setCurrentIndex(2);
-        break;
     case MODIFY_BOOK_GROUP:
-        ui->OPERATEBOOK->setCurrentIndex(3);
+        ui->OPERATEBOOK->setCurrentIndex(2);
         break;
     case ADD_READER:
         ui->readerStackedWidget->setCurrentIndex(0);
@@ -145,12 +144,17 @@ void Reader::Result(QTableWidget* tab)
     tab->horizontalHeader()->setFixedHeight(40);//表头高度固定
     tab->setEditTriggers(QAbstractItemView::NoEditTriggers);//不可编辑
     QStringList header;//表格标题
-    if(tab==ui->searchResult||tab==ui->searchResult_5)
+    if(tab==ui->searchResult)
     {
         tab->setColumnCount(14);//设置列数
         header<<tr("选择图书")<<tr("封面")<<tr("ID")<<tr("书名")<<tr("groupID")\
              <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")\
             <<tr("书架号")<<tr("入馆时间")<<tr("Available");
+        tab->horizontalHeader()->resizeSection(1,138);
+        for(int i=0;i<10;i++)
+        {
+            tab->verticalHeader()->setDefaultSectionSize(200);
+        }
     }
     else if(tab==ui->searchResult_2)
     {
@@ -216,7 +220,7 @@ void Reader::Result(QTableWidget* tab)
 void Reader::ADDITEM(QTableWidget *tab,infoanalyser& hdl)
 {
     int i=0;
-    if(tab==ui->searchResult||ui->searchResult_5)
+    if(tab==ui->searchResult)
     {
         for(auto iter : hdl.info)
         {
@@ -385,8 +389,6 @@ void Reader::handleEvents()
         ui->bookcase->clear();
         ui->available->setCheckState(Qt::Unchecked);
         ui->checkif->setCheckState(Qt::Unchecked);
-
-
     });
 
     //book添加删除修改信息页面切换
@@ -395,12 +397,7 @@ void Reader::handleEvents()
     {
         Reader::switchPage(ADD_BOOK);
     });
-    connect(ui->DELETEBOOK,&QPushButton::clicked,
-            [=]()
-    {
-        Reader::switchPage(DELETE_BOOK);
-        Result(ui->searchResult_5);//删除图书界面操作
-    });
+
     connect(ui->MODIFYBOOK,&QPushButton::clicked,
             [=]()
     {
@@ -490,14 +487,6 @@ void Reader::handleEvents()
         Pages=1;
 //        ADDITEM(ui->searchResult,Pages);
     });
-    //删除图书查询
-    connect(ui->search_2,&QPushButton::clicked,
-            [=]()
-    {
-        Result(ui->searchResult_5);
-        Pages=1;
-//        ADDITEM(ui->searchResult_5,Pages);
-    });
     //删除读者查询
     connect(ui->search_3,&QPushButton::clicked,
             [=]()
@@ -514,7 +503,7 @@ void Reader::handleEvents()
         ui->OPERATEBOOK->setCurrentIndex(2);
         for(int i=0;i<10;i++)
         {
-            if(ui->searchResult->item(i,0)->checkState()==Qt::Checked)
+            if(ui->searchResult->item(i,0)!=nullptr&&ui->searchResult->item(i,0)->checkState()==Qt::Checked)
             {
                 ui->bookId->setText(ui->searchResult->item(i,2)->text());
                 ui->name_3->setText(ui->searchResult->item(i,3)->text());
@@ -607,7 +596,7 @@ void Reader::handleEvents()
         Result(ui->searchResult_9);
         for(int i=0,k=0;i<10;i++)
         {
-            if(ui->searchResult_6->item(i,0)!=nullptr && ui->searchResult_6->item(i,0)->checkState()==Qt::Checked)
+            if(ui->searchResult_6->item(i,0)!=nullptr&& ui->searchResult_6->item(i,0)->checkState()==Qt::Checked)
             {
 
                 for(int j=1;j<8;j++)
@@ -820,7 +809,7 @@ void Reader::on_logout_clicked()
 
 void Reader::on_searchResult_cellDoubleClicked(int row, int column)
 {
-    if(ui->searchResult->item(row,1)==nullptr&&Iden==STAFFS_IDENTITY)
+    if(column==1&&ui->searchResult->item(row,column)==nullptr&&Iden==STAFFS_IDENTITY)
     {
         //定义文件对话框类
         QFileDialog *fileDialog = new QFileDialog(this);
@@ -835,12 +824,15 @@ void Reader::on_searchResult_cellDoubleClicked(int row, int column)
         //设置视图模式
         fileDialog->setViewMode(QFileDialog::Detail);
         //打印所有选择的文件的路径
-        QStringList fileNames;
+        QString fileNames;
         if(fileDialog->exec())
         {
-            fileNames = fileDialog->selectedFiles();
+            fileNames = fileDialog->selectedFiles().join("");
         }
-        //qDebug()<<fileNames;
+        ui->cover->show();//上传封面按钮
+        QLabel *coverground=new QLabel("");
+        coverground->setPixmap(QPixmap(fileNames).scaled(138,200));
+        ui->searchResult->setCellWidget(row,column,coverground);
     }
     else if(ui->searchResult->item(row,column)!=nullptr){
         ui->searchResult->item(row,2)->text();
