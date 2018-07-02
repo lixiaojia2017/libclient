@@ -119,7 +119,7 @@
            </font>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>7</number>
           </property>
           <widget class="QWidget" name="tab_searchBook">
            <attribute name="title">
@@ -611,7 +611,7 @@
             <item row="1" column="1" rowspan="5">
              <widget class="QStackedWidget" name="brbookStackedWidget">
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="page_10">
                <layout class="QGridLayout" name="gridLayout_28">
@@ -744,8 +744,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>209</width>
-                     <height>656</height>
+                     <width>1007</width>
+                     <height>665</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_30">
@@ -2616,50 +2616,24 @@
               <layout class="QGridLayout" name="gridLayout_12">
                <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_13">
-                 <item row="5" column="1">
-                  <widget class="QLineEdit" name="tel"/>
-                 </item>
-                 <item row="2" column="0">
+                 <item row="0" column="0">
                   <widget class="QLabel" name="label_13">
                    <property name="text">
-                    <string>用户名</string>
+                    <string>用户名：</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="1" column="1">
-                  <widget class="QLabel" name="label_17">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>29</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>29</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                  </widget>
+                 <item row="3" column="1">
+                  <widget class="QLineEdit" name="tel"/>
                  </item>
-                 <item row="5" column="0">
+                 <item row="3" column="0">
                   <widget class="QLabel" name="label_14">
                    <property name="text">
                     <string>Tel</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_11">
-                   <property name="text">
-                    <string>真实姓名</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
+                 <item row="0" column="1">
                   <widget class="QLabel" name="label_18">
                    <property name="minimumSize">
                     <size>
@@ -2678,61 +2652,35 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="6" column="0">
+                 <item row="4" column="1">
+                  <widget class="QLineEdit" name="email"/>
+                 </item>
+                 <item row="4" column="0">
                   <widget class="QLabel" name="label_15">
                    <property name="text">
                     <string>邮箱</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="0" column="1">
-                  <widget class="QLabel" name="label_16">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>29</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>29</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QLabel" name="label_12">
-                   <property name="text">
-                    <string>学号</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="6" column="1">
-                  <widget class="QLineEdit" name="email"/>
-                 </item>
-                 <item row="3" column="1">
+                 <item row="1" column="1">
                   <widget class="QLineEdit" name="name_4"/>
                  </item>
-                 <item row="3" column="0">
-                  <widget class="QLabel" name="label_23">
-                   <property name="text">
-                    <string>昵称</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="4" column="0">
+                 <item row="2" column="0">
                   <widget class="QLabel" name="label_24">
                    <property name="text">
                     <string>性别</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="4" column="1">
+                 <item row="2" column="1">
                   <widget class="QLineEdit" name="sex"/>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_23">
+                   <property name="text">
+                    <string>昵称</string>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </item>
@@ -2956,41 +2904,11 @@
                   <property name="frameShadow">
                    <enum>QFrame::Raised</enum>
                   </property>
-                  <widget class="QLabel" name="label_22">
-                   <property name="geometry">
-                    <rect>
-                     <x>0</x>
-                     <y>90</y>
-                     <width>1091</width>
-                     <height>561</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>结果</string>
-                   </property>
-                  </widget>
-                  <widget class="QWidget" name="layoutWidget_3">
-                   <property name="geometry">
-                    <rect>
-                     <x>80</x>
-                     <y>30</y>
-                     <width>651</width>
-                     <height>41</height>
-                    </rect>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_4">
-                    <item>
-                     <widget class="QLineEdit" name="lineEdit_10"/>
-                    </item>
-                    <item>
-                     <widget class="QPushButton" name="pushButton_3">
-                      <property name="text">
-                       <string>查询</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
+                  <layout class="QGridLayout" name="gridLayout_61">
+                   <item row="0" column="0">
+                    <widget class="QTableWidget" name="searchResult_10"/>
+                   </item>
+                  </layout>
                  </widget>
                 </item>
                </layout>

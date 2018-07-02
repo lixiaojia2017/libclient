@@ -136,19 +136,30 @@ void Reader::Result(QTableWidget* tab)
     tab->horizontalHeader()->setFixedHeight(40);//表头高度固定
     tab->setEditTriggers(QAbstractItemView::NoEditTriggers);//不可编辑
     QStringList header;//表格标题
-    if(tab==ui->searchResult || tab==ui->searchResult_2||tab==ui->searchResult_5)
+    if(tab==ui->searchResult||tab==ui->searchResult_5)
     {
         tab->setColumnCount(14);//设置列数
         header<<tr("选择图书")<<tr("封面")<<tr("ID")<<tr("书名")<<tr("groupID")
              <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")
             <<tr("书架号")<<tr("入馆时间")<<tr("Available");
     }
-    else if(tab==ui->searchResult_3||tab==ui->searchResult_4)//借还申请
+    else if(tab==ui->searchResult_2)
     {
-        tab->setColumnCount(15);//设置列数
-        header<<tr("选择图书")<<tr("借阅编号")<<tr("封面")<<tr("ID")<<tr("书名")<<tr("groupID")
-             <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")
-            <<tr("书架号")<<tr("入馆时间")<<tr("Available");
+        tab->setColumnCount(7);//设置列数
+        header<<tr("选择图书")<<tr("借阅编号")<<tr("读者编号")<<tr("图书编号")
+             <<tr("借书时间")<<tr("归还期限")<<tr("可续借次数");
+    }
+    else if(tab==ui->searchResult_3)//借还申请
+    {
+        tab->setColumnCount(5);//设置列数
+        header<<tr("选择图书")<<tr("ID")<<tr("读者编号")
+                          <<tr("图书编号")<<tr("预约时间");
+    }
+    else if(tab==ui->searchResult_4)
+    {
+        tab->setColumnCount(6);//设置列数
+        header<<tr("选择图书")<<tr("ID")<<tr("读者编号")
+                          <<tr("图书编号")<<tr("预约时间")<<tr("借阅ID");
     }
     else if(tab==ui->searchResult_6)//删除用户
     {
@@ -157,7 +168,7 @@ void Reader::Result(QTableWidget* tab)
              <<tr("昵称")<<tr("性别")<<tr("手机")<<tr("邮箱");
     }
     else if(tab==ui->searchResult_7)//修改图书组
-    {//内容自动获取，无需搜索添加
+    {//内容自动获取，无需搜索添加,与searchResult有关
         tab->setColumnCount(11);//设置列数
         header<<tr("ID")<<tr("书名")<<tr("groupID")
              <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")
@@ -181,13 +192,22 @@ void Reader::Result(QTableWidget* tab)
         header<<tr("用户名")<<tr("userID")<<tr("groupID")
              <<tr("昵称")<<tr("性别")<<tr("手机")<<tr("邮箱");
     }
+    else if(tab==ui->searchResult_10)
+    {
+        tab->setColumnCount(4);
+        tab->horizontalHeader()->resizeSection(0,100);
+        tab->horizontalHeader()->resizeSection(1,200);
+        tab->horizontalHeader()->resizeSection(2,500);
+        tab->horizontalHeader()->resizeSection(3,300);
+        header<<tr("ID")<<tr("类型")<<tr("内容")<<tr("时间");
+    }
     tab->setHorizontalHeaderLabels(header);  //标签
 }
 
 void Reader::ADDITEM(QTableWidget *tab,infoanalyser& hdl)
 {
     int i=0;
-    if(tab==ui->searchResult||tab==ui->searchResult_2||ui->searchResult_5)
+    if(tab==ui->searchResult||ui->searchResult_5)
     {
         for(auto iter : hdl.info)
         {
@@ -229,7 +249,23 @@ void Reader::ADDITEM(QTableWidget *tab,infoanalyser& hdl)
             i++;
         }
     }
-    else if(tab==ui->searchResult_3||tab==ui->searchResult_4)
+    else if(tab==ui->searchResult_2){
+        for(auto iter : hdl.info)
+        {
+            QTableWidgetItem *checkBox1 = new QTableWidgetItem();
+            checkBox1->setCheckState(Qt::Unchecked);
+            checkBox1->setText("勾选启用");
+            tab->setItem(i, 0, checkBox1);
+            tab->setItem(i,1,new QTableWidgetItem(iter->take("ID").toString()));//添加内容
+            tab->setItem(i,2,new QTableWidgetItem(iter->take("readerid").toString()));//添加内容
+            tab->setItem(i,3,new QTableWidgetItem(iter->take("bookid").toString()));//添加内容
+            tab->setItem(i,4,new QTableWidgetItem(iter->take("borrowtime").toString()));//添加内容
+            tab->setItem(i,5,new QTableWidgetItem(iter->take("exptime").toString()));//添加内容
+            tab->setItem(i,6,new QTableWidgetItem(iter->take("remaintime").toString()));//添
+            i++;
+        }
+    }
+    else if(tab==ui->searchResult_3)
     {
         for(auto iter : hdl.info)
         {
@@ -237,37 +273,27 @@ void Reader::ADDITEM(QTableWidget *tab,infoanalyser& hdl)
             checkBox1->setCheckState(Qt::Unchecked);
             checkBox1->setText("勾选启用");
             tab->setItem(i, 0, checkBox1);
-            tab->setItem(i,1,new QTableWidgetItem(iter->take("appointid").toString()));//借阅编号
-            tab->setItem(i,3,new QTableWidgetItem(iter->take("ID").toString()));//添加内容
-            tab->setItem(i,4,new QTableWidgetItem(iter->take("name").toString()));//添加内容
-            tab->setItem(i,5,new QTableWidgetItem(iter->take("groupID").toString()));//添加内容
-            tab->setItem(i,6,new QTableWidgetItem(iter->take("author").toString()));//添加内容
-            tab->setItem(i,7,new QTableWidgetItem(iter->take("press").toString()));//添加内容
 
-            QString tags;
-            for(auto _take_tags : iter->take("tags").toList())
-            {
-                tags += (_take_tags.toString()+",");
-            }
-            tags=tags.left(tags.length()-1);
+            tab->setItem(i,1,new QTableWidgetItem(iter->take("ID").toString()));//借阅编号
+            tab->setItem(i,2,new QTableWidgetItem(iter->take("readerid").toString()));//添加内容
+            tab->setItem(i,3,new QTableWidgetItem(iter->take("bookid").toString()));//添加内容
+            tab->setItem(i,4,new QTableWidgetItem(iter->take("appointtime").toString()));//添加内容
+            i++;
+        }
+    }
+    else if(tab==ui->searchResult_4){
+        for(auto iter : hdl.info)
+        {
+            QTableWidgetItem *checkBox1 = new QTableWidgetItem();
+            checkBox1->setCheckState(Qt::Unchecked);
+            checkBox1->setText("勾选启用");
+            tab->setItem(i, 0, checkBox1);
 
-            tab->setItem(i,8,new QTableWidgetItem(tags));//添加内容
-            tab->setItem(i,9,new QTableWidgetItem(iter->take("ISBN").toString()));//添加内容
-            tab->setItem(i,10,new QTableWidgetItem(iter->take("price").toString()));//添加内容
-            tab->setItem(i,11,new QTableWidgetItem(iter->take("pages").toString()));//添加内容
-            tab->setItem(i,12,new QTableWidgetItem(iter->take("bookcase").toString()));//添加内容
-            tab->setItem(i,13,new QTableWidgetItem(iter->take("inTime").toString()));//添加内容
-
-            QTableWidgetItem *checkBox2 = new QTableWidgetItem();
-            if(iter->take("available")==true)
-            {
-                checkBox2->setCheckState(Qt::Checked);
-            }
-            else{
-                checkBox2->setCheckState(Qt::Unchecked);
-            }
-            checkBox2->setText("Available");
-            tab->setItem(i, 14, checkBox2);
+            tab->setItem(i,1,new QTableWidgetItem(iter->take("ID").toString()));//借阅编号
+            tab->setItem(i,2,new QTableWidgetItem(iter->take("readerid").toString()));//添加内容
+            tab->setItem(i,3,new QTableWidgetItem(iter->take("bookid").toString()));//添加内容
+            tab->setItem(i,4,new QTableWidgetItem(iter->take("appointtime").toString()));//添加内容
+            tab->setItem(i,4,new QTableWidgetItem(iter->take("borrowid").toString()));//添加内容
             i++;
         }
     }
@@ -279,9 +305,9 @@ void Reader::ADDITEM(QTableWidget *tab,infoanalyser& hdl)
             checkBox1->setText("勾选启用");
             tab->setItem(i, 0, checkBox1);
             tab->setItem(i,1,new QTableWidgetItem(iter->take("username").toString()));//添加内容
-            tab->setItem(i,2,new QTableWidgetItem(iter->take("userid").toString()));//添加内容
-            tab->setItem(i,3,new QTableWidgetItem(iter->take("name").toString()));//添加内容
-            tab->setItem(i,4,new QTableWidgetItem(iter->take("groupid").toString()));//添加内容
+            tab->setItem(i,2,new QTableWidgetItem(iter->take("ID").toString()));//添加内容
+            tab->setItem(i,3,new QTableWidgetItem(iter->take("groupid").toString()));//添加内容
+            tab->setItem(i,4,new QTableWidgetItem(iter->take("name").toString()));//添加内容
             tab->setItem(i,5,new QTableWidgetItem(iter->take("sex").toString()));//添加内容
             tab->setItem(i,6,new QTableWidgetItem(iter->take("tel").toString()));//添加内容
             tab->setItem(i,7,new QTableWidgetItem(iter->take("email").toString()));//添加内容
@@ -311,6 +337,16 @@ void Reader::ADDITEM(QTableWidget *tab,infoanalyser& hdl)
             tab->setItem(i,2,new QTableWidgetItem(iter->take("max_borrow_num").toString()));//添加内容
             tab->setItem(i,3,new QTableWidgetItem(iter->take("max_borrow_time").toString()));//添加内容
             tab->setItem(i,4,new QTableWidgetItem(iter->take("max_renew_time").toString()));//添加内容
+            i++;
+        }
+    }
+    else if(tab==ui->searchResult_10){
+        for(auto iter : hdl.info)
+        {
+            tab->setItem(i,0,new QTableWidgetItem(iter->take("ID").toString()));//添加内容
+            tab->setItem(i,1,new QTableWidgetItem(iter->take("type").toString()));//添加内容
+            tab->setItem(i,2,new QTableWidgetItem(iter->take("content").toString()));//添加内容
+            tab->setItem(i,3,new QTableWidgetItem(iter->take("time").toString()));//添加内容
             i++;
         }
     }
@@ -599,7 +635,9 @@ void Reader::on_tabWidget_tabBarClicked(int index)
         if(index == 1)
         {
             Result(ui->searchResult_2);//已借阅图书-初始化时的内容即为其真实内容
-//            ADDITEM(ui->searchResult_2,0);
+        }if(index==3)
+        {
+            Result(ui->searchResult_10);
         }
     }
     else if(Iden == STAFFS_IDENTITY)
@@ -607,9 +645,10 @@ void Reader::on_tabWidget_tabBarClicked(int index)
         if(index == 1)
         {
             Result(ui->searchResult_3);//借阅申请—初始化时的内容即为其真实内容
-//            ADDITEM(ui->searchResult_3,0);
+
+
             Result(ui->searchResult_4);//归还申请-初始化时的内容即为其真实内容
-//            ADDITEM(ui->searchResult_4,0);
+
         }
         else if(index == 2)
         {
@@ -637,9 +676,12 @@ void Reader::on_tabWidget_tabBarClicked(int index)
             ui->max_borrow_time_2->clear();
             ui->max_renew_time_2->clear();
         }
+        else if(index == 6)
+        {
+            Result(ui->searchResult_10);
+        }
     }
 }
-
 
 void Reader::on_logout_clicked()
 {
@@ -713,7 +755,7 @@ void Reader::on_search_clicked()
         infoanalyser hdl(*rsp);
         if(hdl.result){
             RESTORE(search)
-            ADDITEM(ui->searchResult,0,hdl);
+            ADDITEM(ui->searchResult,hdl);
         }
         else
         {
@@ -780,7 +822,7 @@ void Reader::on_pushButton_13_clicked()
         infoanalyser hdl(*rsp);
         if(hdl.result){
             RESTORE(pushButton_13)
-            ADDITEM(ui->searchResult,0,hdl);
+            ADDITEM(ui->searchResult,hdl);
         }
         else
         {
