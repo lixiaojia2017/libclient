@@ -659,7 +659,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
             connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
             {
                 infoanalyser hdl(*rsp);
-                if(hdl.result && !hdl.info.isEmpty())
+                if(hdl.result)
                 {
                     requested = true;
                     for(auto iter: hdl.info)
@@ -884,10 +884,10 @@ void Reader::on_search_clicked()
 
 void Reader::on_last_clicked()
 {
-    if(Pages>=1){
+    if(Pages>1){
         Pages--;
     }
-    if(ui->searchStackedWidget->currentWidget()==0)
+    if(ui->searchStackedWidget->currentIndex()==0)
         on_search_clicked();
     else
         on_pushButton_13_clicked();
@@ -896,7 +896,7 @@ void Reader::on_last_clicked()
 void Reader::on_next_clicked()
 {
     Pages++;
-    if(ui->searchStackedWidget->currentWidget()==0)
+    if(ui->searchStackedWidget->currentIndex()==0)
         on_search_clicked();
     else
         on_pushButton_13_clicked();
@@ -953,7 +953,7 @@ void Reader::on_pushButton_13_clicked()
 void Reader::reset_page(){
     Pages=1;
 }
-
+//add new user
 void Reader::on_ngetnewr_clicked()
 {
     if(TEXT(pwd)!=TEXT(pwd2)){
@@ -1000,7 +1000,7 @@ void Reader::on_ngetnewr_clicked()
     });
     thr->start();
 }
-
+//update password
 void Reader::on_changepwd_clicked()
 {
     if(TEXT(newpwd)!=TEXT(newpwd2)){
@@ -1034,11 +1034,16 @@ void Reader::on_changepwd_clicked()
     });
     thr->start();
 }
-
+//update user info
 void Reader::on_pushButton_5_clicked()
 {
     ui->pushButton_5->setEnabled(false);
     wait.show();
+    if(!(NE(name_4)&&NE(tel)&&NE(email))){
+        QMessageBox::about(this,"Failed","用户信息不完整");
+        RESTORE(pushButton_5)
+        return;
+    }
     QMap<QString,QVariant> info;
     info["name"]=TEXT(name_4);
     info["sex"]=ui->sex->currentText();
