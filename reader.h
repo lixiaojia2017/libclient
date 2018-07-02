@@ -1,4 +1,4 @@
-﻿#ifndef READER_H
+#ifndef READER_H
 #define READER_H
 
 #include"pdfviewer/pdfreader.h"
@@ -71,8 +71,11 @@ private slots:
     void on_pushButton_clicked();
 
     void on_createbook_clicked();
-
     void on_changebook_clicked();
+    void on_pushButton_6_clicked();
+
+    void on_deletebook_2_clicked();
+
 
 protected:
     void switchPage(int);
@@ -93,4 +96,3 @@ private:
 };
 
 #endif // READER_H
-

@@ -42,7 +42,7 @@ void SocketThread::run()
             qint32 bytes;
             QByteArray rspData;
             in >> bytes;
-            in >> rspData;
+            in >> rspData;//超過一定大小就讀不進去???
             if(rspData.size() != bytes){
                 emit(badResponse());
             }
