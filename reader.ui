@@ -41,7 +41,7 @@
          <x>0</x>
          <y>0</y>
          <width>1159</width>
-         <height>830</height>
+         <height>824</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_8">
@@ -119,7 +119,7 @@
            </font>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>7</number>
           </property>
           <widget class="QWidget" name="tab_searchBook">
            <attribute name="title">
@@ -365,7 +365,7 @@
                     <x>0</x>
                     <y>0</y>
                     <width>1117</width>
-                    <height>471</height>
+                    <height>465</height>
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_19">
@@ -497,7 +497,7 @@
                  <x>0</x>
                  <y>0</y>
                  <width>1135</width>
-                 <height>696</height>
+                 <height>690</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_39">
@@ -887,7 +887,7 @@
             <item row="0" column="1" rowspan="4">
              <widget class="QStackedWidget" name="OPERATEBOOK">
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="page_5">
                <layout class="QGridLayout" name="gridLayout_7">
@@ -1411,7 +1411,7 @@
             <item row="0" column="1" rowspan="4">
              <widget class="QStackedWidget" name="readerStackedWidget">
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="page_13">
                <layout class="QGridLayout" name="gridLayout_40">
@@ -1791,8 +1791,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>182</width>
-                     <height>186</height>
+                     <width>1005</width>
+                     <height>599</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_48">
@@ -1918,7 +1918,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>98</width>
+                     <width>88</width>
                      <height>88</height>
                     </rect>
                    </property>
@@ -2012,7 +2012,7 @@
             <item row="0" column="1" rowspan="4">
              <widget class="QStackedWidget" name="groupStackedWidget">
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="page_14">
                <layout class="QGridLayout" name="gridLayout_50">
@@ -2227,8 +2227,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>182</width>
-                     <height>102</height>
+                     <width>1005</width>
+                     <height>613</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_53">
@@ -2820,7 +2820,7 @@
                  <x>0</x>
                  <y>0</y>
                  <width>1117</width>
-                 <height>678</height>
+                 <height>672</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_18">
@@ -2919,7 +2919,7 @@
      <x>0</x>
      <y>0</y>
      <width>1161</width>
-     <height>22</height>
+     <height>28</height>
     </rect>
    </property>
   </widget>

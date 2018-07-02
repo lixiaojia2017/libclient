@@ -77,6 +77,31 @@ private slots:
     void on_deletebook_2_clicked();
 
 
+    void on_search_3_clicked();
+
+    void on_searchBookgroup_clicked();
+
+    void on_searchReadergroup_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_10_clicked();
+
+    void on_pushButton_17_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_11_clicked();
+
+    void on_pushButton_15_clicked();
+
+    void on_pushButton_16_clicked();
+
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_8_clicked();
+
 protected:
     void switchPage(int);
     void Result(QTableWidget* tab);
