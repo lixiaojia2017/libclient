@@ -874,9 +874,6 @@ void Reader::on_searchResult_cellDoubleClicked(int row, int column)
             fileNames = fileDialog->selectedFiles().join("");
         }
         ui->cover->show();//上传封面按钮
-
-        qDebug()<<fileNames;
-
         QLabel *coverground=new QLabel("");
         coverground->setPixmap(QPixmap(fileNames).scaled(138,200));
         ui->searchResult->setCellWidget(row,column,coverground);
