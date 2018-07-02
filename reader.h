@@ -7,6 +7,12 @@
 #include<QTableWidget>
 #include "backend/handle/constructer/userconstructer.h"
 #include "backend/handle/constructer/queryconstructer.h"
+#include "backend/handle/constructer/appointconstructer.h"
+#include "backend/handle/constructer/checkconstructer.h"
+#include "backend/handle/constructer/loadconstructer.h"
+#include "backend/handle/constructer/operatebookconstructer.h"
+#include "backend/handle/constructer/operategroupconstructer.h"
+#include "backend/handle/constructer/operateuserconstructer.h"
 #include "backend/socketthread.h"
 #include "waitingwindow.h"
 #include "backend/handle/analyser.h"
@@ -79,6 +85,16 @@ private slots:
     void on_changepwd_clicked();
 
     void on_pushButton_5_clicked();
+
+    void on_pushButton_6_clicked();
+
+    void on_deletebook_2_clicked();
+
+    void on_BORROWBOOK_clicked();
+
+    void on_RETURNBOOK_clicked();
+
+    void on_search_2_clicked();
 
 protected:
     void switchPage(int);

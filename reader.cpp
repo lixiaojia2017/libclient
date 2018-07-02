@@ -9,7 +9,7 @@
 #include<QDialog>
 #include<QMessageBox>
 #define RESTORE(b)   ui->b->setEnabled(true);\
-                  wait.close();
+    wait.close();
 #include <QFileDialog>
 #include<QFile>
 #include<QDebug>
@@ -54,8 +54,8 @@ void Reader::setUsername(const QString _username)
 
 void Reader::setServer(QString addr, int p)
 {
-  serverAddr = addr;
-  serverport = p;
+    serverAddr = addr;
+    serverport = p;
 }
 
 void Reader::showReaderwin(QString& t,QString& addr,int p)
@@ -159,13 +159,13 @@ void Reader::Result(QTableWidget* tab)
     {
         tab->setColumnCount(5);//设置列数
         header<<tr("选择图书")<<tr("ID")<<tr("读者编号")
-                          <<tr("图书编号")<<tr("预约时间");
+             <<tr("图书编号")<<tr("预约时间");
     }
     else if(tab==ui->searchResult_4)
     {
         tab->setColumnCount(6);//设置列数
         header<<tr("选择图书")<<tr("ID")<<tr("读者编号")
-                          <<tr("图书编号")<<tr("预约时间")<<tr("借阅ID");
+             <<tr("图书编号")<<tr("预约时间")<<tr("借阅ID");
     }
     else if(tab==ui->searchResult_6)//删除用户
     {
@@ -213,7 +213,7 @@ void Reader::Result(QTableWidget* tab)
 void Reader::ADDITEM(QTableWidget *tab,infoanalyser& hdl)
 {
     int i=0;
-    if(tab==ui->searchResult||ui->searchResult_5)
+    if(tab==ui->searchResult|| tab==ui->searchResult_5)
     {
         for(auto iter : hdl.info)
         {
@@ -281,6 +281,7 @@ void Reader::ADDITEM(QTableWidget *tab,infoanalyser& hdl)
             tab->setItem(i, 0, checkBox1);
 
             tab->setItem(i,1,new QTableWidgetItem(iter->take("ID").toString()));//借阅编号
+            qDebug() << iter->take("ID").toString();
             tab->setItem(i,2,new QTableWidgetItem(iter->take("readerid").toString()));//添加内容
             tab->setItem(i,3,new QTableWidgetItem(iter->take("bookid").toString()));//添加内容
             tab->setItem(i,4,new QTableWidgetItem(iter->take("appointtime").toString()));//添加内容
@@ -469,12 +470,12 @@ void Reader::handleEvents()
 
     //借还管理界面切换
     connect(ui->BORROWBOOK,&QPushButton::clicked,
-    [=]()
+            [=]()
     {
         Reader::switchPage(BORROW_BOOK);
     });
     connect(ui->RETURNBOOK,&QPushButton::clicked,
-    [=]()
+            [=]()
     {
         Reader::switchPage(RETURN_BOOK);
     });
@@ -485,15 +486,15 @@ void Reader::handleEvents()
     {
         Result(ui->searchResult);
         Pages=1;
-//        ADDITEM(ui->searchResult,Pages);
+        //        ADDITEM(ui->searchResult,Pages);
     });
     //删除图书查询
     connect(ui->search_2,&QPushButton::clicked,
             [=]()
-    {       
+    {
         Result(ui->searchResult_5);
         Pages=1;
-//        ADDITEM(ui->searchResult_5,Pages);
+        //        ADDITEM(ui->searchResult_5,Pages);
     });
     //删除读者查询
     connect(ui->search_3,&QPushButton::clicked,
@@ -501,7 +502,7 @@ void Reader::handleEvents()
     {
         Result(ui->searchResult_6);
         Pages=1;
-//        ADDITEM(ui->searchResult_6,Pages);
+        //        ADDITEM(ui->searchResult_6,Pages);
     });
     //search界面更改图书信息按钮
     connect(ui->changebook_2,&QPushButton::clicked,
@@ -544,7 +545,7 @@ void Reader::handleEvents()
 
                 for(int j=2;j<13;j++)
                 {
-                     ui->searchResult_7->setItem(k,j-2,new QTableWidgetItem(ui->searchResult->item(i,j)->text()));//添加内容
+                    ui->searchResult_7->setItem(k,j-2,new QTableWidgetItem(ui->searchResult->item(i,j)->text()));//添加内容
                 }
                 k++;
             }
@@ -607,9 +608,9 @@ void Reader::handleEvents()
             if(ui->searchResult_6->item(i,0)!=nullptr && ui->searchResult_6->item(i,0)->checkState()==Qt::Checked)
             {
 
-                for(int j=1;j<8;j++)
+                for(int j=1; j<8; j++)
                 {
-                     ui->searchResult_9->setItem(k,j-1,new QTableWidgetItem(ui->searchResult_6->item(i,j)->text()));//添加内容
+                    ui->searchResult_9->setItem(k,j-1,new QTableWidgetItem(ui->searchResult_6->item(i,j)->text()));//添加内容
                 }
                 k++;
             }
@@ -623,7 +624,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
     if(index == 0)
     {
         Result(ui->searchResult);//初始化为数据库前十本书
-//        ADDITEM(ui->searchResult,0);
+        //        ADDITEM(ui->searchResult,0);
         ui->searchLineedit->clear();
         ui->name->clear();
         ui->author->clear();
@@ -686,11 +687,57 @@ void Reader::on_tabWidget_tabBarClicked(int index)
     {
         if(index == 1)
         {
-            Result(ui->searchResult_3);//借阅申请—初始化时的内容即为其真实内容
-
-
-            Result(ui->searchResult_4);//归还申请-初始化时的内容即为其真实内容
-
+            Pages = 1;
+            if(ui->brbookStackedWidget->currentIndex() == 0)
+            {
+                Result(ui->searchResult_3);//借阅申请—初始化时的内容即为其真实内容
+                queryinfo rqt1({"ID"}, 10, 1, "currappoint", "type = 'borrow'", token);
+                SocketThread* sktBorrow = new SocketThread(serverAddr,serverport, rqt1.GetReturn());
+                connect(sktBorrow,&SocketThread::connectFailed,this,[&](){
+                    QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+                });
+                connect(sktBorrow,&SocketThread::badResponse,this,[&](){
+                    QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+                });
+                connect(sktBorrow,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+                {
+                    infoanalyser hdl(*rsp);
+                    if(hdl.result)
+                    {
+                        ADDITEM(ui->searchResult_3, hdl);
+                    }
+                    else
+                    {
+                        QMessageBox::warning(this,"Warning","Unable to get the info. Maybe user is not properly set?");
+                    }
+                });
+                sktBorrow->start();
+            }
+            else
+            {
+                Result(ui->searchResult_4);//归还申请-初始化时的内容即为其真实内容
+                queryinfo rqt2({"ID"}, 10, 1, "currappoint", "type = 'return'", token);
+                SocketThread* sktReturn = new SocketThread(serverAddr,serverport, rqt2.GetReturn());
+                connect(sktReturn,&SocketThread::connectFailed,this,[&](){
+                    QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+                });
+                connect(sktReturn,&SocketThread::badResponse,this,[&](){
+                    QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+                });
+                connect(sktReturn,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+                {
+                    infoanalyser hdl(*rsp);
+                    if(hdl.result)
+                    {
+                        ADDITEM(ui->searchResult_4, hdl);
+                    }
+                    else
+                    {
+                        QMessageBox::warning(this,"Warning","Unable to get the info. Maybe user is not properly set?");
+                    }
+                });
+                sktReturn->start();
+            }
         }
         else if(index == 2)
         {
@@ -719,7 +766,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
             ui->max_renew_time_2->clear();
         }
         else if(index == 5)
-          {
+        {
             if(!requested)
             {
                 queryinfo rqt({"ID"},1,1,"staffs","username='"+username+"'",token);
@@ -753,7 +800,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
                 });
                 thr->start();
             }
-          }
+        }
         else if(index == 6)
         {
             Result(ui->searchResult_10);
@@ -822,23 +869,23 @@ void Reader::on_search_clicked()
     SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
     connect(thr,&SocketThread::connectFailed,this,[&](){
         RESTORE(search)
-        QMessageBox::about(this,"Failed","connection timeout");
+                QMessageBox::about(this,"Failed","connection timeout");
     });
     connect(thr,&SocketThread::badResponse,this,[&](){
         RESTORE(search)
-        QMessageBox::about(this,"Failed","server error");
+                QMessageBox::about(this,"Failed","server error");
     });
     connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
         infoanalyser hdl(*rsp);
         if(hdl.result){
             RESTORE(search)
-            ADDITEM(ui->searchResult,hdl);
+                    ADDITEM(ui->searchResult,hdl);
         }
         else
         {
             RESTORE(search)
-            QMessageBox::about(this,"Failed",hdl.detail);
+                    QMessageBox::about(this,"Failed",hdl.detail);
         }
     });
     thr->start();
@@ -889,23 +936,23 @@ void Reader::on_pushButton_13_clicked()
     SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
     connect(thr,&SocketThread::connectFailed,this,[&](){
         RESTORE(pushButton_13)
-        QMessageBox::about(this,"Failed","connection timeout");
+                QMessageBox::about(this,"Failed","connection timeout");
     });
     connect(thr,&SocketThread::badResponse,this,[&](){
         RESTORE(pushButton_13)
-        QMessageBox::about(this,"Failed","server error");
+                QMessageBox::about(this,"Failed","server error");
     });
     connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
         infoanalyser hdl(*rsp);
         if(hdl.result){
             RESTORE(pushButton_13)
-            ADDITEM(ui->searchResult,hdl);
+                    ADDITEM(ui->searchResult,hdl);
         }
         else
         {
             RESTORE(pushButton_13)
-            QMessageBox::about(this,"Failed",hdl.detail);
+                    QMessageBox::about(this,"Failed",hdl.detail);
         }
     });
     thr->start();
@@ -935,23 +982,23 @@ void Reader::on_ngetnewr_clicked()
     SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
     connect(thr,&SocketThread::connectFailed,this,[&](){
         RESTORE(ngetnewr)
-        QMessageBox::about(this,"Failed","connection timeout");
+                QMessageBox::about(this,"Failed","connection timeout");
     });
     connect(thr,&SocketThread::badResponse,this,[&](){
         RESTORE(ngetnewr)
-        QMessageBox::about(this,"Failed","server error");
+                QMessageBox::about(this,"Failed","server error");
     });
     connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
         infoanalyser hdl(*rsp);
         if(hdl.result){
             RESTORE(ngetnewr)
-            QMessageBox::about(this,"Success","successfully added");
+                    QMessageBox::about(this,"Success","successfully added");
         }
         else
         {
             RESTORE(ngetnewr)
-            QMessageBox::about(this,"Failed",hdl.detail);
+                    QMessageBox::about(this,"Failed",hdl.detail);
         }
     });
     thr->start();
@@ -969,23 +1016,23 @@ void Reader::on_changepwd_clicked()
     SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
     connect(thr,&SocketThread::connectFailed,this,[&](){
         RESTORE(changepwd)
-        QMessageBox::about(this,"Failed","connection timeout");
+                QMessageBox::about(this,"Failed","connection timeout");
     });
     connect(thr,&SocketThread::badResponse,this,[&](){
         RESTORE(changepwd)
-        QMessageBox::about(this,"Failed","server error");
+                QMessageBox::about(this,"Failed","server error");
     });
     connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
         infoanalyser hdl(*rsp);
         if(hdl.result){
             RESTORE(changepwd)
-            QMessageBox::about(this,"Success","password has been changed.\nlogin with new password next time");
+                    QMessageBox::about(this,"Success","password has been changed.\nlogin with new password next time");
         }
         else
         {
             RESTORE(changepwd)
-            QMessageBox::about(this,"Failed",hdl.detail);
+                    QMessageBox::about(this,"Failed",hdl.detail);
         }
     });
     thr->start();
@@ -1004,24 +1051,88 @@ void Reader::on_pushButton_5_clicked()
     SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
     connect(thr,&SocketThread::connectFailed,this,[&](){
         RESTORE(pushButton_5)
-        QMessageBox::about(this,"Failed","connection timeout");
+                QMessageBox::about(this,"Failed","connection timeout");
     });
     connect(thr,&SocketThread::badResponse,this,[&](){
         RESTORE(pushButton_5)
-        QMessageBox::about(this,"Failed","server error");
+                QMessageBox::about(this,"Failed","server error");
     });
     connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
         infoanalyser hdl(*rsp);
         if(hdl.result){
             RESTORE(pushButton_5)
-            QMessageBox::about(this,"Success","info updated");
+                    QMessageBox::about(this,"Success","info updated");
         }
         else
         {
             RESTORE(pushButton_5)
-            QMessageBox::about(this,"Failed",hdl.detail);
+                    QMessageBox::about(this,"Failed",hdl.detail);
         }
     });
     thr->start();
+}
+
+void Reader::on_pushButton_6_clicked()
+{
+
+}
+
+
+void Reader::on_deletebook_2_clicked()
+{
+    QList<QVariant> bookid;
+    for(int i = 0; i < 10; i++)
+    {
+        if(ui->searchResult->item(i,0)!=nullptr && ui->searchResult->item(i,0)->checkState()==Qt::Checked)
+        {
+            bookid.append(ui->searchResult->item(i, 2)->text().toInt());
+        }
+    }
+    if(!bookid.isEmpty())
+    {
+        deletebook rqt(bookid, token);
+        SocketThread *skt= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+        connect(skt,&SocketThread::connectFailed,this,[&](){
+            QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+        });
+        connect(skt,&SocketThread::badResponse,this,[&](){
+            QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+        });
+        connect(skt,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+        {
+            infoanalyser hdl(*rsp);
+            if(hdl.result)
+            {
+                if(ui->searchStackedWidget->currentIndex() == 0)
+                {
+                    on_search_clicked();
+                }
+                else
+                {
+                    on_pushButton_13_clicked();
+                }
+            }
+            else
+            {
+                QMessageBox::warning(this,"Warning","Unable to delete the books. Maybe they are not properly set?");
+            }
+        });
+        skt->start();
+    }
+}
+
+void Reader::on_BORROWBOOK_clicked()
+{
+    on_tabWidget_tabBarClicked(1);
+}
+
+void Reader::on_RETURNBOOK_clicked()
+{
+    on_tabWidget_tabBarClicked(1);
+}
+
+void Reader::on_search_2_clicked()
+{
+
 }

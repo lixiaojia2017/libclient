@@ -4,7 +4,7 @@
 
 SocketThread::SocketThread(QString ip,quint16 port,const QJsonObject &obj,QObject *parent):ip(ip),port(port),QThread(parent),rqt(QJsonDocument(obj))
 {
-    connect(this,&SocketThread::finished,this,&QThread::terminate);
+    connect(this,&SocketThread::finished,this,&QThread::quit);
 }
 SocketThread::~SocketThread()
 {

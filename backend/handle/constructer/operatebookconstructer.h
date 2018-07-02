@@ -26,8 +26,8 @@ public:
     changebook(int bookid, const QMap<QString, QVariant> _info, const QString &token);
 };
 
-class changegroup: public operatebookconstructer
+class changebookgroup: public operatebookconstructer
 {
 public:
-    changegroup(int groupid, const QList<QVariant> &bookid, const QString &token);
+    changebookgroup(int groupid, const QList<QVariant> &bookid, const QString &token);
 };
