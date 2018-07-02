@@ -17,6 +17,7 @@
 #include<QDebug>
 #include "backend/token.h"
 #include "backend/handle/constructer/operateuserconstructer.h"
+#include "backend/handle/constructer/operategroupconstructer.h"
 int Pages = 1,Group = 0,Iden = 0;
 
 
@@ -1128,6 +1129,50 @@ void Reader::on_appointreturnpushbutton_clicked()
     {
         RESTORE(appointreturnpushbutton)
         QMessageBox::about(this,"Success","The application has been successful!");
+    });
+    thr->start();
+}
+
+void Reader::on_pushButton_clicked()
+{
+    ui->pushButton->setEnabled(false);
+    wait.show();
+    if(!(NE(name_5)&&NE(max_borrow_num)&&NE(max_borrow_time)&&NE(max_renew_time))){
+        QMessageBox::about(this,"Failed","组信息不完整");
+        RESTORE(pushButton)
+        return;
+    }
+    QMap<QString,QVariant> info;
+    info["name"]=TEXT(name_5);
+    info["max_borrow_num"]=TEXT(max_borrow_num).toInt();
+    info["max_borrow_time"]=TEXT(max_borrow_time).toInt();
+    info["max_renew_time"]=TEXT(max_renew_time).toInt();
+    creategroup rqt("user",info,token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        RESTORE(pushButton)
+        QMessageBox::about(this,"Failed","connection timeout");
+        qDebug()<<1;
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        RESTORE(pushButton)
+        QMessageBox::about(this,"Failed","server error");
+        qDebug()<<2;
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result){
+            RESTORE(pushButton)
+            QMessageBox::about(this,"Success","successfully added");
+            qDebug()<<3;
+        }
+        else
+        {
+            RESTORE(pushButton)
+            QMessageBox::about(this,"Failed",hdl.detail);
+            qDebug()<<4;
+        }
     });
     thr->start();
 }
