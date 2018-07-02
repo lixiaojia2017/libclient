@@ -61,30 +61,20 @@ public slots:
     void showReaderwin(QString&,QString&,int);
     void showAdministratorwin(QString&,QString&,int);
 private slots:
-
     void on_tabWidget_tabBarClicked(int index);
-
-
     void on_logout_clicked();
-
     void on_searchResult_cellDoubleClicked(int row, int column);
-
-
     void on_search_clicked();
-
     void on_last_clicked();
-
     void on_next_clicked();
-
     void on_pushButton_13_clicked();
-
     void reset_page();
-
     void on_ngetnewr_clicked();
-
     void on_changepwd_clicked();
-
     void on_pushButton_5_clicked();
+    void on_appointborrowpushbutton_clicked();
+    void on_appointreturnpushbutton_clicked();
+    void on_pushButton_clicked();
 
     void on_pushButton_6_clicked();
 
@@ -95,6 +85,9 @@ private slots:
     void on_RETURNBOOK_clicked();
 
     void on_search_2_clicked();
+
+
+
 
 protected:
     void switchPage(int);
@@ -109,8 +102,10 @@ private:
     int serverport;
     void handleEvents();
     QString username="NULL";
+    int userID;
     PDFReader* pdfreader=nullptr;
     bool requested = false;
 };
+
 
 #endif // READER_H
