@@ -1,4 +1,4 @@
-#include "reader.h"
+﻿#include "reader.h"
 #include "ui_reader.h"
 #include<QIcon>
 #include<QFont>
@@ -150,8 +150,8 @@ void Reader::Result(QTableWidget* tab)
     if(tab==ui->searchResult)
     {
         tab->setColumnCount(14);//设置列数
-        header<<tr("选择图书")<<tr("封面")<<tr("ID")<<tr("书名")<<tr("groupID")
-             <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")
+        header<<tr("选择图书")<<tr("封面")<<tr("ID")<<tr("书名")<<tr("groupID")\
+             <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")\
             <<tr("书架号")<<tr("入馆时间")<<tr("Available");
     }
     else if(tab==ui->searchResult_2)
