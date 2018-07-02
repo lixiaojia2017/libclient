@@ -1,4 +1,4 @@
-﻿#include "socketthread.h"
+#include "socketthread.h"
 
 
 
