@@ -1080,16 +1080,16 @@ void Reader::on_appointborrowpushbutton_clicked()
     appointborrow rqt(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),BID.toInt(),token);
     SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
     connect(thr,&SocketThread::connectFailed,this,[&](){
-        RESTORE(appointborrowpushbutton);
+        RESTORE(appointborrowpushbutton)
         QMessageBox::about(this,"Failed","connection timeout");
     });
     connect(thr,&SocketThread::badResponse,this,[&](){
-        RESTORE(appointborrowpushbutton);
+        RESTORE(appointborrowpushbutton)
         QMessageBox::about(this,"Failed","server error");
     });
     connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
-        RESTORE(appointborrowpushbutton);
+        RESTORE(appointborrowpushbutton)
         QMessageBox::about(this,"Success","The application has been successful!");
     });
     thr->start();
@@ -1111,16 +1111,16 @@ void Reader::on_appointreturnpushbutton_clicked()
     appointreturn rqt(BID.toInt(),token);
     SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
     connect(thr,&SocketThread::connectFailed,this,[&](){
-        RESTORE(appointreturnpushbutton);
+        RESTORE(appointreturnpushbutton)
         QMessageBox::about(this,"Failed","connection timeout");
     });
     connect(thr,&SocketThread::badResponse,this,[&](){
-        RESTORE(appointreturnpushbutton);
+        RESTORE(appointreturnpushbutton)
         QMessageBox::about(this,"Failed","server error");
     });
     connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
     {
-        RESTORE(appointreturnpushbutton);
+        RESTORE(appointreturnpushbutton)
         QMessageBox::about(this,"Success","The application has been successful!");
     });
     thr->start();
