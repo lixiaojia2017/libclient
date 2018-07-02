@@ -1186,7 +1186,7 @@ void Reader::on_appointreturnpushbutton_clicked()
         QMessageBox::about(this,"Error","you have not chosen any book yet");
     }
 }
-
+//添加图书组
 void Reader::on_pushButton_clicked()
 {
     ui->pushButton->setEnabled(false);
