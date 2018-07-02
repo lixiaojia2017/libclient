@@ -1,4 +1,4 @@
-#ifndef READER_H
+﻿#ifndef READER_H
 #define READER_H
 
 #include"pdfviewer/pdfreader.h"
@@ -50,6 +50,7 @@ public:
     explicit Reader(QWidget *parent = 0);
     ~Reader();
     void setServer(QString addr, int p);
+    void setUsername(const QString username);
 public slots:
     void showReaderwin(QString&,QString&,int);
     void showAdministratorwin(QString&,QString&,int);
@@ -91,8 +92,9 @@ private:
     QString serverAddr;
     int serverport;
     void handleEvents();
-
+    QString username="NULL";
     PDFReader* pdfreader=nullptr;
+    bool requested = false;
 };
 
 #endif // READER_H

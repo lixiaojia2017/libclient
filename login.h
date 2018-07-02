@@ -1,10 +1,11 @@
-#ifndef LOGIN_H
+﻿#ifndef LOGIN_H
 #define LOGIN_H
 #include "new_user.h"
 #include "find_password.h"
 #include "waitingwindow.h"
 #include "backend/handle/constructer/userconstructer.h"
 #include "fileHandler/confighandler.h"
+#include "reader.h"
 #include <QMainWindow>
 #include <QString>
 namespace Ui {
@@ -22,7 +23,7 @@ public:
     bool getIdentity();
 
     void initStyle();
-
+    void setReader(Reader *reader);
 signals:
     void showReaderwin(QString&,QString&,int);
 
@@ -31,7 +32,7 @@ signals:
 private:
     waitingWindow wait;
     void handleEvents(); // 信号槽事件处理
-
+    Reader *reader=nullptr;
     Ui::Login *ui;
     Find_password find_password;
     configHandler config;
