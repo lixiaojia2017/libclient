@@ -636,7 +636,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
             QString sql="SELECT "+prefix+"currborrow.ID,"+prefix+"currborrow.readerid,"+prefix+"currborrow.bookid,"\
                 +prefix+"currborrow.borrowtime,"+prefix+"currborrow.exptime,"+prefix+"currborrow.remaintime,"\
                 +prefix+"books.name FROM "+prefix+"currborrow,"+prefix+"books WHERE "+prefix+"currborrow.bookid="\
-                +prefix+"books.ID AND"+prefix+"currborrow.readerid=";
+                +prefix+"books.ID AND "+prefix+"currborrow.readerid="+QString::number(userID);
             // need limit here
             queryinfo rqt(sql,token);
             SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
