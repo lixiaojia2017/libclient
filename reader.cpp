@@ -964,12 +964,15 @@ void Reader::on_searchResult_cellDoubleClicked(int row, int column)
         rqt.insert("command","down");
         rqt.insert("object","pdf");
         rqt.insert("id",bookID);
+        wait.show();
         SocketThread *thr;
         thr=new SocketThread(serverAddr,serverport,rqt);
         connect(thr,&SocketThread::connectFailed,this,[&](){
+            wait.close();
             QMessageBox::about(this,"Failed","connection timeout");
         });
         connect(thr,&SocketThread::badResponse,this,[&](){
+            wait.close();
             QMessageBox::about(this,"Failed","server error");
         });
         connect(thr,&SocketThread::downloadComplete,this,[&](QString fn){
@@ -981,10 +984,12 @@ void Reader::on_searchResult_cellDoubleClicked(int row, int column)
                 pdfreader->resize(1161,893);
                 pdfreader->loadData(byte2);
                 pdfreader->setAttribute(Qt::WA_DeleteOnClose);
+                wait.close();
                 pdfreader->show();
             }
             else
             {
+                wait.close();
                 QMessageBox::about(this,"Failed","file currupted");
             }
         },Qt::QueuedConnection);
