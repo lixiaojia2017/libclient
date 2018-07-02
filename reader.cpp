@@ -1075,30 +1075,42 @@ void Reader::on_appointborrowpushbutton_clicked()
     ui->appointborrowpushbutton->setEnabled(false);
     wait.show();
     QString BID;
+    bool flag=false;
     for(int i=0;i<10;i++)
     {
         if(ui->searchResult->item(i,0)!=nullptr&&ui->searchResult->item(i,0)->checkState()==Qt::Checked)
         {
+            flag=true;
             BID=ui->searchResult->item(i,2)->text();
-            break;
+            appointborrow rqt(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),BID.toInt(),token);
+            SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+            connect(thr,&SocketThread::connectFailed,this,[&](){
+                RESTORE(appointborrowpushbutton);
+                QMessageBox::about(this,"Failed","connection timeout");
+            });
+            connect(thr,&SocketThread::badResponse,this,[&](){
+                RESTORE(appointborrowpushbutton);
+                QMessageBox::about(this,"Failed","server error");
+            });
+            connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+            {
+                RESTORE(appointborrowpushbutton);
+                infoanalyser hdl(*rsp);
+                if(hdl.result){
+                    QMessageBox::about(this,"Success","book appointed");
+                }
+                else
+                {
+                    QMessageBox::about(this,"Failed",hdl.detail);
+                }
+            });
+            thr->start();
         }
     }
-    appointborrow rqt(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),BID.toInt(),token);
-    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
-    connect(thr,&SocketThread::connectFailed,this,[&](){
-        RESTORE(appointborrowpushbutton);
-        QMessageBox::about(this,"Failed","connection timeout");
-    });
-    connect(thr,&SocketThread::badResponse,this,[&](){
-        RESTORE(appointborrowpushbutton);
-        QMessageBox::about(this,"Failed","server error");
-    });
-    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
-    {
-        RESTORE(appointborrowpushbutton);
-        QMessageBox::about(this,"Success","The application has been successful!");
-    });
-    thr->start();
+    if (!flag){
+        QMessageBox::about(this,"Error","you have not chosen any book yet");
+    }
+
 }
 //预约还书槽函数
 void Reader::on_appointreturnpushbutton_clicked()
@@ -1106,28 +1118,40 @@ void Reader::on_appointreturnpushbutton_clicked()
     ui->appointreturnpushbutton->setEnabled(false);
     wait.show();
     QString BID;
+    bool flag=false;
     for(int i=0;i<10;i++)
     {
         if(ui->searchResult_2->item(i,0)!=nullptr&&ui->searchResult->item(i,0)->checkState()==Qt::Checked)
         {
+            flag=true;
             BID=ui->searchResult->item(i,2)->text();
-            break;
+            appointreturn rqt(BID.toInt(),token);
+            SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+            connect(thr,&SocketThread::connectFailed,this,[&](){
+                RESTORE(appointreturnpushbutton);
+                QMessageBox::about(this,"Failed","connection timeout");
+            });
+            connect(thr,&SocketThread::badResponse,this,[&](){
+                RESTORE(appointreturnpushbutton);
+                QMessageBox::about(this,"Failed","server error");
+            });
+            connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+            {
+                RESTORE(appointreturnpushbutton)
+                infoanalyser hdl(*rsp);
+                if(hdl.result){
+                    QMessageBox::about(this,"Success","book appointed");
+                }
+                else
+                {
+                    QMessageBox::about(this,"Failed",hdl.detail);
+                }
+            });
+            thr->start();
         }
     }
-    appointreturn rqt(BID.toInt(),token);
-    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
-    connect(thr,&SocketThread::connectFailed,this,[&](){
-        RESTORE(appointreturnpushbutton);
-        QMessageBox::about(this,"Failed","connection timeout");
-    });
-    connect(thr,&SocketThread::badResponse,this,[&](){
-        RESTORE(appointreturnpushbutton);
-        QMessageBox::about(this,"Failed","server error");
-    });
-    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
-    {
-        RESTORE(appointreturnpushbutton);
-        QMessageBox::about(this,"Success","The application has been successful!");
-    });
-    thr->start();
+    if (!flag){
+        QMessageBox::about(this,"Error","you have not chosen any book yet");
+    }
+
 }
