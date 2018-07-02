@@ -178,7 +178,7 @@ void Reader::Result(QTableWidget* tab)
              <<tr("图书编号")<<tr("预约时间")<<tr("借阅ID");
     }
     else if(tab==ui->searchResult_6)//删除用户
-    {
+    {        
         tab->setColumnCount(8);//设置列数
         header<<tr("选择读者")<<tr("用户名")<<tr("userID")<<tr("groupID")\
              <<tr("昵称")<<tr("性别")<<tr("手机")<<tr("邮箱");
@@ -210,6 +210,7 @@ void Reader::Result(QTableWidget* tab)
     }
     else if(tab==ui->searchResult_10)
     {
+        tab->setRowCount(20);
         tab->setColumnCount(4);
         tab->horizontalHeader()->resizeSection(0,100);
         tab->horizontalHeader()->resizeSection(1,200);
