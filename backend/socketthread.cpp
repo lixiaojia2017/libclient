@@ -46,6 +46,7 @@ void SocketThread::run()
         out << rqtData;
         tcpSocket->write(sendData);
         tcpSocket->flush();
+        tcpSocket->waitForBytesWritten(3000);
     }
     else{
         emit(connectFailed());
@@ -55,6 +56,7 @@ void SocketThread::run()
         return;
     }
     tcpSocket->setReadBufferSize(4096);
+    qint32 leftSize;
     if(tcpSocket->waitForReadyRead(10000)){
         QByteArray ReadData =tcpSocket->readAll();
         QDataStream in(&ReadData,QIODevice::ReadOnly);
@@ -64,6 +66,16 @@ void SocketThread::run()
             qint32 bytes;
             QByteArray rspData;
             in >> bytes;
+            leftSize = bytes-ReadData.size();
+            // to maintain the integrity and completeness of data
+            // Note that ReadAll() does not actually read all, but a random size around 2000-4000 bytes
+            while(leftSize>0)
+            {
+                tcpSocket->waitForReadyRead(3000);
+                QByteArray &&add = tcpSocket->readAll();
+                ReadData.append(add);
+                leftSize -= add.size();
+            }
             in >> rspData;
             if(rspData.size() != bytes){
                 emit(badResponse());
