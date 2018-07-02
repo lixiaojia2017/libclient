@@ -1,4 +1,4 @@
-﻿#include "reader.h"
+#include "reader.h"
 #include "ui_reader.h"
 #include<QIcon>
 #include<QFont>
@@ -8,6 +8,8 @@
 #include<QFrame>
 #include<QDialog>
 #include<QMessageBox>
+#include<QTime>
+#include"backend/handle/constructer/appointconstructer.h"
 #define RESTORE(b)   ui->b->setEnabled(true);\
                   wait.close();
 #include <QFileDialog>
@@ -62,6 +64,7 @@ void Reader::showReaderwin(QString& t,QString& addr,int p)
 {
     token = t;
     setServer(addr,p);
+    ui->tabWidget->removeTab(7);
     ui->tabWidget->removeTab(5);
     ui->tabWidget->removeTab(4);
     ui->tabWidget->removeTab(3);
@@ -77,8 +80,7 @@ void Reader::showAdministratorwin(QString& t,QString& addr,int p)
     token = t;
     ui->tabWidget->removeTab(1);
     setServer(addr,p);
-    ui->appointborrow->hide();
-    ui->appointreturn->hide();
+    ui->appointborrowpushbutton->hide();
     Iden = STAFFS_IDENTITY;
     this->show();
 }
@@ -145,8 +147,8 @@ void Reader::Result(QTableWidget* tab)
     if(tab==ui->searchResult||tab==ui->searchResult_5)
     {
         tab->setColumnCount(14);//设置列数
-        header<<tr("选择图书")<<tr("封面")<<tr("ID")<<tr("书名")<<tr("groupID")
-             <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")
+        header<<tr("选择图书")<<tr("封面")<<tr("ID")<<tr("书名")<<tr("groupID")\
+             <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")\
             <<tr("书架号")<<tr("入馆时间")<<tr("Available");
     }
     else if(tab==ui->searchResult_2)
@@ -490,7 +492,7 @@ void Reader::handleEvents()
     //删除图书查询
     connect(ui->search_2,&QPushButton::clicked,
             [=]()
-    {       
+    {
         Result(ui->searchResult_5);
         Pages=1;
 //        ADDITEM(ui->searchResult_5,Pages);
@@ -704,7 +706,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
                             ui->label_18->setText(iter->take("username").toString());
                             ui->name_4->setText(iter->take("name").toString());
                             ui->email->setText(iter->take("email").toString());
-                            ui->sex->setText(iter->take("sex").toString());
+                            ui->sex->setCurrentText(iter->take("sex").toString());
                             ui->tel->setText(iter->take("tel").toString());
                         }
                     }
@@ -777,7 +779,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
                             ui->label_18->setText(iter->take("username").toString());
                             ui->name_4->setText(iter->take("name").toString());
                             ui->email->setText(iter->take("email").toString());
-                            ui->sex->setText(iter->take("sex").toString());
+                            ui->sex->setCurrentText(iter->take("sex").toString());
                             ui->tel->setText(iter->take("tel").toString());
                         }
                     }
@@ -837,9 +839,9 @@ void Reader::on_searchResult_cellDoubleClicked(int row, int column)
         {
             fileNames = fileDialog->selectedFiles();
         }
-        qDebug()<<fileNames;
+        //qDebug()<<fileNames;
     }
-    else {
+    else if(ui->searchResult->item(row,column)!=nullptr){
         ui->searchResult->item(row,2)->text();
         pdfreader = new PDFReader;
         pdfreader->resize(1161,893);
@@ -962,7 +964,7 @@ void Reader::on_ngetnewr_clicked()
     QMap<QString,QVariant> info;
     info["username"]=TEXT(username);
     info["name"]=TEXT(name_2);
-    info["sex"]=TEXT(sex_2);
+    info["sex"]=ui->sex_2->currentText();
     info["tel"]=TEXT(tel_2);
     info["email"]=TEXT(email_2);
     info["password"]=token::getMD5(TEXT(pwd));
@@ -1033,7 +1035,7 @@ void Reader::on_pushButton_5_clicked()
     wait.show();
     QMap<QString,QVariant> info;
     info["name"]=TEXT(name_4);
-    info["sex"]=TEXT(sex);
+    info["sex"]=ui->sex->currentText();
     info["tel"]=TEXT(tel);
     info["email"]=TEXT(email);
     userupdateinfo rqt(info,token);
@@ -1058,6 +1060,68 @@ void Reader::on_pushButton_5_clicked()
             RESTORE(pushButton_5)
             QMessageBox::about(this,"Failed",hdl.detail);
         }
+    });
+    thr->start();
+}
+//预约借书槽函数
+void Reader::on_appointborrowpushbutton_clicked()
+{
+    ui->appointborrowpushbutton->setEnabled(false);
+    wait.show();
+    QString BID;
+    for(int i=0;i<10;i++)
+    {
+        if(ui->searchResult->item(i,0)!=nullptr&&ui->searchResult->item(i,0)->checkState()==Qt::Checked)
+        {
+            BID=ui->searchResult->item(i,2)->text();
+            break;
+        }
+    }
+    appointborrow rqt(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"),BID.toInt(),token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        RESTORE(appointborrowpushbutton);
+        QMessageBox::about(this,"Failed","connection timeout");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        RESTORE(appointborrowpushbutton);
+        QMessageBox::about(this,"Failed","server error");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        RESTORE(appointborrowpushbutton);
+        QMessageBox::about(this,"Success","The application has been successful!");
+    });
+    thr->start();
+}
+//预约还书槽函数
+void Reader::on_appointreturnpushbutton_clicked()
+{
+    ui->appointreturnpushbutton->setEnabled(false);
+    wait.show();
+    QString BID;
+    for(int i=0;i<10;i++)
+    {
+        if(ui->searchResult_2->item(i,0)!=nullptr&&ui->searchResult->item(i,0)->checkState()==Qt::Checked)
+        {
+            BID=ui->searchResult->item(i,2)->text();
+            break;
+        }
+    }
+    appointreturn rqt(BID.toInt(),token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        RESTORE(appointreturnpushbutton);
+        QMessageBox::about(this,"Failed","connection timeout");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        RESTORE(appointreturnpushbutton);
+        QMessageBox::about(this,"Failed","server error");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        RESTORE(appointreturnpushbutton);
+        QMessageBox::about(this,"Success","The application has been successful!");
     });
     thr->start();
 }

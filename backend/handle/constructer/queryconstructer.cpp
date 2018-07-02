@@ -1,4 +1,4 @@
-﻿#include "queryconstructer.h"
+#include "queryconstructer.h"
 
 queryconstructer::queryconstructer(const QString& token): constructer(token)
 {
@@ -68,6 +68,6 @@ queryinfo::queryinfo(const QList<QVariant> &order, int records, int page, const 
 
 queryinfo::queryinfo(const QString sql,const QString token):queryconstructer(token)
 {
-  jsonReturn["command"]="bareSQL";
-  jsonReturn["bareSQL"]=sql;
+  jsonReturn.insert("command", "bareSQL");
+  jsonReturn.insert("bareSQL",sql);
 }

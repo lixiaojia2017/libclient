@@ -1,4 +1,4 @@
-﻿#ifndef READER_H
+#ifndef READER_H
 #define READER_H
 
 #include"pdfviewer/pdfreader.h"
@@ -55,31 +55,19 @@ public slots:
     void showReaderwin(QString&,QString&,int);
     void showAdministratorwin(QString&,QString&,int);
 private slots:
-
     void on_tabWidget_tabBarClicked(int index);
-
-
     void on_logout_clicked();
-
     void on_searchResult_cellDoubleClicked(int row, int column);
-
-
     void on_search_clicked();
-
     void on_last_clicked();
-
     void on_next_clicked();
-
     void on_pushButton_13_clicked();
-
     void reset_page();
-
     void on_ngetnewr_clicked();
-
     void on_changepwd_clicked();
-
     void on_pushButton_5_clicked();
-
+    void on_appointborrowpushbutton_clicked();
+    void on_appointreturnpushbutton_clicked();
 protected:
     void switchPage(int);
     void Result(QTableWidget* tab);
@@ -98,3 +86,4 @@ private:
 };
 
 #endif // READER_H
+
