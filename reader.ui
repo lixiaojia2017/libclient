@@ -156,7 +156,7 @@
                   </size>
                  </property>
                  <property name="currentIndex">
-                  <number>0</number>
+                  <number>1</number>
                  </property>
                  <widget class="QWidget" name="page_3">
                   <layout class="QGridLayout" name="gridLayout_37">
@@ -1792,7 +1792,7 @@
                      <x>0</x>
                      <y>0</y>
                      <width>1005</width>
-                     <height>605</height>
+                     <height>599</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_48">
@@ -2012,7 +2012,7 @@
             <item row="0" column="1" rowspan="4">
              <widget class="QStackedWidget" name="groupStackedWidget">
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="page_14">
                <layout class="QGridLayout" name="gridLayout_50">
@@ -2181,7 +2181,7 @@
                   <item row="0" column="0">
                    <widget class="QLabel" name="label_59">
                     <property name="text">
-                     <string>组编号</string>
+                     <string>组名称</string>
                     </property>
                    </widget>
                   </item>
@@ -2228,7 +2228,7 @@
                      <x>0</x>
                      <y>0</y>
                      <width>1005</width>
-                     <height>619</height>
+                     <height>613</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_53">
