@@ -972,7 +972,7 @@ void Reader::on_searchResult_cellDoubleClicked(int row, int column)
         connect(thr,&SocketThread::badResponse,this,[&](){
             QMessageBox::about(this,"Failed","server error");
         });
-        connect(thr,&SocketThread::downloadComplete,this,[&](QString fn){
+        connect(thr,&SocketThread::downloadComplete,this,[&](QString& fn){
             QFile file("./cache/"+fn);
             if(file.open(QIODevice::ReadOnly))
             {
@@ -987,7 +987,7 @@ void Reader::on_searchResult_cellDoubleClicked(int row, int column)
             {
                 QMessageBox::about(this,"Failed","file currupted");
             }
-        },Qt::QueuedConnection);
+        });
         thr->start();
     }
 }
