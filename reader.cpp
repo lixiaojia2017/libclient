@@ -903,6 +903,7 @@ void Reader::on_next_clicked()
 }
 #define TEXT(a)   ui->a->text()
 #define IFNE(a) if(ui->a->text()!="")
+#define NE(a) (ui->a->text()!="")
 void Reader::on_pushButton_13_clicked()
 {
     ui->searchResult->clear();
@@ -961,8 +962,13 @@ void Reader::on_ngetnewr_clicked()
     }
     ui->ngetnewr->setEnabled(false);
     wait.show();
+    if(!(NE(username_0)&&NE(name_2)&&NE(tel_2)&&NE(email_2)&&NE(pwd))){
+        QMessageBox::about(this,"Failed","用户信息不完整");
+        RESTORE(ngetnewr)
+        return;
+    }
     QMap<QString,QVariant> info;
-    info["username"]=TEXT(username);
+    info["username"]=TEXT(username_0);
     info["name"]=TEXT(name_2);
     info["sex"]=ui->sex_2->currentText();
     info["tel"]=TEXT(tel_2);
