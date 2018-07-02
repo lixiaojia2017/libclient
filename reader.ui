@@ -119,7 +119,7 @@
            </font>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>6</number>
           </property>
           <widget class="QWidget" name="tab_searchBook">
            <attribute name="title">
@@ -1699,7 +1699,7 @@
                        </item>
                        <item>
                         <property name="text">
-                         <string>Others</string>
+                         <string>Other</string>
                         </property>
                        </item>
                       </widget>
@@ -1876,8 +1876,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>969</width>
-                     <height>583</height>
+                     <width>225</width>
+                     <height>180</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_48">
@@ -2003,8 +2003,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>969</width>
-                     <height>605</height>
+                     <width>109</width>
+                     <height>109</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_60">
@@ -2696,7 +2696,7 @@
                    </item>
                    <item>
                     <property name="text">
-                     <string>Others</string>
+                     <string>Other</string>
                     </property>
                    </item>
                   </widget>

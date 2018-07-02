@@ -1,4 +1,4 @@
-#include "reader.h"
+﻿#include "reader.h"
 #include "ui_reader.h"
 #include<QIcon>
 #include<QFont>
@@ -154,32 +154,32 @@ void Reader::Result(QTableWidget* tab)
     else if(tab==ui->searchResult_2)
     {
         tab->setColumnCount(7);//设置列数
-        header<<tr("选择图书")<<tr("借阅编号")<<tr("读者编号")<<tr("图书编号")
+        header<<tr("选择图书")<<tr("借阅编号")<<tr("读者编号")<<tr("图书编号")\
              <<tr("借书时间")<<tr("归还期限")<<tr("可续借次数");
     }
     else if(tab==ui->searchResult_3)//借还申请
     {
         tab->setColumnCount(5);//设置列数
-        header<<tr("选择图书")<<tr("ID")<<tr("读者编号")
+        header<<tr("选择图书")<<tr("ID")<<tr("读者编号")\
                           <<tr("图书编号")<<tr("预约时间");
     }
     else if(tab==ui->searchResult_4)
     {
         tab->setColumnCount(6);//设置列数
-        header<<tr("选择图书")<<tr("ID")<<tr("读者编号")
+        header<<tr("选择图书")<<tr("ID")<<tr("读者编号")\
                           <<tr("图书编号")<<tr("预约时间")<<tr("借阅ID");
     }
     else if(tab==ui->searchResult_6)//删除用户
     {
         tab->setColumnCount(8);//设置列数
-        header<<tr("选择读者")<<tr("用户名")<<tr("userID")<<tr("groupID")
+        header<<tr("选择读者")<<tr("用户名")<<tr("userID")<<tr("groupID")\
              <<tr("昵称")<<tr("性别")<<tr("手机")<<tr("邮箱");
     }
     else if(tab==ui->searchResult_7)//修改图书组
     {//内容自动获取，无需搜索添加,与searchResult有关
         tab->setColumnCount(11);//设置列数
-        header<<tr("ID")<<tr("书名")<<tr("groupID")
-             <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")
+        header<<tr("ID")<<tr("书名")<<tr("groupID")\
+             <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")\
             <<tr("书架号")<<tr("入馆时间");
     }
     else if(tab==ui->searchResult_8&&Group == BOOK_GROUP_SEARCH)
@@ -197,7 +197,7 @@ void Reader::Result(QTableWidget* tab)
     else if(tab==ui->searchResult_9)
     {//内容自动获取，无需添加
         tab->setColumnCount(7);
-        header<<tr("用户名")<<tr("userID")<<tr("groupID")
+        header<<tr("用户名")<<tr("userID")<<tr("groupID")\
              <<tr("昵称")<<tr("性别")<<tr("手机")<<tr("邮箱");
     }
     else if(tab==ui->searchResult_10)
