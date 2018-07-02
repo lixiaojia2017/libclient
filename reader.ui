@@ -41,7 +41,7 @@
          <x>0</x>
          <y>0</y>
          <width>1159</width>
-         <height>826</height>
+         <height>830</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_8">
@@ -364,8 +364,8 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>1107</width>
-                    <height>457</height>
+                    <width>1117</width>
+                    <height>471</height>
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_19">
@@ -496,8 +496,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>1129</width>
-                 <height>687</height>
+                 <width>1135</width>
+                 <height>696</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_39">
@@ -637,8 +637,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>1007</width>
-                     <height>665</height>
+                     <width>1031</width>
+                     <height>678</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_29">
@@ -1122,8 +1122,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>949</width>
-                     <height>581</height>
+                     <width>165</width>
+                     <height>79</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_33">
@@ -1503,7 +1503,7 @@
             <item row="0" column="1" rowspan="4">
              <widget class="QStackedWidget" name="readerStackedWidget">
               <property name="currentIndex">
-               <number>1</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="page_13">
                <layout class="QGridLayout" name="gridLayout_40">
@@ -1873,8 +1873,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>969</width>
-                     <height>583</height>
+                     <width>1005</width>
+                     <height>605</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_48">
@@ -2000,8 +2000,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>969</width>
-                     <height>605</height>
+                     <width>1005</width>
+                     <height>619</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_60">
@@ -2094,7 +2094,7 @@
             <item row="0" column="1" rowspan="4">
              <widget class="QStackedWidget" name="groupStackedWidget">
               <property name="currentIndex">
-               <number>1</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="page_14">
                <layout class="QGridLayout" name="gridLayout_50">
@@ -2309,8 +2309,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>969</width>
-                     <height>605</height>
+                     <width>1005</width>
+                     <height>619</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_53">
@@ -2885,8 +2885,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>1107</width>
-                 <height>665</height>
+                 <width>1117</width>
+                 <height>678</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_18">
@@ -2931,7 +2931,7 @@
      <x>0</x>
      <y>0</y>
      <width>1161</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

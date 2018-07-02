@@ -77,6 +77,8 @@ private slots:
 
     void on_changepwd_clicked();
 
+    void on_pushButton_5_clicked();
+
 protected:
     void switchPage(int);
     void Result(QTableWidget* tab);

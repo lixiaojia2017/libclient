@@ -912,3 +912,38 @@ void Reader::on_changepwd_clicked()
     });
     thr->start();
 }
+
+void Reader::on_pushButton_5_clicked()
+{
+    ui->pushButton_5->setEnabled(false);
+    wait.show();
+    QMap<QString,QVariant> info;
+    info["name"]=TEXT(name_4);
+    info["sex"]=TEXT(sex);
+    info["tel"]=TEXT(tel);
+    info["email"]=TEXT(email);
+    userupdateinfo rqt(info,token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        RESTORE(pushButton_5)
+        QMessageBox::about(this,"Failed","connection timeout");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        RESTORE(pushButton_5)
+        QMessageBox::about(this,"Failed","server error");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result){
+            RESTORE(pushButton_5)
+            QMessageBox::about(this,"Success","info updated");
+        }
+        else
+        {
+            RESTORE(pushButton_5)
+            QMessageBox::about(this,"Failed",hdl.detail);
+        }
+    });
+    thr->start();
+}
