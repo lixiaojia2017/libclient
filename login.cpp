@@ -1,6 +1,7 @@
 ﻿#include "login.h"
 #include "ui_login.h"
 #include "new_user.h"
+#include "reader.h"
 #include<QKeyEvent>
 //#include<QDebug>
 #include<QDialog>
@@ -34,6 +35,11 @@ Login::~Login()
 
 }
 
+void Login::setReader(Reader *_reader)
+{
+    reader = _reader;
+}
+
 void Login::handleEvents() // 信号槽事件处理
 {
   // load server addr from config
@@ -62,8 +68,12 @@ void Login::handleEvents() // 信号槽事件处理
     });
   // start login procedure
     connect(ui->logIn,&QPushButton::clicked,
-            [&]()
+            this,[&]()
     {
+        if(reader)
+        {
+            reader->setUsername(ui->username->text());
+        }
         if(!pwdAutoLoad)
         {
             ui->password->setText(token::getMD5(ui->password->text()));

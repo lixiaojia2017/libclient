@@ -1,4 +1,4 @@
-﻿#include "reader.h"
+#include "reader.h"
 #include "ui_reader.h"
 #include<QIcon>
 #include<QFont>
@@ -47,7 +47,10 @@ Reader::~Reader()
 {
     delete ui;
 }
-
+void Reader::setUsername(const QString _username)
+{
+    username = _username;
+}
 void Reader::setServer(QString addr, int p)
 {
   serverAddr = addr;
@@ -423,6 +426,8 @@ void Reader::handleEvents()
             [=]()
     {
         Reader::switchPage(ADD_READER);
+            /*ui->groupid->clear();
+        ui->groupid->addItem(tr("li"));*///给下拉框添加内容
     });
     connect(ui->DELETEREADER,&QPushButton::clicked,
             [=]()
@@ -484,7 +489,7 @@ void Reader::handleEvents()
     //删除图书查询
     connect(ui->search_2,&QPushButton::clicked,
             [=]()
-    {       
+    {
         Result(ui->searchResult_5);
         Pages=1;
 //        ADDITEM(ui->searchResult_5,Pages);
@@ -635,7 +640,44 @@ void Reader::on_tabWidget_tabBarClicked(int index)
         if(index == 1)
         {
             Result(ui->searchResult_2);//已借阅图书-初始化时的内容即为其真实内容
+    }
+    else if(index== 2)
+        {
+            if(!requested)
+            {
+                queryinfo rqt({"ID"},1,1,"readers","username='"+username+"'",token);
+                SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+                connect(thr,&SocketThread::connectFailed,this,[&](){
+                    QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+                });
+                connect(thr,&SocketThread::badResponse,this,[&](){
+                    QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+                });
+                connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+                {
+                    infoanalyser hdl(*rsp);
+                    if(hdl.result && !hdl.info.isEmpty())
+                    {
+                        requested = true;
+                        for(auto iter: hdl.info)
+                        {
+                            ui->label_18->setText(iter->take("username").toString());
+                            ui->name_4->setText(iter->take("name").toString());
+                            ui->email->setText(iter->take("email").toString());
+                            ui->sex->setText(iter->take("sex").toString());
+                            ui->tel->setText(iter->take("tel").toString());
+                        }
+                    }
+                    else
+                    {
+                        QMessageBox::warning(this,"Warning","Unable to get user info. Maybe user is not properly set?");
+                    }
+                    // get result
+                });
+                thr->start();
+            }
         }
+
     }
     else if(Iden == STAFFS_IDENTITY)
     {
@@ -672,6 +714,42 @@ void Reader::on_tabWidget_tabBarClicked(int index)
             ui->max_borrow_num_2->clear();
             ui->max_borrow_time_2->clear();
             ui->max_renew_time_2->clear();
+    }
+        else if(index == 5)
+          {
+            if(!requested)
+            {
+                queryinfo rqt({"ID"},1,1,"staffs","username='"+username+"'",token);
+                SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+                connect(thr,&SocketThread::connectFailed,this,[&](){
+                    QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+                });
+                connect(thr,&SocketThread::badResponse,this,[&](){
+                    QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+                });
+                connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+                {
+                    infoanalyser hdl(*rsp);
+                    if(hdl.result && !hdl.info.isEmpty())
+                    {
+                        requested = true;
+                        for(auto iter: hdl.info)
+                        {
+                            ui->label_18->setText(iter->take("username").toString());
+                            ui->name_4->setText(iter->take("name").toString());
+                            ui->email->setText(iter->take("email").toString());
+                            ui->sex->setText(iter->take("sex").toString());
+                            ui->tel->setText(iter->take("tel").toString());
+                        }
+                    }
+                    else
+                    {
+                        QMessageBox::warning(this,"Warning","Unable to get user info. Maybe user is not properly set?");
+                    }
+                    // get result
+                });
+                thr->start();
+            }
         }
         else if(index == 6)
         {

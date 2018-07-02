@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
     QApplication::setWindowIcon(QIcon(":/image/icon.ico"));
     Login w; //登录界面
     Reader r;  //读者界面
+    w.setReader(&r);
     QObject::connect(&w,&Login::showReaderwin,&r,&Reader::showReaderwin);
     QObject::connect(&w,&Login::showAdministratorwin,&r,&Reader::showAdministratorwin);
     w.show();
