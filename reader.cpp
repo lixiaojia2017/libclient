@@ -153,39 +153,44 @@ void Reader::Result(QTableWidget* tab)
     if(tab==ui->searchResult)
     {
         tab->setColumnCount(14);//设置列数
-        header<<tr("选择图书")<<tr("封面")<<tr("ID")<<tr("书名")<<tr("groupID")
-             <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")
+        header<<tr("选择图书")<<tr("封面")<<tr("ID")<<tr("书名")<<tr("groupID")\
+             <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")\
             <<tr("书架号")<<tr("入馆时间")<<tr("Available");
+        tab->horizontalHeader()->setDefaultSectionSize(138);
+        for(int i=0;i<10;i++)
+        {
+            tab->verticalHeader()->setDefaultSectionSize(200);
+        }
     }
     else if(tab==ui->searchResult_2)
     {
-        tab->setColumnCount(7);//设置列数
-        header<<tr("选择图书")<<tr("借阅编号")<<tr("读者编号")<<tr("图书编号")
-             <<tr("借书时间")<<tr("归还期限")<<tr("可续借次数");
+        tab->setColumnCount(8);//设置列数
+        header<<tr("选择图书")<<tr("借阅编号")<<tr("读者编号")<<tr("图书编号")\
+             <<tr("书名")<<tr("借书时间")<<tr("归还期限")<<tr("可续借次数");
     }
     else if(tab==ui->searchResult_3)//借还申请
     {
         tab->setColumnCount(5);//设置列数
-        header<<tr("选择图书")<<tr("ID")<<tr("读者编号")
+        header<<tr("选择图书")<<tr("ID")<<tr("读者编号")\
              <<tr("图书编号")<<tr("预约时间");
     }
     else if(tab==ui->searchResult_4)
     {
         tab->setColumnCount(6);//设置列数
-        header<<tr("选择图书")<<tr("ID")<<tr("读者编号")
+        header<<tr("选择图书")<<tr("ID")<<tr("读者编号")\
              <<tr("图书编号")<<tr("预约时间")<<tr("借阅ID");
     }
     else if(tab==ui->searchResult_6)//删除用户
-    {
+    {        
         tab->setColumnCount(8);//设置列数
-        header<<tr("选择读者")<<tr("用户名")<<tr("userID")<<tr("groupID")
+        header<<tr("选择读者")<<tr("用户名")<<tr("userID")<<tr("groupID")\
              <<tr("昵称")<<tr("性别")<<tr("手机")<<tr("邮箱");
     }
     else if(tab==ui->searchResult_7)//修改图书组
     {//内容自动获取，无需搜索添加,与searchResult有关
         tab->setColumnCount(11);//设置列数
-        header<<tr("ID")<<tr("书名")<<tr("groupID")
-             <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")
+        header<<tr("ID")<<tr("书名")<<tr("groupID")\
+             <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")\
             <<tr("书架号")<<tr("入馆时间");
     }
     else if(tab==ui->searchResult_8&&Group == BOOK_GROUP_SEARCH)
@@ -208,6 +213,7 @@ void Reader::Result(QTableWidget* tab)
     }
     else if(tab==ui->searchResult_10)
     {
+        tab->setRowCount(20);
         tab->setColumnCount(4);
         tab->horizontalHeader()->resizeSection(0,100);
         tab->horizontalHeader()->resizeSection(1,200);
@@ -273,9 +279,10 @@ void Reader::ADDITEM(QTableWidget *tab,infoanalyser& hdl)
             tab->setItem(i,1,new QTableWidgetItem(iter->take("ID").toString()));//添加内容
             tab->setItem(i,2,new QTableWidgetItem(iter->take("readerid").toString()));//添加内容
             tab->setItem(i,3,new QTableWidgetItem(iter->take("bookid").toString()));//添加内容
-            tab->setItem(i,4,new QTableWidgetItem(iter->take("borrowtime").toString()));//添加内容
-            tab->setItem(i,5,new QTableWidgetItem(iter->take("exptime").toString()));//添加内容
-            tab->setItem(i,6,new QTableWidgetItem(iter->take("remaintime").toString()));//添
+            tab->setItem(i,4,new QTableWidgetItem(iter->take("name").toString()));//添加内容
+            tab->setItem(i,5,new QTableWidgetItem(iter->take("borrowtime").toString()));//添加内容
+            tab->setItem(i,6,new QTableWidgetItem(iter->take("exptime").toString()));//添加内容
+            tab->setItem(i,7,new QTableWidgetItem(iter->take("remaintime").toString()));//添
             i++;
         }
     }
@@ -503,10 +510,10 @@ void Reader::handleEvents()
             [=]()
     {
         ui->tabWidget->setCurrentIndex(2);
-        ui->OPERATEBOOK->setCurrentIndex(2);
+        ui->OPERATEBOOK->setCurrentIndex(1);
         for(int i=0;i<10;i++)
         {
-            if(ui->searchResult->item(i,0)->checkState()==Qt::Checked)
+            if(ui->searchResult->item(i,0)!=nullptr&&ui->searchResult->item(i,0)->checkState()==Qt::Checked)
             {
                 ui->bookId->setText(ui->searchResult->item(i,2)->text());
                 ui->name_3->setText(ui->searchResult->item(i,3)->text());
@@ -530,7 +537,7 @@ void Reader::handleEvents()
             [=]()
     {
         ui->tabWidget->setCurrentIndex(2);
-        ui->OPERATEBOOK->setCurrentIndex(3);
+        ui->OPERATEBOOK->setCurrentIndex(2);
         Result(ui->searchResult_7);
         for(int i=0,k=0;i<10;i++)
         {
@@ -640,7 +647,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
             QString sql="SELECT "+prefix+"currborrow.ID,"+prefix+"currborrow.readerid,"+prefix+"currborrow.bookid,"\
                 +prefix+"currborrow.borrowtime,"+prefix+"currborrow.exptime,"+prefix+"currborrow.remaintime,"\
                 +prefix+"books.name FROM "+prefix+"currborrow,"+prefix+"books WHERE "+prefix+"currborrow.bookid="\
-                +prefix+"books.ID AND"+prefix+"currborrow.readerid=";
+                +prefix+"books.ID AND "+prefix+"currborrow.readerid="+QString::number(userID);
             // need limit here
             queryinfo rqt(sql,token);
             SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
@@ -665,15 +672,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
                     {
                         ui->pushButton_7->setEnabled(false);
                     }
-                    requested = true;
-                    for(auto iter: hdl.info)
-                    {
-                        ui->label_18->setText(iter->take("username").toString());
-                        ui->name_4->setText(iter->take("name").toString());
-                        ui->email->setText(iter->take("email").toString());
-                        ui->sex->setCurrentText(iter->take("sex").toString());
-                        ui->tel->setText(iter->take("tel").toString());
-                    }
+		    ADDITEM(ui->searchResult_2,hdl);
                 }
                 else
                 {
@@ -873,7 +872,7 @@ void Reader::on_tabWidget_tabBarClicked(int index)
             Result(ui->searchResult_10);
             ui->pushButton_3->setEnabled(false);
             wait.show();
-            queryinfo rqt({"ID"}, 10, Pages, "operation_log", "", token);
+            queryinfo rqt({"ID"}, 20, Pages, "operation_log", "", token);
             SocketThread *thr= new SocketThread(serverAddr, serverport, rqt.GetReturn());
             connect(thr,&SocketThread::connectFailed,this,[&](){
                 RESTORE(pushButton_3)
@@ -997,7 +996,7 @@ void Reader::on_search_clicked()
                 ui->next->setEnabled(false);
             }
             RESTORE(search)
-            ADDITEM(ui->searchResult,hdl);
+                    ADDITEM(ui->searchResult,hdl);
         }
         else
         {
@@ -1737,7 +1736,7 @@ void Reader::on_pushButton_3_clicked()
     Result(ui->searchResult_10);
     ui->pushButton_3->setEnabled(false);
     wait.show();
-    queryinfo rqt({"ID"}, 10, Pages, "operation_log", "", token);
+    queryinfo rqt({"ID"}, 20, Pages, "operation_log", "", token);
     SocketThread *thr= new SocketThread(serverAddr, serverport, rqt.GetReturn());
     connect(thr,&SocketThread::connectFailed,this,[&](){
         RESTORE(pushButton_3)
@@ -2021,6 +2020,136 @@ void Reader::on_pushButton_16_clicked()
     }
 }
 
+//change book
+void Reader::on_changebook_clicked()
+{
+    ui->changebook->setEnabled(false);
+    wait.show();
+    if((!(NE(name_3)&&NE(press_3)&&NE(author_3)&&NE(ISBN_3)&&NE(pages_3)&&NE(price_3)&&NE(tags_3)&&NE(groupid_3)&&NE(bookcase_3)))||ui->bookId->text()==""){
+        QMessageBox::about(this,"Failed","图书信息不完整");
+        ui->changebook->setEnabled(true);
+        wait.close();
+        return;
+    }
+    QMap<QString,QVariant> info;
+    info["name"]=TEXT(name_3);
+    info["press"]=TEXT(press_3);
+    info["author"]=TEXT(author_3);
+    info["ISBN"]=TEXT(ISBN_3);
+    info["price"]=ui->price_3->text().toFloat();
+    info["groupID"]=ui->groupid_3->text().toInt();
+    info["pages"]=ui->pages_3->text().toInt();
+    info["bookcase"]=ui->bookcase_3->text().toInt();
+    info["available"]=ui->available_3->checkState();
+    QString TAG=TEXT(tags_3);
+    QStringList tgs=TAG.split(',');
+    info["tags"]=tgs;
+    changebook rqt(ui->bookId->text().toInt(),info,token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        ui->changebook->setEnabled(true);
+        wait.close();
+        QMessageBox::about(this,"Failed","connection timeout");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        ui->changebook->setEnabled(true);
+        wait.close();
+        QMessageBox::about(this,"Failed","server error");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result){
+            ui->changebook->setEnabled(true);
+            wait.close();
+            QMessageBox::about(this,"Success","successfully added");
+        }
+        else
+        {
+            ui->changebook->setEnabled(true);
+            wait.close();
+            QMessageBox::about(this,"Failed",hdl.detail);
+        }
+    });
+    thr->start();
+}
+//添加图书组
+void Reader::on_pushButton_4_clicked()
+{
+    ui->pushButton_4->setEnabled(false);
+    wait.show();
+    if(!(NE(name_6)&&NE(max_time))){
+        QMessageBox::about(this,"Failed","图书组不完整");
+        RESTORE(pushButton_4)
+                return;
+    }
+    QMap<QString,QVariant> info;
+    info["name"]=TEXT(name_6);
+    info["max_time"]=TEXT(max_time).toInt();
+    creategroup rqt("book",info,token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        RESTORE(pushButton_4)
+                QMessageBox::about(this,"Failed","connection timeout");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        RESTORE(pushButton_4)
+                QMessageBox::about(this,"Failed","server error");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result){
+            RESTORE(pushButton_4)
+                    QMessageBox::about(this,"Success","successfully added");
+        }
+        else
+        {
+            RESTORE(pushButton_4)
+                    QMessageBox::about(this,"Failed",hdl.detail);
+        }
+    });
+    thr->start();
+}
+//更改图书组
+void Reader::on_pushButton_20_clicked()
+{
+    if(!NE(bookGroupid)){return;}
+    ui->pushButton_20->setEnabled(false);
+    wait.show();
+    if(!(NE(name_7)&&NE(max_time))){
+        QMessageBox::about(this,"Failed","图书组信息不完整");
+        RESTORE(pushButton)
+                return;
+    }
+    QMap<QString,QVariant> info;
+    info["name"]=TEXT(name_7);
+    info["max_time"]=TEXT(max_time).toInt();
+    changegroup rqt("book",ui->bookGroupid->text().toInt(),info,token);
+    SocketThread *thr= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+    connect(thr,&SocketThread::connectFailed,this,[&](){
+        RESTORE(pushButton_20)
+                QMessageBox::about(this,"Failed","connection timeout");
+    });
+    connect(thr,&SocketThread::badResponse,this,[&](){
+        RESTORE(pushButton_20)
+                QMessageBox::about(this,"Failed","server error");
+    });
+    connect(thr,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result){
+            RESTORE(pushButton_20)
+                    QMessageBox::about(this,"Success","successfully added");
+        }
+        else
+        {
+            RESTORE(pushButton_20)
+                    QMessageBox::about(this,"Failed",hdl.detail);
+        }
+    });
+    thr->start();
+}
 
 void Reader::on_pushButton_7_clicked()
 {

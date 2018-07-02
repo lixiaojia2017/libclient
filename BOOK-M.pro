@@ -52,7 +52,8 @@ SOURCES += \
     waitingwindow.cpp \
     pdfviewer/pdfreader.cpp \
     fileHandler/fileloader.cpp \
-    backend/handle/analyser.cpp
+    backend/handle/analyser.cpp \
+    fileTransfer/tcpfiletransfer.cpp
 
 HEADERS += \
     login.h \
@@ -91,7 +92,8 @@ HEADERS += \
     waitingwindow.h \
     pdfviewer/pdfreader.h \
     fileHandler/fileloader.h \
-    backend/handle/analyser.h
+    backend/handle/analyser.h \
+    fileTransfer/tcpfiletransfer.h
 
 FORMS += \
     find_password.ui \

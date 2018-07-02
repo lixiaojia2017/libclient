@@ -1,6 +1,5 @@
-#include "tcpfiletransfer.h"
-#include "utils/config.h"
-
+﻿#include "tcpfiletransfer.h"
+#include <QDir>
 
 tcpFileTransfer::tcpFileTransfer(QTcpSocket* tcpsocket,QObject *parent) : QObject(parent),socket(tcpsocket) {}
 
@@ -12,7 +11,7 @@ void tcpFileTransfer::sendHead(const QString &name,QString dir)
     fileName = name;
     if(dir.isEmpty())
     {
-        dir=config::getInstance()->dataDir();
+        dir="./";
     }
     if(!fileName.isEmpty())
     {
@@ -80,7 +79,12 @@ void tcpFileTransfer::receiveFile(QString dir)
 {
     if(dir.isEmpty())
     {
-        dir=config::getInstance()->dataDir();
+        dir="./";
+    }
+    else
+    {
+        QDir _path;
+        _path.mkpath(dir);
     }
     while(true)
     {

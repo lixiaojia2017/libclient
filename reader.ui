@@ -1411,7 +1411,7 @@
             <item row="0" column="1" rowspan="4">
              <widget class="QStackedWidget" name="readerStackedWidget">
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="page_13">
                <layout class="QGridLayout" name="gridLayout_40">
@@ -1604,17 +1604,17 @@
                       <widget class="QComboBox" name="sex_2">
                        <item>
                         <property name="text">
-                         <string>Female</string>
+                         <string>female</string>
                         </property>
                        </item>
                        <item>
                         <property name="text">
-                         <string>Male</string>
+                         <string>male</string>
                         </property>
                        </item>
                        <item>
                         <property name="text">
-                         <string>Other</string>
+                         <string>other</string>
                         </property>
                        </item>
                       </widget>
@@ -1791,8 +1791,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>1005</width>
-                     <height>599</height>
+                     <width>182</width>
+                     <height>186</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_48">
@@ -2012,7 +2012,7 @@
             <item row="0" column="1" rowspan="4">
              <widget class="QStackedWidget" name="groupStackedWidget">
               <property name="currentIndex">
-               <number>1</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="page_14">
                <layout class="QGridLayout" name="gridLayout_50">
@@ -2227,8 +2227,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>1005</width>
-                     <height>613</height>
+                     <width>182</width>
+                     <height>102</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_53">
@@ -2601,17 +2601,17 @@
                   <widget class="QComboBox" name="sex">
                    <item>
                     <property name="text">
-                     <string>Other</string>
+                     <string>other</string>
                     </property>
                    </item>
                    <item>
                     <property name="text">
-                     <string>Female</string>
+                     <string>female</string>
                     </property>
                    </item>
                    <item>
                     <property name="text">
-                     <string>Male</string>
+                     <string>male</string>
                     </property>
                    </item>
                   </widget>
