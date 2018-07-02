@@ -882,9 +882,38 @@ void Reader::on_searchResult_cellDoubleClicked(int row, int column)
     }
     else if(ui->searchResult->item(row,column)!=nullptr){
         ui->searchResult->item(row,2)->text();
-        pdfreader = new PDFReader;
-        pdfreader->resize(1161,893);
-        pdfreader->show();
+        int bookID=ui->searchResult->item(row,2)->text().toInt();
+        QJsonObject rqt;
+        rqt.insert("token",token);
+        rqt.insert("type","LOAD");
+        rqt.insert("command","down");
+        rqt.insert("object","pdf");
+        rqt.insert("id",bookID);
+        SocketThread *thr;
+        thr=new SocketThread(serverAddr,serverport,rqt);
+        connect(thr,&SocketThread::connectFailed,this,[&](){
+            QMessageBox::about(this,"Failed","connection timeout");
+        });
+        connect(thr,&SocketThread::badResponse,this,[&](){
+            QMessageBox::about(this,"Failed","server error");
+        });
+        connect(thr,&SocketThread::downloadComplete,this,[&](QString& fn){
+            QFile file("./cache/"+fn);
+            if(file.open(QIODevice::ReadOnly))
+            {
+                QByteArray byte2 = file.readAll();
+                pdfreader = new PDFReader;
+                pdfreader->resize(1161,893);
+                pdfreader->loadData(byte2);
+                pdfreader->setAttribute(Qt::WA_DeleteOnClose);
+                pdfreader->show();
+            }
+            else
+            {
+                QMessageBox::about(this,"Failed","file currupted");
+            }
+        });
+        thr->start();
     }
 }
 

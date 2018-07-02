@@ -103,10 +103,12 @@ void tcpFileTransfer::receiveFile(QString dir)
             if(fileName.isEmpty())
             {
                 emit onFail("File name empty, maybe file head is corrupted?");
+                return;
             }
-            file = new QFile(dir + fileName);
+            file = new QFile(dir + "/" + fileName);
             if(false == file->open(QIODevice::WriteOnly)){
                 emit onFail("Failed to open the file to write");
+                return;
                 // error handling
             }
             socket->write("FILE##HEAD##RCV");

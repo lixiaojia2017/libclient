@@ -21,6 +21,15 @@ void SocketThread::run()
         auto &&jsonObj = rqt.object();
         if(jsonObj.value("type").toString()=="LOAD")
         {
+            transfer = new tcpFileTransfer(tcpSocket);
+            connect(transfer,&tcpFileTransfer::onFail,this,[&]()
+            {
+
+            });
+            connect(transfer,&tcpFileTransfer::onFinish,this,[&]()
+            {
+
+            });
             if(jsonObj.value("command").toString()=="up")
             {
                 currMode = up;
@@ -45,7 +54,7 @@ void SocketThread::run()
         this->quit();
         return;
     }
-    tcpSocket->setReadBufferSize(32768);
+    tcpSocket->setReadBufferSize(4096);
     if(tcpSocket->waitForReadyRead(10000)){
         QByteArray ReadData =tcpSocket->readAll();
         QDataStream in(&ReadData,QIODevice::ReadOnly);
@@ -55,7 +64,7 @@ void SocketThread::run()
             qint32 bytes;
             QByteArray rspData;
             in >> bytes;
-            in >> rspData;//超過一定大小就讀不進去???
+            in >> rspData;
             if(rspData.size() != bytes){
                 emit(badResponse());
             }
@@ -66,10 +75,19 @@ void SocketThread::run()
             // toggle mode ?
             if(currMode!=normal)
             {
+                // if true, the file exists, and we can be ready to receive file
                 if(result->value("result").toBool())
                 {
-                    if(currMode==up)emit changeToUp();
-                    else emit changeToDown();
+                    if(currMode==up)
+                    {
+                        //transfer->sendHead();
+                        transfer->sendData();
+                    }
+                    else  // download
+                    {
+                        transfer->receiveFile("./cache");
+                        emit downloadComplete(transfer->fileName);
+                    }
                 }
                 else emit badResponse();
             }
