@@ -153,6 +153,11 @@ void Reader::Result(QTableWidget* tab)
         header<<tr("选择图书")<<tr("封面")<<tr("ID")<<tr("书名")<<tr("groupID")\
              <<tr("作者")<<tr("出版社")<<tr("tags")<<tr("ISBN")<<tr("价格")<<tr("页数")\
             <<tr("书架号")<<tr("入馆时间")<<tr("Available");
+        tab->horizontalHeader()->setDefaultSectionSize(138);
+        for(int i=0;i<10;i++)
+        {
+            tab->verticalHeader()->setDefaultSectionSize(200);
+        }
     }
     else if(tab==ui->searchResult_2)
     {
@@ -653,12 +658,10 @@ void Reader::on_tabWidget_tabBarClicked(int index)
                 if(hdl.result)
                 {
                     ADDITEM(ui->searchResult_2,hdl);
-                    qDebug()<<1;
                 }
                 else
                 {
                     QMessageBox::warning(this,"Warning","Unable to get user info. Maybe user is not properly set?");
-                    qDebug()<<2;
                 }
                 // get result
             });
@@ -871,6 +874,9 @@ void Reader::on_searchResult_cellDoubleClicked(int row, int column)
             fileNames = fileDialog->selectedFiles().join("");
         }
         ui->cover->show();//上传封面按钮
+
+        qDebug()<<fileNames;
+
         QLabel *coverground=new QLabel("");
         coverground->setPixmap(QPixmap(fileNames).scaled(138,200));
         ui->searchResult->setCellWidget(row,column,coverground);
