@@ -6,11 +6,12 @@
 #include <QFile>
 
 const uint BUF_SIZE=1024*4;
-
+class SocketThread;
 class tcpFileTransfer : public QObject
 {
   Q_OBJECT
 private:
+    friend class SocketThread;
   // common part
   QTcpSocket *socket;
   QString fileName;

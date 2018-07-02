@@ -8,6 +8,7 @@
 #include <QString>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include "fileTransfer/tcpfiletransfer.h"
 class SocketThread : public QThread
 {
     Q_OBJECT
@@ -30,14 +31,14 @@ class SocketThread : public QThread
         QTcpSocket *tcpSocket;
         QJsonDocument rqt;
         QJsonObject* result;
+        tcpFileTransfer *transfer = nullptr;
     signals:
         void connectFailed();
         void onSuccess(QJsonObject*);
         void badResponse();
         void finished();
         // toggle mode
-        void changeToUp();
-        void changeToDown();
+        void downloadComplete(QString);
 };
 
 
