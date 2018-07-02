@@ -99,6 +99,7 @@ void SocketThread::run()
                     {
                         transfer->receiveFile("./cache");
                         emit downloadComplete(transfer->fileName);
+                        return;
                     }
                 }
                 else emit badResponse();

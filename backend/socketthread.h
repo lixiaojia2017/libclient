@@ -38,7 +38,7 @@ class SocketThread : public QThread
         void badResponse();
         void finished();
         // toggle mode
-        void downloadComplete(QString&);
+        void downloadComplete(QString);
 };
 
 
