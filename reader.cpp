@@ -2201,3 +2201,76 @@ void Reader::on_pushButton_8_clicked()
 {
 
 }
+
+void Reader::on_BORROWBOOK_clicked()
+{
+
+    Result(ui->searchResult_3);//借阅申请—初始化时的内容即为其真实内容
+    queryinfo rqt1({"ID"}, 10, 1, "currappoint", "type = 'borrow'", token);
+    SocketThread* sktBorrow = new SocketThread(serverAddr,serverport, rqt1.GetReturn());
+    connect(sktBorrow,&SocketThread::connectFailed,this,[&](){
+        QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+    });
+    connect(sktBorrow,&SocketThread::badResponse,this,[&](){
+        QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+    });
+    connect(sktBorrow,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result)
+        {
+            ui->pushButton_16->setEnabled(true);
+            ui->pushButton_15->setEnabled(true);
+            if(hdl.info.size() < 10)
+            {
+                ui->pushButton_16->setEnabled(false);
+            }
+            if(Pages == 1)
+            {
+                ui->pushButton_15->setEnabled(false);
+            }
+            ADDITEM(ui->searchResult_3, hdl);
+        }
+        else
+        {
+            QMessageBox::warning(this,"Warning","Unable to get the info. Maybe user is not properly set?");
+        }
+    });
+    sktBorrow->start();
+}
+
+void Reader::on_RETURNBOOK_clicked()
+{
+    Result(ui->searchResult_4);//归还申请-初始化时的内容即为其真实内容
+    queryinfo rqt2({"ID"}, 10, 1, "currappoint", "type = 'return'", token);
+    SocketThread* sktReturn = new SocketThread(serverAddr,serverport, rqt2.GetReturn());
+    connect(sktReturn,&SocketThread::connectFailed,this,[&](){
+        QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+    });
+    connect(sktReturn,&SocketThread::badResponse,this,[&](){
+        QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+    });
+    connect(sktReturn,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+    {
+        infoanalyser hdl(*rsp);
+        if(hdl.result)
+        {
+            ui->pushButton_16->setEnabled(true);
+            ui->pushButton_15->setEnabled(true);
+            if(hdl.info.size() < 10)
+            {
+                ui->pushButton_16->setEnabled(false);
+            }
+            if(Pages == 1)
+            {
+                ui->pushButton_15->setEnabled(false);
+            }
+            ADDITEM(ui->searchResult_4, hdl);
+        }
+        else
+        {
+            QMessageBox::warning(this,"Warning","Unable to get the info. Maybe user is not properly set?");
+        }
+    });
+    sktReturn->start();
+}
