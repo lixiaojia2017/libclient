@@ -1,4 +1,4 @@
-#include "socketthread.h"
+﻿#include "socketthread.h"
 
 
 
@@ -17,6 +17,19 @@ void SocketThread::run()
     tcpSocket->connectToHost(ip,port);
     if(tcpSocket->waitForConnected(10000)){
         QByteArray rqtData=rqt.toBinaryData();
+        // detect whether it is a file protocol
+        auto &&jsonObj = rqt.object();
+        if(jsonObj.value("type").toString()=="LOAD")
+        {
+            if(jsonObj.value("command").toString()=="up")
+            {
+                currMode = up;
+            }
+            else if(jsonObj.value("command").toString()=="down")
+            {
+                currMode = down;
+            }
+        }
         QByteArray sendData;
         QDataStream out(&sendData,QIODevice::WriteOnly);
         out << (qint8)'Q';
@@ -50,6 +63,16 @@ void SocketThread::run()
             QJsonDocument &&json=QJsonDocument::fromBinaryData(rspData);
             result=new QJsonObject;
             *result=json.object();
+            // toggle mode ?
+            if(currMode!=normal)
+            {
+                if(result->value("result").toBool())
+                {
+                    if(currMode==up)emit changeToUp();
+                    else emit changeToDown();
+                }
+                else emit badResponse();
+            }
             emit(onSuccess(result));
             }
         }
@@ -60,9 +83,17 @@ void SocketThread::run()
     else{
         emit(connectFailed());
     }
-    tcpSocket->disconnectFromHost();
-    tcpSocket->close();
-    tcpSocket->deleteLater();
-    emit(finished());
-    this->quit();
+    if(currMode==normal)
+    {
+        tcpSocket->disconnectFromHost();
+        tcpSocket->close();
+        tcpSocket->deleteLater();
+        emit(finished());
+        this->quit();
+    }
+}
+
+QTcpSocket* SocketThread::getSocket()
+{
+    return tcpSocket;
 }
