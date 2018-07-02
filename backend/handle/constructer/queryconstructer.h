@@ -20,4 +20,6 @@ class queryinfo: public queryconstructer
 {
 public:
     queryinfo(const QList<QVariant> &order, int records, int page, const QString &table, const QString &conditions, const QString &token);
+    queryinfo(const QString sql,const QString token);
 };
+

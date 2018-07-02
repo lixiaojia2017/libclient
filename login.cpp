@@ -79,7 +79,7 @@ void Login::handleEvents() // 信号槽事件处理
             ui->password->setText(token::getMD5(ui->password->text()));
         }
         ui->logIn->setEnabled(false);
-        ui->logIn->setText("登录中...");
+        ui->logIn->setText(tr("登录中..."));
         userlogin rqt(ui->username->text(),ui->password->text(),ui->group->currentText());
         // server addr detection
         QString server = ui->serveraddr->text();
@@ -144,7 +144,9 @@ void Login::handleEvents() // 信号槽事件处理
             }
           // connect success, handle the login request
             LoginHdl hdl(rsp);
-            connect(&hdl,&LoginHdl::onSuccess,[&](QString& token){
+          connect(&hdl,&LoginHdl::onSuccess,[&](QString& token,int ID){
+              Q_UNUSED(ID)
+
               if(ui->remPassword->isChecked())
               {
                 config.setPassword(ui->username->text(),ui->password->text());

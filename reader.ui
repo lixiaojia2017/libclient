@@ -41,7 +41,11 @@
          <x>0</x>
          <y>0</y>
          <width>1159</width>
+<<<<<<< HEAD
          <height>824</height>
+=======
+         <height>826</height>
+>>>>>>> a37eb6a22424f0d495aa07d1705b0a268e6e8277
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_8">
@@ -119,7 +123,11 @@
            </font>
           </property>
           <property name="currentIndex">
+<<<<<<< HEAD
            <number>3</number>
+=======
+           <number>0</number>
+>>>>>>> a37eb6a22424f0d495aa07d1705b0a268e6e8277
           </property>
           <widget class="QWidget" name="tab_searchBook">
            <attribute name="title">
@@ -364,8 +372,13 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
+<<<<<<< HEAD
                     <width>1117</width>
                     <height>465</height>
+=======
+                    <width>1107</width>
+                    <height>457</height>
+>>>>>>> a37eb6a22424f0d495aa07d1705b0a268e6e8277
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_19">
@@ -389,14 +402,7 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="5" column="1">
-                    <widget class="QPushButton" name="appointreturn">
-                     <property name="text">
-                      <string>预约还书</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="0" rowspan="10">
+                   <item row="0" column="0" rowspan="9">
                     <widget class="QTableWidget" name="searchResult"/>
                    </item>
                    <item row="1" column="1">
@@ -419,14 +425,28 @@
                      </property>
                     </spacer>
                    </item>
+                   <item row="7" column="1">
+                    <widget class="QPushButton" name="changebookgroup">
+                     <property name="text">
+                      <string>修改图书组</string>
+                     </property>
+                    </widget>
+                   </item>
                    <item row="4" column="1">
-                    <widget class="QPushButton" name="appointborrow">
+                    <widget class="QPushButton" name="appointborrowpushbutton">
                      <property name="text">
                       <string>预约借书</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="9" column="1">
+                   <item row="5" column="1">
+                    <widget class="QPushButton" name="deletebook_2">
+                     <property name="text">
+                      <string>删除图书</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="8" column="1">
                     <spacer name="verticalSpacer_7">
                      <property name="orientation">
                       <enum>Qt::Vertical</enum>
@@ -440,23 +460,9 @@
                     </spacer>
                    </item>
                    <item row="6" column="1">
-                    <widget class="QPushButton" name="deletebook_2">
-                     <property name="text">
-                      <string>删除图书</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="7" column="1">
                     <widget class="QPushButton" name="changebook_2">
                      <property name="text">
                       <string>修改图书信息</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="8" column="1">
-                    <widget class="QPushButton" name="changebookgroup">
-                     <property name="text">
-                      <string>修改图书组</string>
                      </property>
                     </widget>
                    </item>
@@ -496,8 +502,13 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
+<<<<<<< HEAD
                  <width>1135</width>
                  <height>690</height>
+=======
+                 <width>1129</width>
+                 <height>687</height>
+>>>>>>> a37eb6a22424f0d495aa07d1705b0a268e6e8277
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_39">
@@ -552,9 +563,9 @@
                  </spacer>
                 </item>
                 <item row="5" column="1">
-                 <widget class="QPushButton" name="pushButton_10">
+                 <widget class="QPushButton" name="appointreturnpushbutton">
                   <property name="text">
-                   <string>申请归还</string>
+                   <string>预约归还</string>
                   </property>
                  </widget>
                 </item>
@@ -611,7 +622,7 @@
             <item row="1" column="1" rowspan="5">
              <widget class="QStackedWidget" name="brbookStackedWidget">
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="page_10">
                <layout class="QGridLayout" name="gridLayout_28">
@@ -637,8 +648,13 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
+<<<<<<< HEAD
                      <width>1031</width>
                      <height>672</height>
+=======
+                     <width>1007</width>
+                     <height>665</height>
+>>>>>>> a37eb6a22424f0d495aa07d1705b0a268e6e8277
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_29">
@@ -894,7 +910,11 @@
             <item row="0" column="1" rowspan="5">
              <widget class="QStackedWidget" name="OPERATEBOOK">
               <property name="currentIndex">
+<<<<<<< HEAD
                <number>1</number>
+=======
+               <number>0</number>
+>>>>>>> a37eb6a22424f0d495aa07d1705b0a268e6e8277
               </property>
               <widget class="QWidget" name="page_5">
                <layout class="QGridLayout" name="gridLayout_7">
@@ -1122,8 +1142,13 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
+<<<<<<< HEAD
                      <width>989</width>
                      <height>593</height>
+=======
+                     <width>198</width>
+                     <height>98</height>
+>>>>>>> a37eb6a22424f0d495aa07d1705b0a268e6e8277
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_33">
@@ -1503,7 +1528,7 @@
             <item row="0" column="1" rowspan="4">
              <widget class="QStackedWidget" name="readerStackedWidget">
               <property name="currentIndex">
-               <number>2</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="page_13">
                <layout class="QGridLayout" name="gridLayout_40">
@@ -1666,15 +1691,6 @@
                        </property>
                       </widget>
                      </item>
-                     <item row="3" column="1">
-                      <widget class="QLineEdit" name="sex_2">
-                       <property name="font">
-                        <font>
-                         <pointsize>13</pointsize>
-                        </font>
-                       </property>
-                      </widget>
-                     </item>
                      <item row="0" column="1">
                       <widget class="QComboBox" name="groupid">
                        <item>
@@ -1690,7 +1706,7 @@
                       </widget>
                      </item>
                      <item row="1" column="1">
-                      <widget class="QLineEdit" name="username">
+                      <widget class="QLineEdit" name="username_0">
                        <property name="font">
                         <font>
                          <pointsize>13</pointsize>
@@ -1700,6 +1716,25 @@
                      </item>
                      <item row="2" column="1">
                       <widget class="QLineEdit" name="name_2"/>
+                     </item>
+                     <item row="3" column="1">
+                      <widget class="QComboBox" name="sex_2">
+                       <item>
+                        <property name="text">
+                         <string>Female</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Male</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Other</string>
+                        </property>
+                       </item>
+                      </widget>
                      </item>
                     </layout>
                    </item>
@@ -1873,8 +1908,13 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
+<<<<<<< HEAD
                      <width>182</width>
                      <height>186</height>
+=======
+                     <width>225</width>
+                     <height>180</height>
+>>>>>>> a37eb6a22424f0d495aa07d1705b0a268e6e8277
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_48">
@@ -2000,8 +2040,13 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
+<<<<<<< HEAD
                      <width>1005</width>
                      <height>613</height>
+=======
+                     <width>109</width>
+                     <height>109</height>
+>>>>>>> a37eb6a22424f0d495aa07d1705b0a268e6e8277
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_60">
@@ -2094,7 +2139,7 @@
             <item row="0" column="1" rowspan="4">
              <widget class="QStackedWidget" name="groupStackedWidget">
               <property name="currentIndex">
-               <number>2</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="page_14">
                <layout class="QGridLayout" name="gridLayout_50">
@@ -2309,8 +2354,13 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
+<<<<<<< HEAD
                      <width>182</width>
                      <height>102</height>
+=======
+                     <width>969</width>
+                     <height>605</height>
+>>>>>>> a37eb6a22424f0d495aa07d1705b0a268e6e8277
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_53">
@@ -2672,14 +2722,30 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="1">
-                  <widget class="QLineEdit" name="sex"/>
-                 </item>
                  <item row="1" column="0">
                   <widget class="QLabel" name="label_23">
                    <property name="text">
                     <string>昵称</string>
                    </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QComboBox" name="sex">
+                   <item>
+                    <property name="text">
+                     <string>Other</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Female</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Male</string>
+                    </property>
+                   </item>
                   </widget>
                  </item>
                 </layout>
@@ -2885,17 +2951,16 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
+<<<<<<< HEAD
                  <width>1117</width>
                  <height>672</height>
+=======
+                 <width>1107</width>
+                 <height>665</height>
+>>>>>>> a37eb6a22424f0d495aa07d1705b0a268e6e8277
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_18">
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
                 <item row="0" column="0">
                  <widget class="QFrame" name="frame_11">
                   <property name="frameShape">
@@ -2905,8 +2970,68 @@
                    <enum>QFrame::Raised</enum>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_61">
-                   <item row="0" column="0">
+                   <item row="0" column="0" rowspan="6">
                     <widget class="QTableWidget" name="searchResult_10"/>
+                   </item>
+                   <item row="0" column="1">
+                    <spacer name="verticalSpacer_24">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>163</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QPushButton" name="pushButton_3">
+                     <property name="text">
+                      <string>刷新</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <spacer name="verticalSpacer_23">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>162</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QPushButton" name="pushButton_10">
+                     <property name="text">
+                      <string>上一页</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QPushButton" name="pushButton_17">
+                     <property name="text">
+                      <string>下一页</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="1">
+                    <spacer name="verticalSpacer_25">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>163</height>
+                      </size>
+                     </property>
+                    </spacer>
                    </item>
                   </layout>
                  </widget>
@@ -2931,7 +3056,11 @@
      <x>0</x>
      <y>0</y>
      <width>1161</width>
+<<<<<<< HEAD
      <height>28</height>
+=======
+     <height>26</height>
+>>>>>>> a37eb6a22424f0d495aa07d1705b0a268e6e8277
     </rect>
    </property>
   </widget>
