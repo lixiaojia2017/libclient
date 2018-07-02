@@ -106,6 +106,8 @@ private slots:
 
     void on_pushButton_20_clicked();
 
+    void on_deletereader_clicked();
+
 protected:
     void switchPage(int);
     void Result(QTableWidget* tab);

@@ -1608,7 +1608,7 @@ void Reader::on_createbook_clicked()
 {
     ui->createbook->setEnabled(false);
     wait.show();
-    if(!(NE(name_1)&&NE(press_2)&&NE(author_2)&&NE(ISBN)&&NE(pages)&&NE(piece)&&NE(tags_2)&&NE(groupID)&&NE(bookcase))){
+    if(!(NE(name_1)&&NE(press_2)&&NE(author_2)&&NE(IBSN)&&NE(pages)&&NE(piece)&&NE(tags_2)&&NE(groupID)&&NE(bookcase_2))){
         QMessageBox::about(this,"Failed","图书信息不完整");
         RESTORE(createbook)
         return;
@@ -1617,11 +1617,11 @@ void Reader::on_createbook_clicked()
     info["name"]=TEXT(name_1);
     info["press"]=TEXT(press_2);
     info["author"]=TEXT(author_2);
-    info["ISBN"]=TEXT(ISBN);
+    info["ISBN"]=TEXT(IBSN);
     info["price"]=ui->piece->text().toFloat();
     info["groupID"]=ui->groupID->text().toInt();
     info["pages"]=ui->pages->text().toInt();
-    info["bookcase"]=ui->bookcase->text().toInt();
+    info["bookcase"]=ui->bookcase_2->text().toInt();
     info["available"]=ui->checkBox->checkState();
     QString TAG=TEXT(tags);
     QStringList tgs=TAG.split(',');
@@ -2187,4 +2187,40 @@ void Reader::on_pushButton_7_clicked()
 void Reader::on_pushButton_8_clicked()
 {
 
+}
+
+void Reader::on_deletereader_clicked()
+{
+    QList<QVariant> uid;
+    for(int i = 0; i < 10; i++)
+    {
+        if(ui->searchResult_6->item(i,0)!=nullptr && ui->searchResult_6->item(i,0)->checkState()==Qt::Checked)
+        {
+            uid.append(ui->searchResult_6->item(i, 2)->text().toInt());
+        }
+    }
+    if(!uid.isEmpty())
+    {
+        deleteuser rqt(uid, token);
+        SocketThread *skt= new SocketThread(serverAddr,serverport,rqt.GetReturn());
+        connect(skt,&SocketThread::connectFailed,this,[&](){
+            QMessageBox::about(this,"Failed","Connection failed. Unable to fetch user info");
+        });
+        connect(skt,&SocketThread::badResponse,this,[&](){
+            QMessageBox::about(this,"Failed","Server error. Unable to fetch user info");
+        });
+        connect(skt,&SocketThread::onSuccess,this,[&](QJsonObject* rsp)
+        {
+            infoanalyser hdl(*rsp);
+            if(hdl.result)
+            {
+                QMessageBox::about(this,"Success","deleted user");
+            }
+            else
+            {
+                QMessageBox::warning(this,"Warning","Unable to delete user.");
+            }
+        });
+        skt->start();
+    }
 }
