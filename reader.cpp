@@ -1,4 +1,4 @@
-#include "reader.h"
+﻿#include "reader.h"
 #include "ui_reader.h"
 #include<QIcon>
 #include<QFont>
@@ -208,7 +208,7 @@ void Reader::Result(QTableWidget* tab)
     else if(tab==ui->searchResult_9)
     {//内容自动获取，无需添加
         tab->setColumnCount(7);
-        header<<tr("用户名")<<tr("userID")<<tr("groupID")
+        header<<tr("用户名")<<tr("userID")<<tr("groupID")\
              <<tr("昵称")<<tr("性别")<<tr("手机")<<tr("邮箱");
     }
     else if(tab==ui->searchResult_10)
@@ -930,7 +930,7 @@ void Reader::on_logout_clicked()
 
 void Reader::on_searchResult_cellDoubleClicked(int row, int column)
 {
-    if(column==1&&ui->searchResult->item(row,column)==nullptr&&Iden==STAFFS_IDENTITY)
+    if(column==1&&ui->searchResult->item(row,column)==nullptr&&ui->searchResult->item(row,column+1)!=nullptr&&Iden==STAFFS_IDENTITY)
     {
         //定义文件对话框类
         QFileDialog *fileDialog = new QFileDialog(this);
